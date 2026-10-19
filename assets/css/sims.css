@@ -1,0 +1,143 @@
+/* ===========================================
+   สัญลักษณ์ไดโอด (diodes.js) + กิจกรรมและตัวจำลอง (sims.js)
+   =========================================== */
+.diode-svg { width: 200px; height: 100px; overflow: visible; }
+.diode-svg.mini { width: 130px; height: 65px; }
+.diode-svg.big { width: 360px; height: 180px; }
+.diode-svg.mid { width: 300px; height: 150px; }
+.diode-svg.bridge { width: 320px; height: 320px; }
+.diode-svg line, .diode-svg path { stroke: var(--ink); stroke-width: 5; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.diode-svg path.body { fill: #fff; }
+.diode-svg path.fill { fill: var(--ink); stroke-width: 1; }
+.diode-svg path.wire { stroke-width: 4; }
+.diode-svg text { font: 600 22px var(--font-mono); fill: var(--orange); stroke: none; }
+
+.loop-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.loop-svg line, .loop-svg path { stroke: var(--ink); stroke-width: 4; fill: none; stroke-linejoin: round; }
+.loop-svg line.thick { stroke-width: 9; }
+.loop-svg path.body { fill: #fff; }
+.loop-svg path.fill { fill: var(--ink); stroke-width: 1; }
+.loop-svg rect.bg { fill: var(--paper); stroke: none; }
+.box .loop-svg rect.bg { fill: #fff; }
+.box.tint .loop-svg rect.bg { fill: var(--sec-soft); } .box.sun .loop-svg rect.bg { fill: var(--sun-soft); } .box.rose .loop-svg rect.bg { fill: var(--rose-soft); }
+.box.green .loop-svg rect.bg { fill: var(--green-soft); } .box.blue .loop-svg rect.bg { fill: var(--blue-soft); } .box.orange .loop-svg rect.bg { fill: var(--orange-soft); }
+.loop-svg text { font: 500 30px 'Kanit', sans-serif; fill: var(--ink); text-anchor: middle; stroke: none; }
+.loop-svg text.pm { font: 700 30px var(--font-mono); fill: var(--rose); text-anchor: start; }
+.loop-svg text.val { font: 600 36px var(--font-mono); fill: var(--teal); }
+.loop-svg .flow { stroke: var(--orange); stroke-width: 6; stroke-dasharray: 16 10; animation: flow 1s linear infinite; }
+.loop-svg .flowhead { fill: var(--orange); stroke: none; }
+
+.box h3.c-orange { color: var(--orange); } .box h3.c-blue { color: var(--blue); } .box h3.c-rose { color: var(--rose); } .box h3.c-green { color: var(--green); }
+
+/* ---------- ป้ายกิจกรรม ---------- */
+.act-badge { display: inline-flex; align-items: center; gap: 10px; font: 500 30px var(--font-display); color: #fff; background: var(--rose);
+    border-radius: 999px; padding: 4px 24px; margin-bottom: 6px; }
+.act-meta { display: inline-block; font: 500 26px var(--font-display); color: var(--rose); margin-left: 14px; }
+.slide.act { background: radial-gradient(circle at 1880px 40px, var(--rose-soft) 0 260px, transparent 261px),
+    radial-gradient(rgba(42, 39, 51, .09) 1.6px, transparent 1.6px) 0 0 / 34px 34px, #fffaf8; }
+
+/* ---------- ตัวจับเวลา ---------- */
+.timer { display: inline-flex; flex-direction: column; align-items: center; gap: 10px; background: #fff; border: 3px solid var(--line);
+    border-radius: 28px; padding: 16px 28px; box-shadow: 0 6px 0 var(--cream-deep); }
+.timer .tm-face { font: 700 110px/1 var(--font-mono); color: var(--teal); min-width: 4.2ch; text-align: center; }
+.timer.low .tm-face { color: var(--orange); }
+.timer.done .tm-face { color: var(--rose); animation: tm-blink .8s steps(2) infinite; }
+@keyframes tm-blink { 50% { opacity: .25; } }
+.timer .tm-btns, .sx-ctl { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.timer button, .sx-ctl button, .board button, .picker button, .vote .reveal {
+    font: 500 26px var(--font-display); color: var(--ink); background: var(--cream); border: 2px solid var(--line);
+    border-radius: 14px; padding: 6px 18px; cursor: pointer; }
+.sx-ctl button.on { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+/* ---------- โหวต ---------- */
+.vote { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; }
+.vote .opt { text-align: left; font: 400 38px/1.35 var(--font-body); color: var(--ink); background: #fff; border: 3px solid var(--line);
+    border-radius: 24px; padding: 18px 26px; cursor: pointer; box-shadow: 0 5px 0 var(--cream-deep); transition: background .25s, border-color .25s, opacity .25s; }
+.vote .opt b { font-family: var(--font-display); color: var(--sec); margin-right: 10px; }
+.vote .opt.picked { border-color: var(--blue); background: var(--blue-soft); }
+.vote.revealed .opt { opacity: .4; }
+.vote.revealed .opt.right { opacity: 1; border-color: var(--green); background: var(--green-soft); }
+.vote.revealed .opt.right::after { content: ' ✓'; color: var(--green); font-weight: 700; }
+.vote .reveal { grid-column: 1 / -1; justify-self: start; }
+.vote .why { grid-column: 1 / -1; display: none; font-size: 32px; background: var(--sun-soft); border-left: 6px solid var(--sun); border-radius: 0 16px 16px 0; padding: 12px 22px; }
+.vote.revealed .why { display: block; }
+
+/* ---------- กระดานคะแนน / สุ่มเลขที่ ---------- */
+.board { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; }
+.board .bd-g { background: #fff; border: 2px solid var(--line); border-radius: 20px; padding: 10px 18px; text-align: center; min-width: 170px; }
+.board .bd-n { font: 500 26px var(--font-display); color: var(--ink-soft); }
+.board .bd-s { font: 700 64px/1.1 var(--font-mono); color: var(--orange); }
+.board .bd-b { display: flex; gap: 8px; justify-content: center; }
+.board .bd-b button { min-width: 56px; }
+.board .bd-reset { font-size: 22px; }
+.picker { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; font-size: 32px; }
+.picker input { width: 3.4em; font: 500 32px var(--font-mono); padding: 2px 8px; border: 2px solid var(--line); border-radius: 10px; }
+.picker .pk-num { font: 700 120px/1 var(--font-mono); color: var(--rose); min-width: 2ch; text-align: center; }
+.picker .pk-num.spin { color: var(--ink-soft); }
+
+/* ---------- ตัวจำลองทั่วไป ---------- */
+.sx .sx-svg { width: 100%; height: auto; display: block; }
+.sx .sx-svg text { font-family: 'Kanit', sans-serif; }
+.sx .sx-cap { font-size: 30px; line-height: 1.4; margin: 10px 0 0; color: var(--ink); }
+.sx .bond, .sx .wire { stroke: #a8a1b0; stroke-width: 4; fill: none; }
+.sx .el { fill: var(--blue); }
+.sx .hole { fill: #fff; stroke: var(--rose); stroke-width: 4; }
+.sx .lbl { font-size: 26px; fill: var(--ink); }
+.sx .lbl.small { font-size: 20px; fill: var(--ink-soft); }
+.sx .lbl.warn { fill: var(--rose); font-weight: 600; }
+
+/* การโดป */
+.dope .atom { fill: #fff; stroke: var(--ink-soft); stroke-width: 3; }
+.dope .atom.imp-n { fill: var(--orange-soft); stroke: var(--orange); stroke-width: 5; }
+.dope .atom.imp-p { fill: var(--rose-soft); stroke: var(--rose); stroke-width: 5; }
+.dope .atom-t { font: 600 26px var(--font-mono); text-anchor: middle; fill: var(--ink); }
+.dope .free-e { fill: var(--orange); animation: wander 2.4s ease-in-out infinite alternate; }
+.dope .free .lbl { fill: var(--orange); font-weight: 600; }
+.dope .hole-t { fill: var(--rose); font-weight: 600; }
+.sx .lblbg { fill: #fff; stroke: var(--line); stroke-width: 2; }
+@keyframes wander { from { transform: translate(0, 0); } to { transform: translate(40px, -10px); } }
+.dope .free-e { transform-box: fill-box; }
+
+/* โฮลเคลื่อนที่ */
+.holes .slot { fill: none; stroke: #d8d0c4; stroke-width: 3; stroke-dasharray: 5 4; }
+.holes .slot.is-hole { stroke: var(--rose); stroke-width: 4; stroke-dasharray: none; fill: var(--rose-soft); }
+.holes .mv { transition: cx .6s ease, opacity .3s; }
+.holes .pole-p, .holes .pole-n { font: 700 40px var(--font-mono); }
+.holes .pole-p { fill: var(--rose); } .holes .pole-n { fill: var(--blue); }
+.holes .e-t { fill: var(--blue); } .holes .h-t { fill: var(--rose); }
+
+/* รอยต่อพีเอ็น */
+.pn .blk-p, .bias .blk-p { fill: var(--rose-soft); stroke: var(--rose); stroke-width: 2; }
+.pn .blk-n, .bias .blk-n { fill: var(--blue-soft); stroke: var(--blue); stroke-width: 2; }
+.pn .dep, .bias .dep { fill: #fff8e1; stroke: var(--sun); stroke-width: 3; stroke-dasharray: 8 6; }
+.pn .side-t { font-size: 28px; text-anchor: middle; fill: var(--ink); font-weight: 500; }
+.pn .side-p, .pn .side-n, .pn .cr, .pn .ion, .pn .dep, .pn .barrier { transition: transform .9s ease, opacity .9s ease; }
+.pn .side-p { transform: translateX(-24px); } .pn .side-n { transform: translateX(24px); }
+.pn.ge1 .side-p, .pn.ge1 .side-n { transform: none; }
+.pn.ge2 .near.h { transform: translateX(60px); opacity: 0; }
+.pn.ge2 .near.e { transform: translateX(-60px); opacity: 0; }
+.pn .ion, .pn .dep, .pn .barrier { opacity: 0; }
+.pn.ge3 .ion, .pn.ge3 .dep { opacity: 1; }
+.pn.ge4 .barrier { opacity: 1; }
+.pn .ion-n { fill: var(--rose); } .pn .ion-p { fill: var(--blue); }
+.pn .ion-t { font: 700 24px var(--font-mono); fill: #fff; text-anchor: middle; }
+.pn .bar-t { font-size: 24px; fill: #8a5d00; font-weight: 600; text-anchor: middle; }
+
+/* ไบแอส */
+.bias .bs-row { display: flex; gap: 30px; align-items: flex-start; }
+.bias .bs-svg { flex: 0 0 820px; width: 820px; }
+.bias .bs-ctl { flex: 1; display: flex; flex-direction: column; gap: 14px; font-size: 28px; }
+.bias .bs-ctl label { display: flex; flex-direction: column; gap: 4px; }
+.bias .bs-ctl input[type=range] { width: 100%; accent-color: var(--orange); height: 30px; }
+.bias .bs-ctl select { font: 400 26px var(--font-body); padding: 4px 8px; border-radius: 10px; border: 2px solid var(--line); }
+.bias .bs-out { font-size: 30px; line-height: 1.45; background: #fff; border: 2px solid var(--line); border-radius: 18px; padding: 12px 18px; min-height: 150px; }
+.bias .bat-bg { fill: var(--paper); }
+.bias .bat-l { stroke: var(--ink); stroke-width: 6; } .bias .bat-s { stroke: var(--ink); stroke-width: 10; }
+.bias .pol { font: 700 32px var(--font-mono); }
+.bias .d-tri { fill: #fff; stroke: var(--ink); stroke-width: 4; } .bias .d-bar { stroke: var(--ink); stroke-width: 5; }
+.bias .lamp { fill: #eee8dc; stroke: var(--ink-soft); stroke-width: 3; transition: fill .3s; }
+.bias .lamp.on { fill: var(--sun); filter: drop-shadow(0 0 12px var(--sun)); }
+.bias .flow { stroke: var(--orange); fill: none; stroke-dasharray: 18 14; animation: flow 1s linear infinite; }
+.bias .flow.fast { stroke: var(--rose); animation-duration: .25s; }
+@keyframes flow { to { stroke-dashoffset: -32; } }
+@media print { .timer, .board, .picker, .sx-ctl, .vote .reveal { display: none !important; } .vote .why { display: block; } }

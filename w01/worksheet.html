@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ใบงานที่ 1.1 จำแนกชนิดไดโอด</title>
+<meta name="description" content="ใบงานที่ 1.1 การอ่านสัญลักษณ์และจำแนกชนิดของไดโอด วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์ สำหรับพิมพ์ A4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="../assets/css/sims.css">
+<style>
+    .ws h2 { font-size: 20px; margin: 18px 0 6px; color: var(--teal); }
+    .ws h3 { font-size: 17px; margin: 12px 0 4px; }
+    .ws p, .ws li { margin: 2px 0; }
+    .ws ol, .ws ul { margin: 2px 0 6px; padding-left: 26px; }
+    .ws table.grid { width: 100%; border-collapse: collapse; margin: 6px 0 10px; background: #fff; }
+    .ws table.grid th, .ws table.grid td { border: 1px solid #555; padding: 4px 8px; vertical-align: top; }
+    .ws table.grid th { background: var(--cream); font-family: var(--font-display); font-weight: 500; text-align: center; }
+    .ws table.grid td.n { text-align: center; width: 2.4em; }
+    .ws table.grid.blank td { height: 11mm; }
+    .ws table.score td:nth-child(3), .ws table.score td:nth-child(4) { text-align: center; width: 6em; }
+    .ws .lines div { border-bottom: 1px dotted #000; height: 9mm; }
+    .ws .head { border: 1.5px solid #000; padding: 8px 12px; margin-bottom: 10px; background: #fff; }
+    .ws .head .line { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    .ws .warn { border-left: 4px solid var(--rose); background: var(--rose-soft); padding: 6px 12px; border-radius: 0 10px 10px 0; }
+    .syms { display: flex; justify-content: space-between; gap: 8px; margin: 8px 0; }
+    .syms .s { text-align: center; flex: 1; }
+    .syms .diode-svg { width: 120px; height: 60px; }
+    .syms .ans { border-bottom: 1px dotted #000; height: 8mm; margin: 2px 6px 0; }
+    .fig { display: block; margin: 6px auto; max-width: 520px; width: 100%; }
+    .fig line, .fig path { stroke: #000; stroke-width: 2.5; fill: none; }
+    .fig .fillk { fill: #000; } .fig .bg { fill: #fff; stroke: none; }
+    .fig text { font: 15px 'Sarabun', sans-serif; fill: #000; }
+    .fill-line { border-bottom: 1px dotted #000; display: inline-block; min-width: 60%; }
+    @media print {
+        body.doc { font-size: 12pt; line-height: 1.4; }
+        .ws h2 { color: #000; font-size: 14.5pt; margin: 4mm 0 1.5mm; }
+        .ws h3 { font-size: 13.5pt; }
+        .ws table.grid th { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .ws table.grid th, .ws table.grid td { border-color: #000; font-size: 12pt; }
+        .ws .warn { background: none; border: 1px solid #000; border-radius: 0; }
+        .ws .avoid { break-inside: avoid; }
+        .ws .p2 { break-before: page; }
+        .syms .diode-svg { width: 30mm; height: 15mm; }
+    }
+</style>
+</head>
+<body class="doc">
+<div class="doc-wrap">
+    <nav class="topbar no-print">
+        <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="exercises.html">แบบฝึกหัด</a> · <a href="quiz.html">แบบทดสอบ</a>
+    </nav>
+
+    <section class="card no-print">
+        <span class="chip orange">สัปดาห์ที่ 1 · ปฏิบัติ</span>
+        <h1 style="margin-top:8px">ใบงานที่ 1.1 สำหรับพิมพ์</h1>
+        <p class="muted" style="margin:0 0 10px">พิมพ์คนละ 1 ชุด (A4 ประมาณ 3 หน้า) ทำร่วมกับชุดไดโอดจริงที่ครูแจก แล้วส่งครู</p>
+        <div class="btn-row"><button class="btn" type="button" onclick="window.print()">🖨 พิมพ์ใบงาน (A4)</button></div>
+    </section>
+
+    <main class="ws card">
+        <div class="head">
+            <b>ใบงานที่ 1.1 การอ่านสัญลักษณ์และจำแนกชนิดของไดโอด</b><br>
+            วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์ (20127-2004) · หน่วยที่ 1 งานวัดและทดสอบไดโอด · สอนครั้งที่ 1
+            <div class="line" style="margin-top:4px"><span>ชื่อ-สกุล ......................................................</span><span>ชั้น ...............</span><span>เลขที่ ........</span><span>คะแนน ............ / 20</span></div>
+        </div>
+
+        <h2>1. ผลลัพธ์การเรียนรู้จากการปฏิบัติงาน</h2>
+        <p>อ่านสัญลักษณ์ไดโอดชนิดต่าง ๆ จำแนกชนิด เบอร์ และขาแคโทดของไดโอดจริง อ่านแบบวงจรไดโอดอย่างง่ายเพื่อบอกทิศการไบแอสและคำนวณกระแส และระบุโครงสร้างพีเอ็นของไดโอดได้</p>
+        <h2>2. จุดประสงค์เชิงพฤติกรรม</h2>
+        <p>4.1 บอกโครงสร้างของสาร P สาร N และรอยต่อพีเอ็นได้ (K1) · 4.2 อธิบายการไบแอสตรง/กลับ และอ่านสัญลักษณ์ไดโอดชนิดต่าง ๆ ได้ (K2) · 4.3 จำแนกชนิดและขาของไดโอดจากสัญลักษณ์และตัวอุปกรณ์จริงได้ (S2)</p>
+        <h2>3. เครื่องมือ วัสดุ และอุปกรณ์</h2>
+        <ul><li>ชุดไดโอดจริง 6 ตัว: 1N4007 · 1N4148 · ซีเนอร์ไดโอด · แอลอีดี · ไดโอดบริดจ์ · ชอตต์กีไดโอด (1 ชุด/คน)</li>
+            <li>แว่นขยายหรือกล้องโทรศัพท์ · คู่มืออุปกรณ์ของไดโอดในชุด · ใบความรู้ที่ 1.1</li></ul>
+        <h2>4. คำแนะนำ / ข้อควรระวัง</h2>
+        <div class="warn avoid"><ol style="margin:0">
+            <li>ไดโอดตัวถังแก้วแตกง่าย ห้ามดัดขาชิดตัวถัง</li>
+            <li>จับอุปกรณ์ด้วยความระมัดระวัง และเก็บคืนครบทุกตัวเมื่อเสร็จงาน</li>
+            <li>บันทึกเบอร์ตามที่อ่านได้จริง ถ้าอ่านไม่ออกให้ระบุว่า “อ่านไม่ออก”</li></ol></div>
+
+        <div class="avoid">
+            <h2>5. ขั้นตอนการปฏิบัติงาน</h2>
+            <h3>ตอนที่ 1 การอ่านสัญลักษณ์ไดโอด (5 คะแนน)</h3>
+            <p>เขียนชื่อไดโอดใต้สัญลักษณ์แต่ละช่อง และเขียนอักษร A และ K กำกับขาทั้งสองข้าง</p>
+            <div class="syms">
+                <div class="s"><span data-diode="zener1"></span><div>(1)</div><div class="ans"></div></div>
+                <div class="s"><span data-diode="led"></span><div>(2)</div><div class="ans"></div></div>
+                <div class="s"><span data-diode="std"></span><div>(3)</div><div class="ans"></div></div>
+                <div class="s"><span data-diode="photo"></span><div>(4)</div><div class="ans"></div></div>
+                <div class="s"><span data-diode="schottky"></span><div>(5)</div><div class="ans"></div></div>
+            </div>
+        </div>
+
+        <div class="avoid p2">
+            <h3>ตอนที่ 2 การจำแนกชนิดและขาของไดโอดจริง (6 คะแนน)</h3>
+            <ol><li>อ่านเบอร์บนตัวไดโอดทั้ง 6 ตัว ระบุชนิด ลักษณะตัวถัง และวิธีสังเกตขาแคโทด</li>
+                <li>ค้นค่า V<sub>RRM</sub> หรือค่าพิกัดหลักของแต่ละตัวจากคู่มืออุปกรณ์</li></ol>
+            <table class="grid blank">
+                <tr><th>ที่</th><th>เบอร์ที่อ่านได้</th><th>ชนิดของไดโอด</th><th>ตัวถัง</th><th>จุดสังเกตแคโทด</th><th>ค่าพิกัดหลัก</th></tr>
+                <tr><td class="n">1</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">2</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">3</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">4</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">5</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">6</td><td></td><td></td><td></td><td></td><td></td></tr>
+            </table>
+        </div>
+
+        <div class="avoid">
+            <h3>ตอนที่ 3 การอ่านแบบวงจร (5 คะแนน)</h3>
+            <ol><li>ระบุรหัสอ้างอิงและชนิดของอุปกรณ์ทุกตัวในแบบวงจร</li>
+                <li>บอกว่า D1 ได้รับไบแอสแบบใด และแอลอีดีสว่างหรือไม่</li>
+                <li>คำนวณกระแสในวงจร เมื่อแรงดันตกคร่อม D1 = 0.7 V และแรงดันตกคร่อมแอลอีดี = 2.0 V</li></ol>
+            <svg class="fig" viewBox="0 0 520 210" aria-label="แบบวงจร แบตเตอรี่ 9 V ไดโอด D1 1N4007 ตัวต้านทาน R1 470 โอห์ม และแอลอีดี">
+                <path d="M60,40 H460 V180 H60 Z"/>
+                <rect class="bg" x="40" y="95" width="40" height="30"/><line x1="42" y1="102" x2="78" y2="102"/><line x1="50" y1="118" x2="70" y2="118" style="stroke-width:6"/>
+                <text x="10" y="114">9 V</text>
+                <rect class="bg" x="120" y="25" width="50" height="30"/><path class="fillk" d="M128,28 L128,52 L156,40 Z"/><line x1="156" y1="28" x2="156" y2="52"/>
+                <text x="118" y="18">D1 1N4007</text>
+                <rect class="bg" x="260" y="30" width="80" height="20"/><path d="M260,40 l8,-10 l12,20 l12,-20 l12,20 l12,-20 l12,20 l12,-10"/>
+                <text x="268" y="18">R1 470 Ω</text>
+                <rect class="bg" x="445" y="90" width="30" height="45"/><path class="fillk" d="M448,96 L472,96 L460,122 Z"/><line x1="447" y1="122" x2="473" y2="122"/>
+                <line x1="476" y1="104" x2="492" y2="94"/><line x1="476" y1="114" x2="492" y2="104"/>
+                <text x="480" y="132">LED1</text>
+            </svg>
+            <p>รายการอุปกรณ์ <span class="fill-line">&nbsp;</span></p>
+            <p>ไบแอสของ D1 ........................ &nbsp; แอลอีดี ☐ สว่าง ☐ ไม่สว่าง</p>
+            <p>การคำนวณกระแส <span class="fill-line">&nbsp;</span></p>
+        </div>
+
+        <div class="avoid">
+            <h3>ตอนที่ 4 โครงสร้างพีเอ็นของไดโอด (4 คะแนน)</h3>
+            <ol><li>เขียนอักษร P และ N ลงในกรอบ ระบุบริเวณปลอดพาหะ และระบุขาแอโนดกับแคโทด</li>
+                <li>เขียนเครื่องหมายบวกและลบที่ขั้วแหล่งจ่าย ให้ไดโอดได้รับไบแอสตรง</li></ol>
+            <svg class="fig" viewBox="0 0 520 200" aria-label="กรอบโครงสร้างพีเอ็นต่อกับแบตเตอรี่">
+                <rect x="110" y="20" width="300" height="90" style="fill:#fff"/>
+                <line x1="235" y1="20" x2="235" y2="110" style="stroke-dasharray:6 5;stroke-width:1.5"/><line x1="285" y1="20" x2="285" y2="110" style="stroke-dasharray:6 5;stroke-width:1.5"/>
+                <path d="M110,65 H60 V160 H240"/><path d="M280,160 H460 V65 H410"/>
+                <line x1="240" y1="140" x2="240" y2="180" style="stroke-width:3"/><line x1="280" y1="148" x2="280" y2="172" style="stroke-width:5"/>
+                <text x="20" y="45">.......</text><text x="455" y="45">.......</text><text x="225" y="196">....</text><text x="275" y="196">....</text>
+            </svg>
+        </div>
+
+        <div class="avoid">
+            <h2>6. สรุปและวิจารณ์ผล</h2>
+            <div class="lines"><div></div><div></div><div></div></div>
+        </div>
+
+        <div class="avoid">
+            <h2>7. การประเมินผล (คะแนนเต็ม 20 ผ่านที่ 16 คะแนน ร้อยละ 80)</h2>
+            <table class="grid score">
+                <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้</th></tr>
+                <tr><td class="n">1</td><td>เขียนชื่อสัญลักษณ์และขา A K ถูกต้องครบห้าสัญลักษณ์ (ตอนที่ 1)</td><td>5</td><td></td></tr>
+                <tr><td class="n">2</td><td>อ่านเบอร์ ระบุชนิด จุดสังเกตแคโทด และค่าพิกัดของไดโอดจริงถูกต้อง (ตอนที่ 2)</td><td>6</td><td></td></tr>
+                <tr><td class="n">3</td><td>ระบุอุปกรณ์ ไบแอส และคำนวณกระแสในแบบวงจรถูกต้อง (ตอนที่ 3)</td><td>5</td><td></td></tr>
+                <tr><td class="n">4</td><td>ระบุสาร P N บริเวณปลอดพาหะ ขา และขั้วแหล่งจ่ายถูกต้อง (ตอนที่ 4)</td><td>4</td><td></td></tr>
+                <tr><th colspan="2" style="text-align:right">รวม</th><td><b>20</b></td><td></td></tr>
+            </table>
+            <p class="muted" style="font-size:13px">ที่มา: ใบงานที่ 1.1 ในแผนการจัดการเรียนรู้ วิชา 20127-2004 (นายจิรกิตติ์ วราภรณ์) · สัญลักษณ์และแบบวงจรวาดขึ้นใหม่ตามต้นฉบับ</p>
+        </div>
+    </main>
+</div>
+<script src="../assets/js/diodes.js"></script>
+</body>
+</html>

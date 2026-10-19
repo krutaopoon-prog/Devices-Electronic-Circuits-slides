@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สัปดาห์ที่ 1 สารกึ่งตัวนำ ไดโอด และสัญลักษณ์</title>
+<meta name="description" content="สไลด์ประกอบการสอน วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์ (20127-2004) สัปดาห์ที่ 1 หน่วยที่ 1 สารกึ่งตัวนำ ไดโอด และสัญลักษณ์อิเล็กทรอนิกส์ ระดับ ปวช. พร้อมกิจกรรมและตัวจำลอง">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="../assets/css/deck.css">
+<link rel="stylesheet" href="../assets/css/sims.css">
+<style>
+    .slide.sec-5 { --sec: #7a4fc4; --sec-soft: #ece4fa; }
+    .tile { text-align: center; padding: 24px 20px; }
+    .tile .icon { margin-bottom: 6px; }
+    .tile h3 { margin: 0 0 6px; }
+    .tile p { font-size: 29px; line-height: 1.4; margin: 0; color: var(--ink-soft); }
+    .diagram svg text { font-family: 'Kanit', sans-serif; }
+    .steps-act li { margin-bottom: 14px !important; }
+    table.t.plan td, table.t.plan th { font-size: 28px; padding: 7px 18px; }
+    table.t.plan td.mono { white-space: nowrap; }
+    .calc { font-family: var(--font-mono); font-size: 40px; line-height: 1.6; }
+    .calc .frag { display: block; }
+    .symrow { display: flex; justify-content: space-around; align-items: flex-end; gap: 10px; }
+    .symrow .sy { text-align: center; }
+    .symrow .sy .cap { font-size: 28px; color: var(--ink-soft); }
+    .symrow .sy .no { font: 700 44px var(--font-mono); color: var(--rose); }
+    .photo img.cover-img { object-fit: cover; }
+    .mini-q { font-size: 34px; }
+</style>
+</head>
+<body>
+<!--
+  วิธีใช้: ← → / Space เลื่อนสไลด์และแสดงทีละขั้น · T สารบัญ · F เต็มจอ · ลิงก์ #หมายเลข ไปสไลด์นั้น
+  ป้าย "เสริม" = เนื้อหาเพิ่มจากแหล่งภายนอก มีเลขอ้างอิง [n] ลิงก์ไปสไลด์เอกสารอ้างอิง
+  ป้าย "🙋 กิจกรรม" = ช่วงที่นักเรียนลงมือทำ มีตัวจับเวลา (กด ▶ เริ่ม)
+-->
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage" data-head="สัปดาห์ที่ 1 · หน่วยที่ 1" data-foot="">
+
+<!-- ================= เปิดบทเรียน ================= -->
+<section class="slide cover" data-title="ปก: สัปดาห์ที่ 1">
+  <div class="body center" style="top:0;bottom:0">
+    <div class="chapter reveal d1">สัปดาห์ที่ 1 · หน่วยที่ 1 งานวัดและทดสอบไดโอด</div>
+    <h1 class="reveal d2">สารกึ่งตัวนำ ไดโอด<br>และสัญลักษณ์<br>อิเล็กทรอนิกส์</h1>
+    <div class="sub reveal d3">วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์ (20127-2004) · ปวช. เมคคาทรอนิกส์และหุ่นยนต์</div>
+    <div class="tiny reveal d4" style="margin-top:40px">เรียบเรียงจากแผนการจัดการเรียนรู้ ใบความรู้ที่ 1.1 ใบงานที่ 1.1 และแหล่งอ้างอิงท้ายสไลด์</div>
+  </div>
+  <div class="reveal d3" style="position:absolute;right:150px;top:300px"><span data-diode="led" data-cls="diode-svg big" data-ak="yes"></span></div>
+</section>
+
+<section class="slide sec-0" data-tag="แนะนำรายวิชา" data-title="แนะนำรายวิชา">
+  <div class="body">
+    <div class="kicker reveal">แนะนำรายวิชา</div>
+    <h2 class="title reveal d1">อุปกรณ์และวงจรอิเล็กทรอนิกส์ <span class="en">(Devices and Electronic Circuits)</span></h2>
+    <div class="grid g3 reveal d2">
+      <div class="box tint tile"><div class="icon">📘</div><h3>20127-2004</h3><p>สาขาเมคคาทรอนิกส์<br>และหุ่นยนต์</p></div>
+      <div class="box sun tile"><div class="icon">⏱️</div><h3>ท 1 · ป 3</h3><p>4 ชม./สัปดาห์<br>2 หน่วยกิต · 72 ชม.</p></div>
+      <div class="box orange tile"><div class="icon">🛠️</div><h3>ทุกสัปดาห์</h3><p>ใบความรู้ 1 ชม.<br>+ ใบงาน 3 ชม.</p></div>
+    </div>
+    <p class="small reveal d3" style="margin-top:30px">เป้าหมาย: <b>อ่านแบบ ต่อวงจร วัดทดสอบ</b> อุปกรณ์อิเล็กทรอนิกส์ <b>สร้างแผ่นวงจรพิมพ์</b> และ<b>อ่านคู่มืออุปกรณ์</b></p>
+    <div class="src">ที่มา: หลักสูตรรายวิชาในแผนการจัดการเรียนรู้ <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="แผน 7 หน่วย 18 สัปดาห์">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">ทั้งภาคเรียน</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:10px">7 หน่วย → ชิ้นงานจริง 1 ชิ้น</h2>
+    <div class="row">
+      <table class="t left plan reveal d2" style="flex:1.4">
+        <tr><th>สัปดาห์</th><th>หน่วยการเรียนรู้</th></tr>
+        <tr class="hit"><td class="mono">1–2</td><td><b>1</b> วัดและทดสอบไดโอด</td></tr>
+        <tr><td class="mono">3–5</td><td><b>2</b> วงจรแหล่งจ่ายไฟฟ้า</td></tr>
+        <tr><td class="mono">6–8</td><td><b>3</b> ทรานซิสเตอร์และวงจรขยาย</td></tr>
+        <tr><td class="mono">9–10</td><td><b>4</b> ไทริสเตอร์และอุปกรณ์ทางแสง</td></tr>
+        <tr><td class="mono">11–13</td><td><b>5</b> วงจรกำเนิดสัญญาณ ตั้งเวลา</td></tr>
+        <tr><td class="mono">14–15</td><td><b>6</b> ทำแผ่นวงจรพิมพ์</td></tr>
+        <tr><td class="mono">16–17</td><td><b>7</b> ประกอบและทดสอบวงจร</td></tr>
+        <tr><td class="mono">18</td><td><b>ประเมินผลลัพธ์รายวิชา</b></td></tr>
+      </table>
+      <div class="box sun reveal d3" style="text-align:center"><div class="icon">⏲️🔌</div><h3>ชิ้นงานปลายภาค</h3>
+        <p class="small">วงจร<b>ตั้งเวลาขับรีเลย์</b><br>บนแผ่นวงจรพิมพ์ที่ทำเอง</p>
+        <p class="tiny" style="margin-top:14px">ใช้แหล่งจ่าย + วงจรขับรีเลย์ + วงจรตั้งเวลา ที่ฝึกระหว่างภาค</p></div>
+    </div>
+    <div class="src">ที่มา: คำนำและตารางหน่วยการเรียนรู้ <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="การวัดผลและเกณฑ์ผ่าน">
+  <div class="body">
+    <div class="kicker reveal">การวัดผล</div>
+    <h2 class="title reveal d1">คะแนนมาจากไหน?</h2>
+    <div class="row">
+      <div class="box reveal d2"><h3>น้ำหนักคะแนนรายวิชา</h3>
+        <ul class="pts small" style="margin-top:14px"><li>หน่วยที่ 1–7 <b>หน่วยละ 10%</b></li><li>ประเมินผลลัพธ์รายวิชา (สัปดาห์ 18) <b>30%</b></li></ul></div>
+      <div class="box sun reveal d3"><h3>เกณฑ์ผ่านหน่วยที่ 1 (80%)</h3>
+        <ul class="pts small" style="margin-top:14px"><li>ใบงานละ <b class="mono">16 / 20</b></li><li>แบบทดสอบ <b class="mono">16 / 20</b></li><li>พฤติกรรม <b class="mono">12 / 15</b></li></ul></div>
+    </div>
+    <div class="src">ที่มา: ตารางวิเคราะห์พฤติกรรมการเรียนรู้ และการวัดผลหน่วยที่ 1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="แผนการเรียนวันนี้ 4 ชั่วโมง">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">วันนี้เราจะทำอะไรบ้าง</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:10px">4 ชั่วโมง ลงมือทำมากกว่านั่งฟัง</h2>
+    <table class="t left plan reveal d2" style="width:100%">
+      <tr><th>เวลา</th><th>กิจกรรม</th><th>นักเรียนทำอะไร</th></tr>
+      <tr><td class="mono">0:00–0:15</td><td>เปิดเรื่อง</td><td>🙋 ค้นหาไดโอดบนแผงวงจรจริง</td></tr>
+      <tr><td class="mono">0:15–0:30</td><td>แบบทดสอบก่อนเรียน</td><td>📱 ทำ 20 ข้อบนมือถือ</td></tr>
+      <tr><td class="mono">0:30–1:15</td><td>5.1–5.2 สารกึ่งตัวนำ รอยต่อพีเอ็น</td><td>🙋 ผลึกมนุษย์ · รอยต่อมนุษย์ · โหวต · แข่งคำนวณ</td></tr>
+      <tr><td class="mono">1:15–1:25</td><td>พัก</td><td>☕</td></tr>
+      <tr><td class="mono">1:25–1:55</td><td>5.3–5.4 ชนิดไดโอด สัญลักษณ์</td><td>🙋 ล่าไดโอด · เกมทายสัญลักษณ์ · นักสืบแบบวงจร</td></tr>
+      <tr><td class="mono">1:55–3:10</td><td>ใบงานที่ 1.1</td><td>🛠️ จำแนกไดโอดจริง อ่านแบบวงจร</td></tr>
+      <tr><td class="mono">3:10–3:30</td><td>แบบฝึกหัดออนไลน์</td><td>📱 ตรวจคำตอบทันที</td></tr>
+      <tr><td class="mono">3:30–4:00</td><td>สรุป + แบบทดสอบหลังเรียน</td><td>🎲 สุ่มตอบคำถาม · 📱 20 ข้อ</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="slide sec-0" data-tag="เปิดบทเรียน" data-title="หัวข้อเรื่อง">
+  <div class="body">
+    <div class="kicker reveal">หัวข้อเรื่อง</div>
+    <h2 class="title reveal d1">สารกึ่งตัวนำ ไดโอด และสัญลักษณ์อิเล็กทรอนิกส์</h2>
+    <div class="grid g2" style="gap:28px">
+      <div class="box reveal d2" style="--sec:var(--orange)"><h3>5.1 ตัวนำ ฉนวน สารกึ่งตัวนำ</h3><p class="small">อะตอม · การโดป · สาร N และสาร P</p></div>
+      <div class="box reveal d3"><h3>5.2 รอยต่อพีเอ็นและการไบแอส</h3><p class="small">บริเวณปลอดพาหะ · ไบแอสตรง/กลับ</p></div>
+      <div class="box reveal d4" style="--sec:var(--blue)"><h3>5.3 โครงสร้าง ขา ชนิดของไดโอด</h3><p class="small">แอโนด แคโทด · ไดโอดชนิดต่าง ๆ</p></div>
+      <div class="box reveal d5" style="--sec:#0f8a6c"><h3>5.4 สัญลักษณ์และการอ่านแบบวงจร</h3><p class="small">รหัสอ้างอิง · ไล่ทิศกระแส</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="ผลลัพธ์การเรียนรู้และสมรรถนะ">
+  <div class="body">
+    <div class="kicker reveal">ผลลัพธ์การเรียนรู้ระดับหน่วย</div>
+    <h2 class="title reveal d1">เป็นช่างซ่อมบำรุงที่ “ดูไดโอดเป็น”</h2>
+    <ul class="pts reveal d2">
+      <li>ระบุ<b>ชนิด ขั้ว และสภาพดี/เสีย</b>ของไดโอดบนแผงวงจรจริง</li>
+      <li>อ่าน<b>สัญลักษณ์</b>บนแบบวงจร และ<b>ค่าพิกัด</b>ในคู่มืออุปกรณ์</li>
+      <li>เลือกไดโอด<b>มาเปลี่ยนแทน</b>ได้ถูกต้อง</li>
+    </ul>
+    <p class="small reveal d3 c-sec" style="margin-top:16px">สัปดาห์นี้เน้นข้อ 1–2 (โครงสร้าง สัญลักษณ์ ชนิด) · สัปดาห์หน้า: วัดทดสอบและคู่มืออุปกรณ์</p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="จุดประสงค์เชิงพฤติกรรม">
+  <div class="body">
+    <div class="kicker reveal">จุดประสงค์เชิงพฤติกรรม</div>
+    <h2 class="title reveal d1">เรียนจบวันนี้ นักเรียนสามารถ…</h2>
+    <ol class="steps">
+      <li class="reveal d2">บอก<b>โครงสร้าง</b>ของสารชนิด P ชนิด N และรอยต่อพีเอ็นได้ <span class="small c-sec">(4.1 K1)</span></li>
+      <li class="reveal d3">อธิบาย<b>การไบแอสตรง/กลับ</b> และอ่าน<b>สัญลักษณ์ไดโอด</b>ชนิดต่าง ๆ ได้ <span class="small c-sec">(4.2 K2)</span></li>
+      <li class="reveal d4"><b>จำแนกชนิดและขา</b>ของไดโอดจากสัญลักษณ์และตัวจริงได้ <span class="small c-sec">(4.3 S2)</span></li>
+    </ol>
+    <p class="small reveal d5">เกณฑ์ผ่าน: <b>ร้อยละ 80</b></p>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-tag="เปิดเรื่อง" data-title="🙋 กิจกรรม: ของจริงในมือ">
+  <div class="body">
+    <div><span class="act-badge reveal">🙋 กิจกรรม</span><span class="act-meta reveal">กลุ่มละ 4–5 คน · 5 นาที</span></div>
+    <h2 class="title reveal d1">ของจริงในมือ: “ตัวสีดำมีแถบเทา” คืออะไร?</h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 560px"><img src="../assets/img/psu-board.jpg" alt="แผงวงจรแหล่งจ่ายไฟขนาดเล็ก" style="width:520px"><div class="credit">ภาพ: Suyash Dwivedi, CC BY-SA 4.0</div></div>
+      <div class="reveal d3">
+        <ol class="steps steps-act small">
+          <li>รับแผงวงจรแหล่งจ่ายไฟที่ชำรุดจากครู</li>
+          <li>หาชิ้นส่วน<b>ทรงกระบอกสีดำ มีแถบสีเทา</b> นับว่ามีกี่ตัว</li>
+          <li>เดาว่ามันทำหน้าที่อะไร เขียนคำตอบกลุ่มไว้</li>
+        </ol>
+        <div data-timer="300"></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ขั้นนำในแผนการจัดการเรียนรู้ ครั้งที่ 1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="เฉลย: ไดโอดอยู่ทุกที่">
+  <div class="body">
+    <div class="kicker reveal">เฉลย</div>
+    <h2 class="title reveal d1">มันคือ <span class="hl">ไดโอด</span> ยอมให้ไฟไหลทางเดียว</h2>
+    <p class="reveal d2 small">ในงานเมคคาทรอนิกส์จะเจอไดโอดในวงจรเหล่านี้ (เรียนตลอดภาค):</p>
+    <div class="grid g4 reveal d3" style="gap:22px">
+      <div class="box tint tile"><div class="icon">🔌</div><h3>แหล่งจ่ายไฟ</h3><p>แปลงไฟสลับ<br>เป็นไฟตรง (หน่วย 2)</p></div>
+      <div class="box sun tile"><div class="icon">🧲</div><h3>ขับรีเลย์</h3><p>ป้องกันทรานซิสเตอร์<br>(หน่วย 3)</p></div>
+      <div class="box orange tile"><div class="icon">💡</div><h3>LED แสดงผล</h3><p>ไฟแสดงสถานะ<br>เครื่องจักร</p></div>
+      <div class="box blue tile"><div class="icon">👁️</div><h3>ตรวจจับแสง</h3><p>โฟโต้ไดโอด<br>เซนเซอร์ (หน่วย 4)</p></div>
+    </div>
+    <div class="src">ที่มา: คำอธิบายรายวิชาและตารางวิเคราะห์หน่วยการเรียนรู้ <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="🙋 แบบทดสอบก่อนเรียน">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge reveal">📱 แบบทดสอบก่อนเรียน</span><span class="act-meta reveal">รายบุคคล · 15 นาที</span></div>
+    <h2 class="title reveal d1">ยังไม่รู้ก็ไม่เป็นไร ตอบตามที่คิด!</h2>
+    <p class="reveal d2">เปิด <b>แบบทดสอบ</b> → เลือก “<b>ก่อนเรียน</b>” → ทำ 20 ข้อ → กดส่ง</p>
+    <p class="small reveal d2"><a href="quiz.html">quiz.html</a> (ลิงก์อยู่ในหน้าแรกของวิชา)</p>
+    <div class="reveal d3" style="margin-top:20px"><div data-timer="900"></div></div>
+  </div>
+</section>
+
+<!-- ================= 5.1 ตัวนำ ฉนวน และสารกึ่งตัวนำ ================= -->
+<section class="slide section sec-1" data-tag="5.1 ตัวนำ ฉนวน สารกึ่งตัวนำ" data-title="5.1 ตัวนำ ฉนวน และสารกึ่งตัวนำ">
+  <div class="big-no">5.1</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.1</div>
+    <h2 class="reveal d1">ตัวนำ ฉนวน<br>และสารกึ่งตัวนำ</h2>
+    <p class="lead reveal d2">ทำไมซิลิกอนจึงเป็น “หัวใจ” ของอิเล็กทรอนิกส์</p>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="วัสดุทางไฟฟ้า 3 กลุ่ม">
+  <div class="body">
+    <div class="kicker reveal">แบ่งตามความสามารถในการนำไฟฟ้า</div>
+    <h2 class="title reveal d1">วัสดุทางไฟฟ้ามี 3 กลุ่ม</h2>
+    <div class="grid g3">
+      <div class="box orange tile reveal d2"><div class="icon">🟧</div><h3 class="c-orange">ตัวนำ</h3><p>ทองแดง อะลูมิเนียม<br>นำไฟดีมาก</p></div>
+      <div class="box sun tile reveal d3"><div class="icon">💠</div><h3>สารกึ่งตัวนำ</h3><p>ซิลิกอน เจอร์เมเนียม<br>นำไฟ “อยู่ตรงกลาง”</p></div>
+      <div class="box blue tile reveal d4"><div class="icon">🧱</div><h3 class="c-blue">ฉนวน</h3><p>ยาง พลาสติก แก้ว<br>แทบไม่นำไฟ</p></div>
+    </div>
+    <p class="lead reveal d5" style="margin-top:34px;text-align:center">ความต่างอยู่ที่ <span class="hl">อิเล็กตรอนวงนอกสุด</span></p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="อะตอมและอิเล็กตรอนวงนอกสุด">
+  <div class="body">
+    <div class="kicker reveal">ทบทวน: โครงสร้างอะตอม <span class="extra">เสริม</span></div>
+    <h2 class="title reveal d1">อิเล็กตรอน “วงนอกสุด” คือตัวละครหลัก</h2>
+    <div class="row center">
+      <div class="diagram reveal d2" style="flex:0 0 700px">
+        <svg viewBox="0 0 700 400" aria-label="แบบจำลองอะตอมซิลิกอน มีอิเล็กตรอน 2 8 4">
+          <circle cx="250" cy="200" r="60" fill="none" stroke="#a8a1b0" stroke-width="3"/>
+          <circle cx="250" cy="200" r="110" fill="none" stroke="#a8a1b0" stroke-width="3"/>
+          <circle cx="250" cy="200" r="165" fill="none" stroke="#e8742c" stroke-width="5" stroke-dasharray="10 8"/>
+          <circle cx="250" cy="200" r="34" fill="#2a2733"/><text x="250" y="210" fill="#fff" font-size="28" text-anchor="middle">+14</text>
+          <g fill="#3b6fd4"><circle cx="190" cy="200" r="10"/><circle cx="310" cy="200" r="10"/>
+            <circle cx="250" cy="90" r="10"/><circle cx="250" cy="310" r="10"/><circle cx="140" cy="200" r="10"/><circle cx="360" cy="200" r="10"/>
+            <circle cx="172" cy="122" r="10"/><circle cx="328" cy="278" r="10"/><circle cx="328" cy="122" r="10"/><circle cx="172" cy="278" r="10"/></g>
+          <g fill="#e8742c"><circle cx="250" cy="35" r="13"/><circle cx="415" cy="200" r="13"/><circle cx="250" cy="365" r="13"/><circle cx="85" cy="200" r="13"/></g>
+          <text x="470" y="120" font-size="30" fill="#e8742c">วงนอกสุด 4 ตัว</text>
+          <text x="470" y="160" font-size="24" fill="#5d5866">(วาเลนซ์อิเล็กตรอน)</text>
+          <text x="470" y="250" font-size="26" fill="#2a2733">ซิลิกอน (Si)</text>
+          <text x="470" y="285" font-size="24" fill="#5d5866">2 · 8 · 4 = 14 ตัว</text>
+        </svg>
+      </div>
+      <div class="reveal d3">
+        <ul class="pts small">
+          <li>ตรงกลาง = <b>นิวเคลียส</b> (ประจุบวก)</li>
+          <li>อิเล็กตรอนอยู่เป็น<b>วง (ชั้น)</b></li>
+          <li>วงนอกสุดอยู่ไกลนิวเคลียส ถูกยึด<b>หลวมที่สุด</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="src">ที่มา: Floyd (2018) <sup class="ref"><a href="#refs">[2]</a></sup> · แผนภาพวาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🙋 โหวต: ทองแดงมีอิเล็กตรอนวงนอกกี่ตัว">
+  <div class="body">
+    <div><span class="act-badge">🙋 โหวต</span><span class="act-meta">ชูนิ้ว 1–4 ทั้งห้อง</span></div>
+    <h2 class="title" style="margin-bottom:20px">ทองแดง (โลหะที่ใช้ทำสายไฟ) มีอิเล็กตรอนวงนอกสุดกี่ตัว?</h2>
+    <div class="vote" data-answer="0">
+      <button type="button" class="opt"><b>☝️ 1</b> หนึ่งตัว</button>
+      <button type="button" class="opt"><b>✌️ 2</b> สี่ตัว</button>
+      <button type="button" class="opt"><b>🤟 3</b> แปดตัว</button>
+      <button type="button" class="opt"><b>🖖 4</b> ไม่มีเลย</button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why">ทองแดงมีอิเล็กตรอนวงนอกสุด <b>1 ตัว</b> ถูกยึดหลวมมาก หลุดเป็น<b>อิเล็กตรอนอิสระ</b>ได้ง่าย จึงนำไฟดี <span class="extra">เสริม</span> <sup class="ref"><a href="#refs">[2]</a></sup></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ตัวนำ กับ ฉนวน ต่างกันที่อิเล็กตรอนอิสระ">
+  <div class="body">
+    <div class="kicker reveal">ตัวนำ vs ฉนวน</div>
+    <h2 class="title reveal d1">มี “อิเล็กตรอนอิสระ” มากหรือน้อย</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box orange reveal d2"><h3 class="c-orange">ตัวนำ (ทองแดง อะลูมิเนียม)</h3>
+        <ul class="pts small"><li>วงนอกสุดมี <b>1–3 ตัว</b></li><li>หลุดจากอะตอมง่าย → อิเล็กตรอนอิสระ<b>จำนวนมาก</b></li><li>ได้รับแรงดัน → เคลื่อนที่ทันที</li></ul></div>
+      <div class="box blue reveal d3"><h3 class="c-blue">ฉนวน (ยาง พลาสติก แก้ว)</h3>
+        <ul class="pts small"><li>อิเล็กตรอนวงนอกถูก<b>ยึดแน่น</b></li><li><b>แทบไม่มี</b>อิเล็กตรอนอิสระ</li><li>กระแสแทบไม่ไหล</li></ul></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ซิลิกอนและเจอร์เมเนียม">
+  <div class="body">
+    <div class="kicker reveal">สารกึ่งตัวนำ (Semiconductor)</div>
+    <h2 class="title reveal d1">ซิลิกอน & เจอร์เมเนียม: วงนอกสุด <span class="hl">4 ตัว</span></h2>
+    <div class="row center">
+      <div class="grid g2 reveal d2" style="gap:26px;flex:1.2">
+        <div class="box sun tile"><div class="bignum mono" style="font-size:80px;font-weight:700;color:var(--orange)">Si</div><h3>ซิลิกอน</h3><p>อิเล็กตรอน 14 ตัว<br>2 · 8 · <b>4</b></p></div>
+        <div class="box tint tile"><div class="bignum mono" style="font-size:80px;font-weight:700;color:var(--teal)">Ge</div><h3>เจอร์เมเนียม</h3><p>อิเล็กตรอน 32 ตัว<br>2 · 8 · 18 · <b>4</b></p></div>
+      </div>
+      <div class="reveal d3">
+        <ul class="pts small"><li>ใช้มากที่สุด: <b>ซิลิกอน</b></li><li>นำไฟได้<b>อยู่ระหว่าง</b>ตัวนำกับฉนวน</li><li>อะตอมติดกันใช้อิเล็กตรอน<b>ร่วมกัน</b> (หน้าถัดไป)</li></ul>
+      </div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="พันธะโคเวเลนต์ในผลึกซิลิกอน">
+  <div class="body">
+    <div class="kicker reveal">ผลึกซิลิกอน</div>
+    <h2 class="title reveal d1">จับมือกันเป็น <span class="hl">พันธะโคเวเลนต์</span> ครบ 8 ตัว</h2>
+    <div class="row center">
+      <div class="reveal d2" style="flex:0 0 900px"><div data-sim="dope" data-mode="si"></div></div>
+      <div class="reveal d3">
+        <ul class="pts small"><li>แต่ละอะตอมใช้อิเล็กตรอน<b>ร่วมกับเพื่อนบ้าน 4 อะตอม</b></li><li>นับรอบตัวได้ <b>8 ตัว</b> → เสถียร</li><li class="frag">ซิลิกอนบริสุทธิ์ที่อุณหภูมิห้อง → <b>นำไฟน้อยมาก</b></li></ul>
+      </div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup> · ●● = อิเล็กตรอนคู่ที่ใช้ร่วมกัน</div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🙋 บทบาทสมมติ: ผลึกมนุษย์">
+  <div class="body">
+    <div><span class="act-badge">🙋 กิจกรรม: ผลึกมนุษย์</span><span class="act-meta">อาสาสมัคร 9 คน · 6 นาที</span></div>
+    <h2 class="title" style="font-size:62px">ทุกคนเป็นอะตอมซิลิกอน “มือ” คืออิเล็กตรอนวงนอก</h2>
+    <div class="row">
+      <ol class="steps steps-act small" style="flex:1.4">
+        <li>9 คนยืนเป็นตาราง 3×3 ใช้<b>มือจับเพื่อนรอบตัว</b> = พันธะ</li>
+        <li>เพื่อนคนกลางเปลี่ยนเป็น <b class="c-orange">ฟอสฟอรัส</b> ถือ<b>ลูกบอลเกิน 1 ลูก</b> → ไม่มีมือให้จับ = อิเล็กตรอนอิสระ</li>
+        <li>เปลี่ยนเป็น <b class="c-rose">โบรอน</b> → <b>มือว่าง 1 ข้าง</b> = โฮล</li>
+        <li>เพื่อนข้าง ๆ <b>ย้ายมือมาจับ</b>มือว่าง → มือว่างย้ายไปที่อื่น = <b>โฮลเคลื่อนที่</b></li>
+      </ol>
+      <div style="flex:1;text-align:center"><div data-timer="360"></div>
+        <p class="tiny" style="margin-top:12px">ครูใช้ลูกบอลหรือกระดาษขยำแทนอิเล็กตรอนอิสระ</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="การโดป (Doping)">
+  <div class="body">
+    <div class="kicker reveal">ทำให้สารกึ่งตัวนำ “มีประโยชน์”</div>
+    <h2 class="title reveal d1">การโดป <span class="en">(Doping)</span> = เติมธาตุอื่นลงไป<span class="hl">เล็กน้อย</span></h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box orange reveal d2"><h3 class="c-orange">เติมธาตุวงนอก 5 ตัว</h3><p class="small">ฟอสฟอรัส (P) อาร์เซนิก (As)</p><p class="small">→ <b>สารชนิด N</b></p></div>
+      <div class="box rose reveal d3"><h3 class="c-rose">เติมธาตุวงนอก 3 ตัว</h3><p class="small">โบรอน (B) แกลเลียม (Ga)</p><p class="small">→ <b>สารชนิด P</b></p></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:28px">💡 จำง่าย: <b>5 → N</b> (เกินมา เป็น <b>N</b>egative carrier) · <b>3 → P</b> (ขาดไป เกิดช่องว่าง <b>P</b>ositive)</p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="สารชนิด N ทีละขั้น">
+  <div class="body">
+    <div class="kicker reveal">สารกึ่งตัวนำชนิด N (N-type) · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">เติม <span class="c-orange">ฟอสฟอรัส</span> → มี<span class="hl">อิเล็กตรอนเกิน</span></h2>
+    <div class="row center">
+      <div style="flex:0 0 900px"><div data-sim="dope" data-mode="n"></div></div>
+      <ol class="steps small" style="flex:1">
+        <li class="frag">P มีอิเล็กตรอนวงนอก <b>5 ตัว</b></li>
+        <li class="frag">ใช้สร้างพันธะกับ Si รอบตัว <b>4 ตัว</b></li>
+        <li class="frag">ตัวที่ 5 <b>ไม่มีคู่</b> → เป็น<b>อิเล็กตรอนอิสระ</b></li>
+        <li class="frag">พาหะส่วนใหญ่ = <b class="c-blue">อิเล็กตรอน</b></li>
+      </ol>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> · กดปุ่มด้านบนภาพเพื่อสลับดูได้</div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="สารชนิด P ทีละขั้น">
+  <div class="body">
+    <div class="kicker reveal">สารกึ่งตัวนำชนิด P (P-type) · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">เติม <span class="c-rose">โบรอน</span> → เกิด<span class="hl">โฮล (Hole)</span></h2>
+    <div class="row center">
+      <div style="flex:0 0 900px"><div data-sim="dope" data-mode="p"></div></div>
+      <ol class="steps small" style="flex:1">
+        <li class="frag">B มีอิเล็กตรอนวงนอก <b>3 ตัว</b></li>
+        <li class="frag">สร้างพันธะได้ไม่ครบ <b>ขาด 1 ตำแหน่ง</b></li>
+        <li class="frag">ตำแหน่งว่าง = <b>โฮล</b> ทำตัวเหมือนประจุบวกที่เคลื่อนที่ได้</li>
+        <li class="frag">พาหะส่วนใหญ่ = <b class="c-rose">โฮล</b></li>
+      </ol>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ตัวจำลอง: โฮลเคลื่อนที่อย่างไร">
+  <div class="body">
+    <div class="kicker reveal">ตัวจำลอง · กด “ขั้นต่อไป” <span class="extra">เสริม</span></div>
+    <h2 class="title reveal d1">โฮลไม่ได้วิ่งเอง: <span class="hl">อิเล็กตรอนกระโดดเข้าไปแทน</span></h2>
+    <div class="reveal d2" style="max-width:1300px"><div data-sim="hole"></div></div>
+    <p class="small reveal d3" style="margin-top:14px">เมื่อต่อแรงดัน: อิเล็กตรอนไปทาง <b class="c-rose">ขั้วบวก</b> → โฮล “ดูเหมือน” ไปทาง <b class="c-blue">ขั้วลบ</b> (เหมือนที่นั่งว่างเลื่อนไปท้ายแถว)</p>
+    <div class="src">ที่มา: Floyd (2018) <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="เปรียบเทียบสาร N และสาร P">
+  <div class="body">
+    <div class="kicker reveal">สรุปเปรียบเทียบ</div>
+    <h2 class="title reveal d1">สาร N vs สาร P</h2>
+    <table class="t reveal d2" style="width:100%">
+      <tr><th>หัวข้อ</th><th>สารชนิด N</th><th>สารชนิด P</th></tr>
+      <tr><td>ธาตุที่เติม</td><td>วงนอก <b>5</b> ตัว (P, As)</td><td>วงนอก <b>3</b> ตัว (B, Ga)</td></tr>
+      <tr><td>พาหะส่วนใหญ่</td><td class="c-blue"><b>อิเล็กตรอน</b></td><td class="c-rose"><b>โฮล</b></td></tr>
+      <tr class="frag"><td>พาหะส่วนน้อย <span class="extra">เสริม</span></td><td>โฮล</td><td>อิเล็กตรอน</td></tr>
+      <tr class="frag hit"><td>ประจุของเนื้อสาร</td><td colspan="2"><b>เป็นกลางทั้งคู่</b></td></tr>
+    </table>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🙋 คิด-คู่-แชร์: สาร N มีประจุลบไหม">
+  <div class="body">
+    <div><span class="act-badge">🙋 คิด-คู่-แชร์</span><span class="act-meta">คิดคนเดียว 1 นาที → คุยกับคู่ 2 นาที → แชร์</span></div>
+    <h2 class="title">“สาร N มีอิเล็กตรอนเกิน ก็ต้องมีประจุลบสิ!” จริงไหม?</h2>
+    <div class="row center">
+      <div data-timer="180"></div>
+      <div class="box sun frag" style="flex:1.4"><h3>เฉลย: ไม่จริง</h3>
+        <p class="small">อะตอม P ที่เติมเข้าไปมี<b>โปรตอนเพิ่ม 1 ตัว</b>ด้วย บวกกับลบจึงหักล้างกัน → เนื้อสาร<b>ยังเป็นกลาง</b></p>
+        <p class="small">ชื่อ N / P บอกแค่ <b>“ชนิดของพาหะส่วนใหญ่”</b></p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🙋 โหวต: เติมแกลเลียมได้สารชนิดใด">
+  <div class="body">
+    <div><span class="act-badge">🙋 โหวต</span><span class="act-meta">ชูบัตร N หรือ P</span></div>
+    <h2 class="title" style="margin-bottom:20px">เติม <b>แกลเลียม (Ga)</b> ซึ่งมีอิเล็กตรอนวงนอก 3 ตัว ลงในซิลิกอน ได้สารชนิดใด?</h2>
+    <div class="vote" data-answer="1">
+      <button type="button" class="opt"><b>ก.</b> ชนิด N พาหะส่วนใหญ่คืออิเล็กตรอน</button>
+      <button type="button" class="opt"><b>ข.</b> ชนิด P พาหะส่วนใหญ่คือโฮล</button>
+      <button type="button" class="opt"><b>ค.</b> ชนิด P พาหะส่วนใหญ่คืออิเล็กตรอน</button>
+      <button type="button" class="opt"><b>ง.</b> ยังเป็นซิลิกอนบริสุทธิ์</button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why">วงนอก 3 ตัว → พันธะขาด 1 ตำแหน่ง → เกิด<b>โฮล</b> → สาร<b>ชนิด P</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ฝึกคิด 5.1">
+  <div class="body center">
+    <div class="kicker reveal">ฝึกคิด 5.1 · คำถามท้ายใบความรู้ ข้อ 1</div>
+    <h2 class="title reveal d1">สาร P และ N เกิดจากการโดปธาตุชนิดใด<br>และมีพาหะส่วนใหญ่เป็นอะไร?</h2>
+    <div class="grid g2 frag" style="gap:30px;margin-top:20px">
+      <div class="box orange"><p class="small" style="margin:0"><b>N</b>: ธาตุวงนอก 5 ตัว (P, As) · พาหะส่วนใหญ่ = อิเล็กตรอน</p></div>
+      <div class="box rose"><p class="small" style="margin:0"><b>P</b>: ธาตุวงนอก 3 ตัว (B, Ga) · พาหะส่วนใหญ่ = โฮล</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5.2 รอยต่อพีเอ็นและการไบแอส ================= -->
+<section class="slide section sec-2" data-tag="5.2 รอยต่อพีเอ็นและการไบแอส" data-title="5.2 รอยต่อพีเอ็นและการไบแอส">
+  <div class="big-no">5.2</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.2</div>
+    <h2 class="reveal d1">รอยต่อพีเอ็น<br>และการไบแอส</h2>
+    <p class="lead reveal d2">เอาสาร P มาชนกับสาร N แล้วเกิดอะไรขึ้น?</p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตัวจำลอง: การเกิดรอยต่อพีเอ็น">
+  <div class="body">
+    <div class="kicker reveal">ตัวจำลอง · กด “ขั้นต่อไป” ทีละขั้น</div>
+    <h2 class="title reveal d1">รอยต่อพีเอ็น <span class="en">(PN Junction)</span> เกิดขึ้นอย่างไร</h2>
+    <div class="reveal d2" style="max-width:1400px"><div data-sim="pn"></div></div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup> · แผนภาพวาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🙋 กิจกรรม: รอยต่อพีเอ็นมนุษย์">
+  <div class="body">
+    <div><span class="act-badge">🙋 กิจกรรม: รอยต่อพีเอ็นมนุษย์</span><span class="act-meta">ทั้งห้อง · 6 นาที</span></div>
+    <h2 class="title" style="font-size:62px">แบ่งห้องเป็นฝั่ง P กับฝั่ง N แล้วมาเจอกันตรงกลาง</h2>
+    <div class="row">
+      <ol class="steps steps-act small" style="flex:1.4">
+        <li>ฝั่ง <b class="c-rose">P</b> ถือบัตร “○ โฮล” · ฝั่ง <b class="c-blue">N</b> ถือบัตร “● อิเล็กตรอน”</li>
+        <li>ครูนับ 1-2-3: คนที่<b>อยู่แถวติดเส้นกลาง</b>เดินข้ามไปจับคู่กับฝั่งตรงข้าม แล้ว<b>นั่งลง</b></li>
+        <li>แถวกลางที่นั่ง = <b>บริเวณปลอดพาหะ</b> (ไม่มีพาหะเหลือ)</li>
+        <li>คนที่เหลือพยายามข้าม → ถูก “ไอออน” ขวาง = <b>แรงดันกำแพงศักย์</b></li>
+      </ol>
+      <div style="flex:1;text-align:center"><div data-timer="360"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="บริเวณปลอดพาหะและแรงดันกำแพงศักย์">
+  <div class="body">
+    <div class="kicker reveal">สรุปการเกิดรอยต่อ (ภาพที่ 1.1)</div>
+    <h2 class="title reveal d1">บริเวณปลอดพาหะ + แรงดันกำแพงศักย์</h2>
+    <div class="row center">
+      <div class="diagram reveal d2" style="flex:0 0 900px">
+        <svg viewBox="0 0 900 330" aria-label="รอยต่อพีเอ็น สาร P ต่อขาแอโนด สาร N ต่อขาแคโทด มีบริเวณปลอดพาหะตรงกลาง">
+          <rect x="120" y="40" width="330" height="200" fill="#fbe0e4" stroke="#d6455d" stroke-width="3"/>
+          <rect x="450" y="40" width="330" height="200" fill="#dfe8fa" stroke="#3b6fd4" stroke-width="3"/>
+          <rect x="390" y="40" width="120" height="200" fill="#fff8e1" stroke="#f7b733" stroke-width="3" stroke-dasharray="8 6"/>
+          <g fill="none" stroke="#d6455d" stroke-width="4"><circle cx="180" cy="90" r="12"/><circle cx="260" cy="150" r="12"/><circle cx="330" cy="100" r="12"/><circle cx="200" cy="200" r="12"/><circle cx="350" cy="200" r="12"/></g>
+          <g fill="#3b6fd4"><circle cx="560" cy="90" r="11"/><circle cx="640" cy="150" r="11"/><circle cx="720" cy="100" r="11"/><circle cx="580" cy="200" r="11"/><circle cx="700" cy="205" r="11"/></g>
+          <g font-size="34" font-weight="700" text-anchor="middle"><text x="420" y="100" fill="#d6455d">−</text><text x="420" y="160" fill="#d6455d">−</text><text x="420" y="220" fill="#d6455d">−</text>
+            <text x="480" y="100" fill="#3b6fd4">+</text><text x="480" y="160" fill="#3b6fd4">+</text><text x="480" y="220" fill="#3b6fd4">+</text></g>
+          <line x1="20" y1="140" x2="120" y2="140" stroke="#2a2733" stroke-width="4"/><line x1="780" y1="140" x2="880" y2="140" stroke="#2a2733" stroke-width="4"/>
+          <text x="20" y="125" font-size="26">แอโนด (A)</text><text x="770" y="125" font-size="26">แคโทด (K)</text>
+          <text x="250" y="275" font-size="26" text-anchor="middle" fill="#d6455d">สาร P</text><text x="640" y="275" font-size="26" text-anchor="middle" fill="#3b6fd4">สาร N</text>
+          <text x="450" y="305" font-size="24" text-anchor="middle" fill="#8a5d00">บริเวณปลอดพาหะ (มีไอออนตรึงอยู่)</text>
+        </svg>
+      </div>
+      <div class="reveal d3">
+        <table class="t compact">
+          <tr><th>วัสดุ</th><th>แรงดันกำแพงศักย์</th></tr>
+          <tr><td>ซิลิกอน</td><td class="mono">≈ 0.7 V</td></tr>
+          <tr><td>เจอร์เมเนียม</td><td class="mono">≈ 0.3 V</td></tr>
+        </table>
+        <p class="small" style="margin-top:14px">ต้องจ่ายแรงดัน<b>เกินค่านี้</b> ไดโอดจึงนำกระแส</p>
+      </div>
+    </div>
+    <div class="src">ที่มา: ภาพที่ 1.1 <sup class="ref"><a href="#refs">[1]</a></sup> · วาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="การไบแอสคืออะไร">
+  <div class="body">
+    <div class="kicker reveal">การไบแอส (Bias)</div>
+    <h2 class="title reveal d1">ไบแอส = จ่ายแรงดันภายนอกให้รอยต่อพีเอ็น</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box orange reveal d2"><h3 class="c-orange">ไบแอสตรง (Forward Bias)</h3><p class="small"><b>บวก → P (แอโนด)</b><br><b>ลบ → N (แคโทด)</b></p><p class="small">✅ นำกระแส</p></div>
+      <div class="box blue reveal d3"><h3 class="c-blue">ไบแอสกลับ (Reverse Bias)</h3><p class="small"><b>บวก → N (แคโทด)</b><br><b>ลบ → P (แอโนด)</b></p><p class="small">⛔ แทบไม่นำกระแส</p></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:24px">💡 จำง่าย: <b>“บวกเข้าพี”</b> = ไบแอสตรง</p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ไบแอสตรงทีละขั้น">
+  <div class="body">
+    <div class="kicker reveal">ไบแอสตรง · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">ไบแอสตรง: <span class="hl">บริเวณปลอดพาหะแคบลง</span></h2>
+    <div class="row center">
+      <div class="reveal d2" style="flex:0 0 780px"><div data-loop="v=6 V;d=f;dn=D;r=1 kΩ;rn=R;flow=1"></div></div>
+      <ol class="steps small" style="flex:1">
+        <li class="frag">ขั้วบวกผลักโฮลใน P · ขั้วลบผลักอิเล็กตรอนใน N <b>เข้าหารอยต่อ</b></li>
+        <li class="frag">บริเวณปลอดพาหะ<b>แคบลง</b></li>
+        <li class="frag">แรงดัน<b>เกิน 0.7 V</b> → พาหะข้ามรอยต่อได้</li>
+        <li class="frag">เกิด<b>กระแสไหลจำนวนมาก</b> (ภาพที่ 1.2 ก)</li>
+      </ol>
+    </div>
+    <div class="src">ที่มา: ภาพที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ไบแอสกลับทีละขั้น">
+  <div class="body">
+    <div class="kicker reveal">ไบแอสกลับ · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">ไบแอสกลับ: <span class="hl">บริเวณปลอดพาหะกว้างขึ้น</span></h2>
+    <div class="row center">
+      <div class="reveal d2" style="flex:0 0 780px"><div data-loop="v=6 V;d=r;dn=D;r=1 kΩ;rn=R"></div></div>
+      <ol class="steps small" style="flex:1">
+        <li class="frag">แรงดันภายนอก<b>ดึงพาหะออกห่าง</b>จากรอยต่อ</li>
+        <li class="frag">บริเวณปลอดพาหะ<b>กว้างขึ้น</b></li>
+        <li class="frag"><b>แทบไม่มีกระแส</b> (ภาพที่ 1.2 ข)</li>
+        <li class="frag">เหลือเพียง <b>กระแสรั่วไหล</b> (Leakage) ระดับ µA หรือ nA จากพาหะส่วนน้อย</li>
+      </ol>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ไดโอดเหมือนวาล์วกันกลับ">
+  <div class="body">
+    <div class="kicker reveal">เปรียบเทียบให้เห็นภาพ</div>
+    <h2 class="title reveal d1">ไดโอด = <span class="hl">วาล์วกันกลับ</span>ในท่อน้ำ</h2>
+    <div class="diagram reveal d2">
+      <svg viewBox="0 0 1500 330" aria-label="วาล์วกันกลับ: น้ำไหลทางเดียว เปรียบกับไดโอด">
+        <rect x="40" y="70" width="560" height="80" rx="20" fill="#dfe8fa" stroke="#3b6fd4" stroke-width="4"/>
+        <path d="M300,75 L360,110 L300,145" fill="none" stroke="#2a2733" stroke-width="8"/>
+        <path d="M80,110 H250" stroke="#00878f" stroke-width="10" stroke-dasharray="20 12"/><path d="M262,110 l-20,-14 v28 z" fill="#00878f"/>
+        <text x="320" y="200" font-size="30" text-anchor="middle" fill="#00878f">ไหลไปทางนี้ได้ ✅</text>
+        <rect x="40" y="230" width="560" height="80" rx="20" fill="#dfe8fa" stroke="#3b6fd4" stroke-width="4"/>
+        <path d="M300,235 L360,270 L300,305" fill="none" stroke="#2a2733" stroke-width="8"/>
+        <path d="M560,270 H400" stroke="#d6455d" stroke-width="10" stroke-dasharray="20 12"/><path d="M388,270 l20,-14 v28 z" fill="#d6455d"/>
+        <text x="740" y="282" font-size="30" fill="#d6455d">ไหลย้อนกลับไม่ได้ ⛔</text>
+        <g transform="translate(1050,60)"><line x1="0" y1="60" x2="120" y2="60" stroke="#2a2733" stroke-width="6"/><path d="M120,20 L120,100 L200,60 Z" fill="#fff" stroke="#2a2733" stroke-width="6"/><line x1="200" y1="20" x2="200" y2="100" stroke="#2a2733" stroke-width="6"/><line x1="200" y1="60" x2="320" y2="60" stroke="#2a2733" stroke-width="6"/>
+          <text x="40" y="150" font-size="30" fill="#e8742c">A</text><text x="270" y="150" font-size="30" fill="#e8742c">K</text>
+          <text x="160" y="200" font-size="28" text-anchor="middle">กระแสไหล A → K เท่านั้น</text></g>
+      </svg>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> · แผนภาพวาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🙋 ทายก่อนลอง: ไดโอดนำกระแสไหม">
+  <div class="body">
+    <div><span class="act-badge">🙋 ทายก่อนลอง</span><span class="act-meta">โหวตก่อน แล้วลองในตัวจำลองหน้าถัดไป</span></div>
+    <h2 class="title" style="margin-bottom:18px">ไดโอดซิลิกอน ไบแอสตรง จ่ายแรงดันแค่ <b>0.5 V</b> จะมีกระแสไหลมากไหม?</h2>
+    <div class="vote" data-answer="2">
+      <button type="button" class="opt"><b>ก.</b> ไหลมาก เพราะเป็นไบแอสตรง</button>
+      <button type="button" class="opt"><b>ข.</b> ไหลมาก แต่ไดโอดจะร้อน</button>
+      <button type="button" class="opt"><b>ค.</b> แทบไม่ไหล เพราะยังไม่ถึง 0.7 V</button>
+      <button type="button" class="opt"><b>ง.</b> ไหลย้อนจาก K ไป A</button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why">แรงดันยังไม่เกิน<b>แรงดันกำแพงศักย์ ≈ 0.7 V</b> พาหะยังข้ามรอยต่อไม่ได้ → กระแสน้อยมาก (ลองเลื่อนแรงดันในหน้าถัดไป)</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตัวจำลองการไบแอส">
+  <div class="body" style="top:112px">
+    <div class="kicker reveal">ตัวจำลอง · ลองสลับขั้ว เลื่อนแรงดัน เปลี่ยน R</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:8px">ทดลองไบแอสไดโอดเอง</h2>
+    <div class="reveal d2"><div data-sim="bias"></div></div>
+    <div class="src">แบบจำลองอย่างง่าย: ไดโอดซิลิกอนนำกระแสเมื่อแรงดันเกิน 0.7 V และมีแรงดันตกคร่อมคงที่ 0.7 V <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ทำไมต้องมีตัวต้านทานอนุกรม">
+  <div class="body">
+    <div class="kicker reveal">ข้อควรจำ</div>
+    <h2 class="title reveal d1">ต้องต่อ <span class="hl">ตัวต้านทานจำกัดกระแส</span> อนุกรมเสมอ</h2>
+    <div class="row center">
+      <div class="box rose reveal d2" style="flex:1.2"><div class="icon">🔥</div>
+        <p class="small">เมื่อไบแอสตรงแล้ว ไดโอด<b>แทบไม่จำกัดกระแส</b>เอง</p>
+        <p class="small">ต่อเข้ากับแหล่งจ่ายตรง ๆ → กระแสสูงมาก → <b>ไดโอดร้อนและเสียหาย</b></p></div>
+      <div class="box tint reveal d3"><div class="icon">🛡️</div>
+        <p class="small">ตัวต้านทาน R อนุกรม<br>= <b>กำหนดกระแส</b>ให้พอดี</p>
+        <p class="calc" style="font-size:36px;margin:0">I = (V − 0.7) ÷ R</p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตัวอย่างที่ 1: 6 V กับ 1 kΩ">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่างที่ 1 (ภาพที่ 1.2 ก) · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">แหล่งจ่าย 6 V · R = 1 kΩ · ไดโอดซิลิกอน</h2>
+    <div class="row center">
+      <div class="reveal d2" style="flex:0 0 780px"><div data-loop="v=6 V;d=f;dn=D1;r=1 kΩ;flow=1"></div></div>
+      <div class="calc" style="flex:1">
+        <span class="frag">① ไบแอสตรง ✅ (บวกเข้าแอโนด)</span>
+        <span class="frag">② V<sub>R</sub> = 6 − 0.7 = 5.3 V</span>
+        <span class="frag">③ I = 5.3 ÷ 1000 = 0.0053 A</span>
+        <span class="frag"><span class="answer">I = 5.3 mA</span></span>
+      </div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตัวอย่างที่ 2: 12 V และ 5 V">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่างที่ 2–3 · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">ลองเปลี่ยนแรงดันและตัวต้านทาน</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box reveal d2"><h3>② 12 V · R = 1 kΩ (ซิลิกอน)</h3>
+        <div class="calc"><span class="frag">I = (12 − 0.7) ÷ 1000</span><span class="frag">= 11.3 ÷ 1000 = <b>11.3 mA</b></span></div></div>
+      <div class="box reveal d3"><h3>③ 5 V · R = 470 Ω (ซิลิกอน)</h3>
+        <div class="calc"><span class="frag">I = (5 − 0.7) ÷ 470</span><span class="frag">= 4.3 ÷ 470 ≈ <b>9.15 mA</b></span></div></div>
+    </div>
+    <p class="small frag" style="margin-top:20px">💡 R <b>น้อยลง</b> → กระแส<b>มากขึ้น</b> · แรงดัน<b>มากขึ้น</b> → กระแส<b>มากขึ้น</b></p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตัวอย่างที่ 4–5: เจอร์เมเนียม และไบแอสกลับ">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่างที่ 4–5 · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">เปลี่ยนชนิดไดโอด และกลับขั้ว</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box reveal d2"><h3>④ 3 V · R = 1 kΩ (เจอร์เมเนียม)</h3>
+        <div class="calc"><span class="frag">I = (3 − <b>0.3</b>) ÷ 1000</span><span class="frag">= <b>2.7 mA</b></span></div></div>
+      <div class="box blue reveal d3"><h3>⑤ 6 V · 1 kΩ · <b>กลับขั้วไดโอด</b></h3>
+        <div class="calc" style="font-size:34px"><span class="frag">ไบแอสกลับ → I ≈ 0</span><span class="frag">V<sub>R</sub> = I × R ≈ 0 V</span><span class="frag">V<sub>D</sub> ≈ <b>6 V</b> (ตกคร่อมไดโอดทั้งหมด)</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🙋 แข่งคำนวณกระแส">
+  <div class="body" style="top:112px">
+    <div><span class="act-badge">🙋 แข่งคำนวณเป็นกลุ่ม</span><span class="act-meta">ข้อละ 1 นาที · ตอบถูกได้ 1 คะแนน</span></div>
+    <h2 class="title" style="font-size:54px;margin-bottom:6px">ไดโอดซิลิกอนไบแอสตรง หากระแส (mA)</h2>
+    <div class="row">
+      <table class="t compact" style="flex:1.2">
+        <tr><th>ข้อ</th><th>V</th><th>R</th><th>คำตอบ</th></tr>
+        <tr><td>1</td><td class="mono">9 V</td><td class="mono">1 kΩ</td><td class="frag mono">8.3 mA</td></tr>
+        <tr><td>2</td><td class="mono">5 V</td><td class="mono">2.2 kΩ</td><td class="frag mono">≈ 1.95 mA</td></tr>
+        <tr><td>3</td><td class="mono">3.7 V</td><td class="mono">300 Ω</td><td class="frag mono">10 mA</td></tr>
+        <tr><td>4</td><td class="mono">0.6 V</td><td class="mono">100 Ω</td><td class="frag mono">≈ 0 (ไม่ถึง 0.7 V)</td></tr>
+      </table>
+      <div style="flex:1"><div data-timer="60"></div><div data-board="6" style="margin-top:14px"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ฝึกคิด 5.2">
+  <div class="body center">
+    <div class="kicker reveal">ฝึกคิด 5.2 · คำถามท้ายใบความรู้ ข้อ 2–4</div>
+    <ol class="steps" start="2" style="margin-top:16px;counter-reset:st 1">
+      <li class="reveal d1"><b>บริเวณปลอดพาหะ</b>เกิดขึ้นได้อย่างไร แรงดันกำแพงศักย์ของซิลิกอนประมาณเท่าใด</li>
+      <li class="reveal d2">เปรียบเทียบ<b>ไบแอสตรง</b>กับ<b>ไบแอสกลับ</b></li>
+      <li class="reveal d3">ทำไมวงจรไดโอดไบแอสตรงต้อง<b>ต่อตัวต้านทานอนุกรม</b>เสมอ</li>
+    </ol>
+    <p class="small reveal d4 c-sec">💬 คุยในกลุ่ม 3 นาที แล้วสุ่มเลขที่ตอบ (ตัวสุ่มอยู่หน้าสรุป)</p>
+  </div>
+</section>
+
+<section class="slide sec-0" data-tag="พัก" data-title="☕ พัก 10 นาที">
+  <div class="body center" style="text-align:center">
+    <h2 class="title reveal">☕ พัก 10 นาที</h2>
+    <p class="reveal d1">กลับมาแล้วเราจะไป “ล่าไดโอด” กัน!</p>
+    <div class="reveal d2"><div data-timer="600"></div></div>
+  </div>
+</section>
+
+<!-- ================= 5.3 โครงสร้าง ขา และชนิดของไดโอด ================= -->
+<section class="slide section sec-3" data-tag="5.3 โครงสร้าง ขา ชนิดไดโอด" data-title="5.3 โครงสร้าง ขา และชนิดของไดโอด">
+  <div class="big-no">5.3</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.3</div>
+    <h2 class="reveal d1">โครงสร้าง ขา<br>และชนิดของไดโอด</h2>
+    <p class="lead reveal d2">รู้จักไดโอดของจริงที่จะจับวันนี้</p>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ไดโอดคืออะไร">
+  <div class="body">
+    <div class="kicker reveal">ไดโอด (Diode)</div>
+    <h2 class="title reveal d1">รอยต่อพีเอ็น <span class="hl">1 รอยต่อ</span> + 2 ขา</h2>
+    <div class="row center">
+      <div class="reveal d2" style="text-align:center;flex:0 0 520px"><span data-diode="std" data-cls="diode-svg big" data-ak="yes"></span></div>
+      <div class="reveal d3">
+        <table class="t left compact">
+          <tr><th>ขา</th><th>ต่อมาจาก</th></tr>
+          <tr><td><b>แอโนด (A)</b> Anode</td><td>สาร <b class="c-rose">P</b></td></tr>
+          <tr><td><b>แคโทด (K)</b> Cathode</td><td>สาร <b class="c-blue">N</b></td></tr>
+        </table>
+        <p class="small" style="margin-top:16px">หน้าที่หลัก: ให้กระแสไหล<b>ทางเดียว</b> A → K</p>
+      </div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ภาพตัดขวางของไดโอด (ภาพที่ 1.3)">
+  <div class="body">
+    <div class="kicker reveal">ข้างในไดโอดเรียงกระแส (ภาพที่ 1.3)</div>
+    <h2 class="title reveal d1">ผ่าไดโอด 1N4007 ดูข้างใน</h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 760px"><img src="../assets/img/diode-cross-section.jpg" alt="ภาพตัดขวางไดโอด 1N4007" style="width:720px"><div class="credit">ภาพ: TubeTimeUS, CC BY-SA 4.0, via Wikimedia Commons</div></div>
+      <div class="reveal d3"><ul class="pts small">
+        <li>ตรงกลาง: <b>ชิ้นผลึกซิลิกอน</b>ขนาดเล็ก</li>
+        <li>ประกบด้วยขาทองแดง 2 ข้าง</li>
+        <li>ตัวถังพลาสติกสีดำ: <b>ป้องกันชิ้นผลึก</b>และระบายความร้อน</li>
+      </ul></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="แถบสีบอกขาแคโทด">
+  <div class="body">
+    <div class="kicker reveal">จุดสังเกตที่ช่างใช้มากที่สุด</div>
+    <h2 class="title reveal d1"><span class="hl">แถบสี</span> อยู่ฝั่งขาแคโทดเสมอ</h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 720px"><img src="../assets/img/1n4007-closeup.jpg" alt="ไดโอด 1N4007 ระยะใกล้ เห็นแถบสีเทาด้านแคโทด" style="width:680px"><div class="credit">ภาพ: Zxelt, CC0, via Wikimedia Commons</div></div>
+      <div class="reveal d3">
+        <div style="text-align:center"><span data-diode="std" data-cls="diode-svg" data-ak="yes"></span></div>
+        <p class="small">แถบสี ↔ <b>ขีดตั้ง</b>ในสัญลักษณ์</p>
+        <div class="box rose frag" style="padding:14px 22px"><p class="small" style="margin:0">⚠️ ใส่กลับขั้ว = ความผิดพลาด<b>อันดับ 1</b> ของมือใหม่ ในวงจรเรียงกระแสอาจทำให้ตัวเก็บประจุหรือไดโอดตัวอื่นเสีย<b>ทันทีที่จ่ายไฟ</b></p></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> · Vishay 1N4001–1N4007: “color band denotes cathode end” <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ไดโอดชนิดต่าง ๆ (ภาพที่ 1.4)">
+  <div class="body" style="top:112px">
+    <div class="kicker reveal">ภาพที่ 1.4 ไดโอดชนิดต่าง ๆ</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:8px">หมายเลขไหนเป็นอะไร?</h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 620px"><img src="../assets/img/diode-types.jpg" alt="ไดโอดชนิดต่าง ๆ 9 ตัว มีหมายเลขกำกับ" style="width:580px"><div class="credit">ภาพ: Daniel Ryde (DaRy), CC BY-SA 3.0, via Wikimedia Commons</div></div>
+      <div class="reveal d3">
+        <table class="t left compact" style="font-size:26px">
+          <tr><th>หมายเลข</th><th>ชนิด (ตามคำอธิบายไฟล์ภาพ)</th></tr>
+          <tr><td class="mono">1, 2, 5</td><td>ไดโอดเรียงกระแส (BYM56C, 1N4002, 1N5000)</td></tr>
+          <tr><td class="mono">3</td><td>ไดโอดสวิตชิ่ง/สัญญาณ (1N4448)</td></tr>
+          <tr><td class="mono">4, 6</td><td>ไดโอดบริดจ์ (RS605, B80C1500)</td></tr>
+          <tr><td class="mono">7, 8</td><td>ไดโอดแบบติดผิวหน้า (SMD)</td></tr>
+          <tr><td class="mono">9</td><td>ไดโอดเจอร์เมเนียม (OA90)</td></tr>
+        </table>
+        <p class="tiny" style="margin-top:8px">📝 แก้ไขจากคำบรรยายในใบความรู้ ซึ่งระบุว่าหมายเลข 5 เป็นไดโอดสลักเกลียว และ 7–9 เป็นไดโอดสัญญาณตัวถังแก้ว <span class="extra">เสริม</span> <sup class="ref"><a href="#refs">[9]</a></sup></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ไดโอดเรียงกระแส 1N4001–1N4007">
+  <div class="body">
+    <div class="kicker reveal">ไดโอดเรียงกระแส (Rectifier Diode)</div>
+    <h2 class="title reveal d1">ตระกูล 1N4001–1N4007: <span class="hl">หน้าตาเหมือนกันทุกตัว!</span></h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 360px"><img src="../assets/img/1n4001.jpg" alt="ไดโอด 1N4001" style="height:300px"><div class="credit">ภาพ: oomlout, CC BY-SA 2.0</div></div>
+      <div class="reveal d3">
+        <table class="t compact mono" style="font-size:27px">
+          <tr><th>เบอร์</th><th>4001</th><th>4002</th><th>4003</th><th>4004</th><th>4005</th><th>4006</th><th>4007</th></tr>
+          <tr><td>V<sub>RRM</sub> (V)</td><td>50</td><td>100</td><td>200</td><td>400</td><td>600</td><td>800</td><td>1000</td></tr>
+        </table>
+        <ul class="pts small" style="margin-top:16px"><li>ทุกตัวทนกระแสเฉลี่ย <b>1 A</b> · ตัวถังพลาสติก DO-41 สีดำ</li><li>ใช้<b>แปลงไฟสลับเป็นไฟตรง</b> · เลือกจากพิกัด ไม่ใช่จากหน้าตา <span class="extra">เสริม</span></li></ul>
+      </div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> · Vishay 1N4001–1N4007 datasheet <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ไดโอดสัญญาณ 1N4148">
+  <div class="body">
+    <div class="kicker reveal">ไดโอดสัญญาณ (Signal Diode)</div>
+    <h2 class="title reveal d1">1N4148: ตัวเล็ก ตัวถัง<span class="hl">แก้ว</span> สลับเร็ว</h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 700px"><img src="../assets/img/1n4148.jpg" alt="ไดโอด 1N4148 สามตัวเทียบไม้บรรทัด" style="width:660px"><div class="credit">ภาพ: Vonvon, CC BY-SA 3.0</div></div>
+      <div class="reveal d3"><ul class="pts small">
+        <li>ตัวถังแก้ว DO-35 · <b>แถบดำ</b>ด้านแคโทด</li>
+        <li>ทนกระแสได้น้อย แต่<b>สลับสถานะเร็ว</b></li>
+        <li>ใช้ในวงจรสัญญาณและวงจรดิจิทัล</li>
+        <li>⚠️ แก้วแตกง่าย <b>ห้ามดัดขาชิดตัวถัง</b></li>
+      </ul></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> · Vishay 1N4148 datasheet <sup class="ref"><a href="#refs">[5]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ไดโอดบริดจ์">
+  <div class="body">
+    <div class="kicker reveal">ไดโอดบริดจ์ (Bridge Rectifier)</div>
+    <h2 class="title reveal d1">ไดโอด <span class="hl">4 ตัว</span> ในตัวถังเดียว</h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 520px"><img src="../assets/img/bridge-gbl04.jpg" alt="ไดโอดบริดจ์ GBL04 มีเครื่องหมาย + ~ ~ −" style="height:420px"><div class="credit">ภาพ: Retired electrician, CC0</div></div>
+      <div class="reveal d3" style="text-align:center"><span data-diode="bridge" data-cls="diode-svg bridge"></span></div>
+      <div class="reveal d4"><ul class="pts small">
+        <li>ขา <b>~ ~</b> = รับไฟสลับ 2 ขา</li>
+        <li>ขา <b>+</b> และ <b>−</b> = ไฟตรงออก</li>
+        <li>ใช้มากในแหล่งจ่ายไฟ (หน่วยที่ 2)</li>
+      </ul></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> · สัญลักษณ์วาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ไดโอดชนิดพิเศษ (แนะนำ)">
+  <div class="body">
+    <div class="kicker reveal">ไดโอดชนิดพิเศษ (จะเรียนละเอียดในหน่วยต่อไป)</div>
+    <h2 class="title reveal d1">รู้จักไว้ก่อน 4 ชนิด</h2>
+    <div class="grid g4" style="gap:22px">
+      <div class="box tile reveal d2"><img src="../assets/img/zener-1w.jpg" alt="ซีเนอร์ไดโอด" style="width:100%;height:150px;object-fit:cover;border-radius:14px"><h3>ซีเนอร์</h3><p>ทำงานในย่าน<b>ไบแอสกลับ</b><br>รักษาแรงดัน (หน่วย 2)</p></div>
+      <div class="box tile reveal d3"><img src="../assets/img/led-red.jpg" alt="แอลอีดีสีแดง" style="width:100%;height:150px;object-fit:cover;border-radius:14px"><h3>แอลอีดี (LED)</h3><p>ไดโอด<b>เปล่งแสง</b></p></div>
+      <div class="box tile reveal d4"><div style="height:150px;display:flex;align-items:center;justify-content:center"><span data-diode="photo" data-cls="diode-svg"></span></div><h3>โฟโต้ไดโอด</h3><p><b>ตอบสนองต่อแสง</b><br>ใช้เป็นเซนเซอร์ (หน่วย 4)</p></div>
+      <div class="box tile reveal d5"><div style="height:150px;display:flex;align-items:center;justify-content:center"><span data-diode="schottky" data-cls="diode-svg"></span></div><h3>ชอตต์กี</h3><p>แรงดันตกคร่อมต่ำ<br>เช่น 1N5819 <span class="extra">เสริม</span></p></div>
+    </div>
+    <p class="tiny reveal d5" style="margin-top:12px">งานอุตสาหกรรมยังมี<b>ไดโอดกำลังแบบสลักเกลียว (Stud)</b> ยึดกับแผ่นระบายความร้อนได้ สำหรับกระแสหลายสิบแอมแปร์ · ภาพ: Retired electrician (CC0), oomlout (CC BY-SA 2.0)</p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> · 1N5819 VF ≤ 0.6 V ที่ 1 A <sup class="ref"><a href="#refs">[6]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="วิธีดูขาแคโทดของไดโอดแต่ละชนิด">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">ใช้ทำใบงาน ตอนที่ 2</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:8px">หาขาแคโทด (K) ยังไง?</h2>
+    <table class="t left compact reveal d2" style="width:100%">
+      <tr><th>ชนิด</th><th>ตัวอย่างเบอร์</th><th>ตัวถัง</th><th>จุดสังเกตขาแคโทด</th></tr>
+      <tr><td>เรียงกระแส</td><td class="mono">1N4007</td><td>พลาสติกดำ DO-41</td><td><b>แถบสีเทา/ขาว</b></td></tr>
+      <tr><td>สัญญาณ</td><td class="mono">1N4148</td><td>แก้ว DO-35</td><td><b>แถบสีดำ</b></td></tr>
+      <tr><td>ซีเนอร์</td><td class="mono">1N4733A (5.1 V)</td><td>DO-41</td><td><b>แถบสี</b></td></tr>
+      <tr><td>ชอตต์กี</td><td class="mono">1N5819</td><td>พลาสติกดำ DO-41</td><td><b>แถบสี</b></td></tr>
+      <tr><td>แอลอีดี <span class="extra">เสริม</span></td><td>LED 5 mm</td><td>พลาสติกใส/สี</td><td><b>ขาสั้น</b> และ<b>ขอบตัดเรียบ</b></td></tr>
+      <tr><td>บริดจ์</td><td class="mono">GBL04</td><td>4 ขา</td><td>อ่านเครื่องหมาย <b>+ − ~</b> บนตัว</td></tr>
+    </table>
+    <div class="src">ที่มา: เฉลยใบงาน 1.1 <sup class="ref"><a href="#refs">[1]</a></sup> · datasheet <sup class="ref"><a href="#refs">[4] [5] [6] [7]</a></sup> · LED <sup class="ref"><a href="#refs">[8]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="อ่านเบอร์ไดโอด">
+  <div class="body">
+    <div class="kicker reveal">อ่านเบอร์บนตัวไดโอด <span class="extra">เสริม</span></div>
+    <h2 class="title reveal d1">“1N” แปลว่าอะไร?</h2>
+    <div class="row center">
+      <div class="reveal d2" style="text-align:center;flex:0 0 600px">
+        <div style="font:700 130px/1 var(--font-mono)"><span class="c-orange">1N</span><span class="c-teal">4007</span></div>
+        <p class="small"><span class="c-orange">1N</span> = รหัสระบบ JEDEC สำหรับ<b>ไดโอด</b> · <span class="c-teal">4007</span> = เลขทะเบียน</p>
+      </div>
+      <div class="reveal d3"><ul class="pts small">
+        <li>“1N…” = ไดโอด · “2N…” = ทรานซิสเตอร์</li>
+        <li>ตัวเลขต่อท้าย<b>ไม่ได้บอกพิกัด</b> → ต้องเปิด<b>คู่มืออุปกรณ์ (Datasheet)</b></li>
+        <li>ตัวเล็กมากอ่านยาก → ใช้<b>แว่นขยายหรือกล้องมือถือ</b></li>
+      </ul></div>
+    </div>
+    <div class="src">ที่มา: ระบบเลขชิ้นส่วน JEDEC/EIA-370 <sup class="ref"><a href="#refs">[10]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act" data-title="🙋 กิจกรรม: ล่าไดโอด">
+  <div class="body">
+    <div><span class="act-badge">🙋 กิจกรรม: ล่าไดโอด</span><span class="act-meta">กลุ่มละ 4–5 คน · 5 นาที · แข่งกัน</span></div>
+    <h2 class="title" style="font-size:62px">แยกไดโอดในถุงให้ครบ 6 ชนิด + ชี้ขาแคโทด</h2>
+    <div class="row">
+      <ol class="steps steps-act small" style="flex:1.3">
+        <li>เทไดโอดในถุงลงบนกระดาษ A4</li>
+        <li>วางแยกเป็นกลุ่ม: เรียงกระแส · สัญญาณ · ซีเนอร์ · LED · บริดจ์ · ชอตต์กี</li>
+        <li>เขียนตัว <b>K</b> ข้างขาแคโทดทุกตัว</li>
+        <li>เสร็จแล้วยกมือ ครูตรวจ → <b>ถูกครบได้ 2 คะแนน</b></li>
+      </ol>
+      <div style="flex:1"><div data-timer="300"></div><div data-board="6" style="margin-top:12px"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ฝึกคิด 5.3">
+  <div class="body center">
+    <div class="kicker reveal">ฝึกคิด 5.3 · คำถามท้ายใบความรู้ ข้อ 5 (ครึ่งแรก)</div>
+    <h2 class="title reveal d1">บอกวิธีสังเกตขาแคโทดจาก <span class="hl">ตัวอุปกรณ์จริง</span></h2>
+    <div class="box sun frag" style="margin-top:20px"><p style="margin:0">ดู<b>แถบสี</b>บนตัวถัง (แถบอยู่ฝั่งแคโทด) · LED ดู<b>ขาสั้น/ขอบตัด</b> · บริดจ์อ่าน<b>เครื่องหมาย</b></p></div>
+  </div>
+</section>
+
+<!-- ================= 5.4 สัญลักษณ์และการอ่านแบบวงจร ================= -->
+<section class="slide section sec-4" data-tag="5.4 สัญลักษณ์และแบบวงจร" data-title="5.4 สัญลักษณ์และการอ่านแบบวงจร">
+  <div class="big-no">5.4</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.4</div>
+    <h2 class="reveal d1">สัญลักษณ์อิเล็กทรอนิกส์<br>และการอ่านแบบวงจร</h2>
+    <p class="lead reveal d2">แบบวงจร = ภาษากลางของช่าง</p>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="แบบวงจรและรหัสอ้างอิง">
+  <div class="body">
+    <div class="kicker reveal">แบบวงจร (Schematic Diagram)</div>
+    <h2 class="title reveal d1">ทุกอุปกรณ์มี <span class="hl">สัญลักษณ์ + รหัสอ้างอิง</span></h2>
+    <div class="row center">
+      <table class="t compact reveal d2">
+        <tr><th>อักษร</th><th>อุปกรณ์</th></tr>
+        <tr><td class="mono"><b>D</b></td><td>ไดโอด (รวม LED ซีเนอร์)</td></tr>
+        <tr><td class="mono"><b>R</b></td><td>ตัวต้านทาน</td></tr>
+        <tr><td class="mono"><b>C</b></td><td>ตัวเก็บประจุ</td></tr>
+        <tr><td class="mono"><b>Q</b></td><td>ทรานซิสเตอร์</td></tr>
+        <tr><td class="mono"><b>U / IC</b></td><td>วงจรรวม (ไอซี)</td></tr>
+      </table>
+      <div class="reveal d3"><div class="box" style="text-align:center"><div style="font:700 72px var(--font-mono)"><span class="c-orange">D</span><span class="c-teal">3</span></div><p class="small" style="margin:0">= <b>ไดโอด</b> ตัวที่ <b>3</b> ในแบบ<br>มักเขียนเบอร์กำกับ เช่น <span class="mono">1N4007</span></p></div>
+      <p class="tiny" style="margin-top:12px">แบบวงจรจริงบางแบบใช้ LED1 แทน D สำหรับแอลอีดี</p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> · มาตรฐานรหัสอ้างอิง ASME Y14.44 <sup class="ref"><a href="#refs">[11]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="กายวิภาคสัญลักษณ์ไดโอด">
+  <div class="body">
+    <div class="kicker reveal">อ่านสัญลักษณ์ไดโอด</div>
+    <h2 class="title reveal d1">หัวลูกศร = A · ขีดตั้ง = K</h2>
+    <div class="row center">
+      <div class="reveal d2" style="text-align:center;flex:0 0 560px"><span data-diode="std" data-cls="diode-svg big" data-ak="yes"></span></div>
+      <ol class="steps small" style="flex:1">
+        <li class="frag">ฐานของ<b>หัวลูกศรสามเหลี่ยม</b> = ขา<b>แอโนด</b></li>
+        <li class="frag">หัวลูกศร<b>ชี้ทิศที่กระแสไหลได้</b></li>
+        <li class="frag"><b>ขีดตั้ง</b> = ขา<b>แคโทด</b> ↔ ตรงกับ<b>แถบสี</b>บนตัวจริง</li>
+      </ol>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="สัญลักษณ์ไดโอด 5 ชนิด (ภาพที่ 1.5)">
+  <div class="body">
+    <div class="kicker reveal">ภาพที่ 1.5 · ทุกชนิดมีโครงเดียวกัน ต่างที่ “ขีดตั้ง” หรือ “ลูกศรแสง”</div>
+    <h2 class="title reveal d1">สัญลักษณ์ไดโอด 5 ชนิด</h2>
+    <div class="symrow reveal d2" style="margin-top:20px">
+      <div class="sy"><span data-diode="std" data-cls="diode-svg mid" data-ak="yes"></span><div class="cap"><b>ไดโอดทั่วไป</b><br>ขีดตั้งตรง</div></div>
+      <div class="sy"><span data-diode="zener" data-cls="diode-svg mid" data-ak="yes"></span><div class="cap"><b>ซีเนอร์</b><br>ขีดงอเป็น <b>Z</b></div></div>
+      <div class="sy"><span data-diode="schottky" data-cls="diode-svg mid" data-ak="yes"></span><div class="cap"><b>ชอตต์กี</b><br>ขีดงอเป็น <b>S</b></div></div>
+      <div class="sy"><span data-diode="led" data-cls="diode-svg mid" data-ak="yes"></span><div class="cap"><b>แอลอีดี</b><br>ลูกศร<b>ชี้ออก</b> (แสงออก)</div></div>
+      <div class="sy"><span data-diode="photo" data-cls="diode-svg mid" data-ak="yes"></span><div class="cap"><b>โฟโต้ไดโอด</b><br>ลูกศร<b>ชี้เข้า</b> (แสงเข้า)</div></div>
+    </div>
+    <p class="small reveal d3" style="margin-top:30px">📝 ซีเนอร์บางแบบ (เช่นในใบงาน) วาด<b>งอปลายข้างเดียว</b> <span data-diode="zener1" data-cls="diode-svg mini"></span> ก็คือซีเนอร์เช่นกัน</p>
+    <div class="src">ที่มา: ภาพที่ 1.5 <sup class="ref"><a href="#refs">[1]</a></sup> · วาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="🙋 เกมทายสัญลักษณ์">
+  <div class="body">
+    <div><span class="act-badge">🙋 เกมทายสัญลักษณ์</span><span class="act-meta">ทั้งห้อง · ชูนิ้วตามหมายเลขชนิด</span></div>
+    <h2 class="title" style="font-size:56px">ชูนิ้ว: 1 ทั่วไป · 2 ซีเนอร์ · 3 ชอตต์กี · 4 LED · 5 โฟโต้</h2>
+    <div class="symrow" style="margin-top:24px">
+      <div class="sy"><div class="no">ก</div><span data-diode="photo" data-cls="diode-svg mid"></span><div class="cap frag">5 โฟโต้ไดโอด</div></div>
+      <div class="sy"><div class="no">ข</div><span data-diode="zener" data-cls="diode-svg mid"></span><div class="cap frag">2 ซีเนอร์</div></div>
+      <div class="sy"><div class="no">ค</div><span data-diode="led" data-cls="diode-svg mid"></span><div class="cap frag">4 แอลอีดี</div></div>
+      <div class="sy"><div class="no">ง</div><span data-diode="std" data-cls="diode-svg mid"></span><div class="cap frag">1 ไดโอดทั่วไป</div></div>
+      <div class="sy"><div class="no">จ</div><span data-diode="schottky" data-cls="diode-svg mid"></span><div class="cap frag">3 ชอตต์กี</div></div>
+    </div>
+    <p class="tiny" style="margin-top:24px">ครูกด → เพื่อเฉลยทีละตัว · ใครผิดให้ลุกขึ้นอธิบายจุดต่างของสัญลักษณ์นั้น</p>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ขั้นตอนอ่านแบบวงจร">
+  <div class="body">
+    <div class="kicker reveal">วิธีอ่านแบบวงจรที่มีไดโอด</div>
+    <h2 class="title reveal d1">3 ขั้น อ่านแบบวงจรได้ทุกครั้ง</h2>
+    <ol class="steps">
+      <li class="reveal d2">หา<b>แหล่งจ่าย</b>และ<b>จุดกราวด์</b>ก่อน (ขีดยาว = ขั้วบวก)</li>
+      <li class="reveal d3">ไล่<b>ทิศกระแส</b>จากขั้วบวก ผ่านอุปกรณ์ทีละตัว กลับขั้วลบ</li>
+      <li class="reveal d4">เจอไดโอด: หัวลูกศร<b>ชี้ทางเดียวกับกระแส</b> → ไบแอสตรง <b>นำกระแส</b> · <b>ชี้สวนทาง</b> → ไบแอสกลับ <b>กั้นกระแส</b></li>
+    </ol>
+    <p class="small reveal d5 c-sec">ทักษะนี้ใช้ตั้งแต่หน่วยที่ 2 (แหล่งจ่ายไฟ) จนถึงหน่วยที่ 6 (ออกแบบลายวงจรพิมพ์)</p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ตัวอย่างอ่านแบบ 1–2">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่างอ่านแบบ · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">ไดโอดตัวไหนนำกระแส?</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box reveal d2"><h3>แบบ ก</h3><div data-loop="v=9 V;d=f;r=1 kΩ;led=f"></div>
+        <p class="small frag" style="margin:0">หัวลูกศร D1 ชี้<b>ตาม</b>ทิศกระแส → <b>ไบแอสตรง</b> LED1 <b>สว่าง</b> ✅</p></div>
+      <div class="box blue reveal d3"><h3>แบบ ข</h3><div data-loop="v=9 V;d=r;r=1 kΩ;led=f"></div>
+        <p class="small frag" style="margin:0">หัวลูกศร D1 ชี้<b>สวน</b>ทิศกระแส → <b>ไบแอสกลับ</b> ไม่มีกระแส LED1 <b>ดับ</b> ⛔</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ตัวอย่างอ่านแบบ 3: ไดโอด + LED">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่างที่ 3 · ไดโอดและ LED อนุกรม · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">12 V · R1 = 1 kΩ · V<sub>D1</sub> = 0.7 V · V<sub>LED</sub> = 2.0 V</h2>
+    <div class="row center">
+      <div class="reveal d2" style="flex:0 0 780px"><div data-loop="v=12 V;d=f;dn=D1 1N4007;r=1 kΩ;led=f;flow=1"></div></div>
+      <div class="calc" style="flex:1;font-size:36px">
+        <span class="frag">① รายการ: แบตเตอรี่ 12 V, D1, R1, LED1</span>
+        <span class="frag">② D1 และ LED1 ไบแอสตรง → LED <b>สว่าง</b></span>
+        <span class="frag">③ V<sub>R1</sub> = 12 − 0.7 − 2.0 = 9.3 V</span>
+        <span class="frag">④ I = 9.3 ÷ 1000 = <span class="answer" style="font-size:40px">9.3 mA</span></span>
+      </div>
+    </div>
+    <p class="tiny" style="margin-top:8px">วิธีเดียวกับใบงาน ตอนที่ 3 แต่คนละตัวเลข: หักแรงดันตกคร่อม<b>ทุกไดโอด</b>ก่อนหาร R</p>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="🙋 นักสืบแบบวงจร">
+  <div class="body" style="top:112px">
+    <div><span class="act-badge">🙋 นักสืบแบบวงจร</span><span class="act-meta">กลุ่ม · 4 นาที · ตอบบนกระดาษ</span></div>
+    <h2 class="title" style="font-size:52px;margin-bottom:6px">LED ดวงไหนติด? และกระแสในกิ่งที่ติดเท่าไร?</h2>
+    <div class="row center">
+      <div class="diagram" style="flex:0 0 860px">
+        <svg viewBox="0 0 860 420" aria-label="วงจรสองกิ่งขนาน กิ่งบน D1 ไบแอสตรง กิ่งล่าง D2 กลับขั้ว">
+          <g fill="none" stroke="#2a2733" stroke-width="4">
+            <path d="M80,60 H780 V360 H80 Z"/><path d="M200,60 V200 H780"/>
+          </g>
+          <rect x="50" y="185" width="60" height="50" style="fill:var(--paper)"/><line x1="54" y1="198" x2="106" y2="198" stroke="#2a2733" stroke-width="4"/><line x1="66" y1="222" x2="94" y2="222" stroke="#2a2733" stroke-width="9"/>
+          <text x="116" y="196" font-size="30" font-weight="700" fill="#d6455d">+</text><text x="40" y="216" font-size="28" text-anchor="end" fill="#00878f" font-weight="600">5 V</text>
+          <g transform="translate(320,60)"><rect x="-34" y="-28" width="68" height="56" style="fill:var(--paper)"/><path d="M-22,-20 L-22,20 L18,0 Z" fill="#fff" stroke="#2a2733" stroke-width="4"/><line x1="18" y1="-20" x2="18" y2="20" stroke="#2a2733" stroke-width="4"/></g><text x="320" y="24" font-size="24" text-anchor="middle">D1</text>
+          <g transform="translate(320,200) rotate(180)"><rect x="-34" y="-28" width="68" height="56" style="fill:var(--paper)"/><path d="M-22,-20 L-22,20 L18,0 Z" fill="#fff" stroke="#2a2733" stroke-width="4"/><line x1="18" y1="-20" x2="18" y2="20" stroke="#2a2733" stroke-width="4"/></g><text x="320" y="164" font-size="24" text-anchor="middle">D2</text>
+          <rect x="440" y="44" width="110" height="32" style="fill:var(--paper)"/><path d="M440,60 l10,-14 l15,28 l15,-28 l15,28 l15,-28 l15,28 l10,-14" fill="none" stroke="#2a2733" stroke-width="4"/><text x="495" y="24" font-size="24" text-anchor="middle">R1 330 Ω</text>
+          <rect x="440" y="184" width="110" height="32" style="fill:var(--paper)"/><path d="M440,200 l10,-14 l15,28 l15,-28 l15,28 l15,-28 l15,28 l10,-14" fill="none" stroke="#2a2733" stroke-width="4"/><text x="495" y="164" font-size="24" text-anchor="middle">R2 330 Ω</text>
+          <g transform="translate(650,60)"><rect x="-34" y="-28" width="68" height="56" style="fill:var(--paper)"/><path d="M-22,-20 L-22,20 L18,0 Z" fill="#fff" stroke="#2a2733" stroke-width="4"/><line x1="18" y1="-20" x2="18" y2="20" stroke="#2a2733" stroke-width="4"/><path d="M0,-26 l18,-20 M14,-24 l18,-20" stroke="#2a2733" stroke-width="3"/></g><text x="650" y="106" font-size="24" text-anchor="middle">LED1</text>
+          <g transform="translate(650,200)"><rect x="-34" y="-28" width="68" height="56" style="fill:var(--paper)"/><path d="M-22,-20 L-22,20 L18,0 Z" fill="#fff" stroke="#2a2733" stroke-width="4"/><line x1="18" y1="-20" x2="18" y2="20" stroke="#2a2733" stroke-width="4"/><path d="M0,-26 l18,-20 M14,-24 l18,-20" stroke="#2a2733" stroke-width="3"/></g><text x="650" y="246" font-size="24" text-anchor="middle">LED2</text>
+        </svg>
+      </div>
+      <div style="flex:1">
+        <div data-timer="240"></div>
+        <div class="calc frag" style="font-size:30px;margin-top:10px">LED1 ติด · LED2 ดับ (D2 กลับขั้ว)</div>
+        <div class="calc frag" style="font-size:30px">I = (5 − 0.7 − 2.0) ÷ 330 ≈ <b>6.97 mA</b></div>
+      </div>
+    </div>
+    <p class="tiny">สมมติ V<sub>D</sub> = 0.7 V และ V<sub>LED</sub> = 2.0 V · สายแนวตั้งด้านขวาเป็นทางกลับร่วมของทั้งสองกิ่ง</p>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ฝึกคิด 5.4">
+  <div class="body center">
+    <div class="kicker reveal">ฝึกคิด 5.4 · คำถามท้ายใบความรู้ ข้อ 5</div>
+    <h2 class="title reveal d1">บอกวิธีสังเกตขาแคโทด<br>จาก <span class="hl">ตัวจริง</span> และจาก <span class="hl">สัญลักษณ์</span></h2>
+    <div class="grid g2 frag" style="gap:30px;margin-top:20px">
+      <div class="box sun"><p class="small" style="margin:0"><b>ตัวจริง</b>: ด้านที่มี<b>แถบสี</b></p></div>
+      <div class="box tint"><p class="small" style="margin:0"><b>สัญลักษณ์</b>: ด้าน<b>ขีดตั้ง</b>ที่หัวลูกศรชี้ไปหา</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ใบงานที่ 1.1 ================= -->
+<section class="slide section sec-5" data-tag="ใบงานที่ 1.1" data-title="ใบงานที่ 1.1 การอ่านสัญลักษณ์และจำแนกชนิดของไดโอด">
+  <div class="big-no">1.1</div>
+  <div class="body center">
+    <div class="label reveal">ใบงานที่ 1.1 · ปฏิบัติ</div>
+    <h2 class="reveal d1">การอ่านสัญลักษณ์<br>และจำแนกชนิดของไดโอด</h2>
+    <p class="lead reveal d2">4 ตอน · 20 คะแนน · ผ่าน 16 คะแนน</p>
+  </div>
+</section>
+
+<section class="slide sec-5" data-title="อุปกรณ์และข้อควรระวัง">
+  <div class="body">
+    <div class="kicker reveal">เตรียมก่อนลงมือ</div>
+    <h2 class="title reveal d1">อุปกรณ์ และข้อควรระวัง</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box reveal d2"><h3>🧰 อุปกรณ์ (1 ชุด/คน)</h3><ul class="pts small">
+        <li>ไดโอดจริง 6 ตัว: 1N4007 · 1N4148 · ซีเนอร์ · LED · บริดจ์ · ชอตต์กี</li>
+        <li>แว่นขยาย / กล้องมือถือ · คู่มืออุปกรณ์ · ใบความรู้ 1.1</li></ul></div>
+      <div class="box rose reveal d3"><h3>⚠️ ข้อควรระวัง</h3><ul class="pts small">
+        <li>ไดโอด<b>ตัวถังแก้ว</b>แตกง่าย ห้ามดัดขาชิดตัว</li>
+        <li>เก็บคืน<b>ครบทุกตัว</b>เมื่อเสร็จงาน</li>
+        <li>อ่านเบอร์ไม่ออก ให้เขียนว่า “<b>อ่านไม่ออก</b>”</li></ul></div>
+    </div>
+    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 5–6 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-5" data-title="ใบงาน ตอนที่ 1–2">
+  <div class="body">
+    <div class="kicker reveal">ขั้นตอนการปฏิบัติงาน</div>
+    <h2 class="title reveal d1">ตอนที่ 1–2</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box orange reveal d2"><h3 class="c-orange">ตอนที่ 1 อ่านสัญลักษณ์ (5 คะแนน)</h3>
+        <p class="small">เขียน<b>ชื่อไดโอด</b>ใต้สัญลักษณ์ 5 แบบ และเขียน <b>A</b>, <b>K</b> กำกับขา</p></div>
+      <div class="box tint reveal d3"><h3>ตอนที่ 2 จำแนกไดโอดจริง (6 คะแนน)</h3>
+        <p class="small">อ่านเบอร์ 6 ตัว → ชนิด · ตัวถัง · <b>จุดสังเกตแคโทด</b> · ค่าพิกัดหลัก (V<sub>RRM</sub>) จากคู่มือ</p></div>
+    </div>
+    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 7 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-5" data-title="ใบงาน ตอนที่ 3–4">
+  <div class="body">
+    <div class="kicker reveal">ขั้นตอนการปฏิบัติงาน</div>
+    <h2 class="title reveal d1">ตอนที่ 3–4</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box blue reveal d2"><h3 class="c-blue">ตอนที่ 3 อ่านแบบวงจร (5 คะแนน)</h3>
+        <p class="small">วงจร 9 V · D1 1N4007 · R1 470 Ω · LED1 → ระบุอุปกรณ์ · ไบแอสของ D1 · LED สว่างไหม · <b>คำนวณกระแส</b></p></div>
+      <div class="box green reveal d3"><h3 class="c-green">ตอนที่ 4 โครงสร้าง PN (4 คะแนน)</h3>
+        <p class="small">เขียน <b>P, N</b> ในกรอบ · ระบุ<b>บริเวณปลอดพาหะ</b> · ขา A/K · ขั้ว <b>+ −</b> ให้ได้<b>ไบแอสตรง</b></p></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:20px">💡 ทำตอนที่ 1, 3, 4 ไปพร้อมกันได้ ระหว่างรอคิวยืมชุดไดโอด</p>
+    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 7 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-5 act" data-title="🛠️ ลงมือทำใบงาน 1.1">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">🛠️ ลงมือทำใบงานที่ 1.1</span><span class="act-meta">รายบุคคล · 75 นาที</span></div>
+    <h2 class="title">ครูเดินดูและให้คำแนะนำรายคน</h2>
+    <div data-timer="4500"></div>
+    <p class="small" style="margin-top:16px">เสร็จก่อน? ไปทำ <a href="exercises.html">แบบฝึกหัดออนไลน์</a> ต่อได้เลย</p>
+  </div>
+</section>
+
+<section class="slide sec-5" data-title="เกณฑ์การประเมินใบงาน 20 คะแนน">
+  <div class="body">
+    <div class="kicker reveal">การประเมินผลใบงานที่ 1.1</div>
+    <h2 class="title reveal d1">20 คะแนน · ผ่าน <span class="hl">16</span> คะแนน (80%)</h2>
+    <table class="t left compact reveal d2" style="width:100%">
+      <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนน</th></tr>
+      <tr><td>1</td><td>ชื่อสัญลักษณ์และขา A K ถูกครบ 5 สัญลักษณ์ (ตอนที่ 1)</td><td class="mono">5</td></tr>
+      <tr><td>2</td><td>อ่านเบอร์ ชนิด จุดสังเกตแคโทด และค่าพิกัดของไดโอดจริง (ตอนที่ 2)</td><td class="mono">6</td></tr>
+      <tr><td>3</td><td>ระบุอุปกรณ์ ไบแอส และคำนวณกระแสในแบบวงจร (ตอนที่ 3)</td><td class="mono">5</td></tr>
+      <tr><td>4</td><td>ระบุสาร P N บริเวณปลอดพาหะ ขา และขั้วแหล่งจ่าย (ตอนที่ 4)</td><td class="mono">4</td></tr>
+    </table>
+    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 9 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<!-- ================= ปิดบทเรียน ================= -->
+<section class="slide sec-0" data-tag="สรุปบทเรียน" data-title="สรุปบทเรียน (1)">
+  <div class="body">
+    <div class="kicker reveal">สรุป (1)</div>
+    <h2 class="title reveal d1">จากอะตอม สู่ไดโอด</h2>
+    <div class="grid g2" style="gap:26px">
+      <div class="box orange reveal d2"><h3 class="c-orange">5.1 สารกึ่งตัวนำ</h3><p class="small">Si, Ge วงนอก 4 ตัว · โดป 5 ตัว → <b>N</b> (อิเล็กตรอน) · โดป 3 ตัว → <b>P</b> (โฮล) · ยังเป็นกลาง</p></div>
+      <div class="box tint reveal d3"><h3>5.2 รอยต่อพีเอ็น</h3><p class="small">บริเวณปลอดพาหะ · กำแพงศักย์ <b>0.7 V</b> (Si) <b>0.3 V</b> (Ge) · ไบแอสตรงนำ · ไบแอสกลับมีแค่กระแสรั่ว</p></div>
+    </div>
+    <p class="calc reveal d4" style="text-align:center;margin-top:24px">I = (V − 0.7) ÷ R &nbsp;·&nbsp; ต้องมี R อนุกรมเสมอ</p>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="สรุปบทเรียน (2)">
+  <div class="body">
+    <div class="kicker reveal">สรุป (2)</div>
+    <h2 class="title reveal d1">ดูไดโอดเป็น อ่านแบบเป็น</h2>
+    <div class="grid g2" style="gap:26px">
+      <div class="box blue reveal d2"><h3 class="c-blue">5.3 ชนิดและขา</h3><p class="small">A จาก P · K จาก N · <b>แถบสี = แคโทด</b> · เรียงกระแส สัญญาณ บริดจ์ ซีเนอร์ LED โฟโต้ ชอตต์กี</p></div>
+      <div class="box green reveal d3"><h3 class="c-green">5.4 สัญลักษณ์</h3><p class="small">หัวลูกศร = A · ขีดตั้ง = K · ลูกศรชี้ตามกระแส = นำ · ชี้สวน = กั้น</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="🎲 สุ่มตอบคำถามท้ายใบความรู้">
+  <div class="body">
+    <div><span class="act-badge">🎲 สุ่มเลขที่ตอบ</span><span class="act-meta">ตอบถูกได้คะแนนกลุ่ม</span></div>
+    <h2 class="title" style="font-size:58px">คำถามท้ายใบความรู้ 1.1 ทั้ง 5 ข้อ</h2>
+    <div class="row">
+      <ol class="small" style="flex:1.4;padding-left:40px;margin:0">
+        <li>สาร P และ N เกิดจากการโดปธาตุใด พาหะส่วนใหญ่คืออะไร</li>
+        <li>บริเวณปลอดพาหะเกิดอย่างไร กำแพงศักย์ Si ≈ เท่าใด</li>
+        <li>เปรียบเทียบไบแอสตรงกับไบแอสกลับ</li>
+        <li>ทำไมต้องต่อตัวต้านทานอนุกรมเสมอ</li>
+        <li>วิธีสังเกตขาแคโทดจากตัวจริงและสัญลักษณ์</li>
+      </ol>
+      <div style="flex:1"><div data-picker="40"></div><div data-board="6" style="margin-top:16px"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="กิจกรรมต่อไป">
+  <div class="body center" style="text-align:center">
+    <div class="kicker reveal">กิจกรรมต่อไป</div>
+    <h2 class="title reveal d1">ทบทวน ฝึก แล้ววัดผล</h2>
+    <div class="grid g3 reveal d2" style="gap:30px">
+      <a class="box tint" href="exercises.html" style="text-decoration:none;color:inherit"><div class="icon">✏️</div><h3>แบบฝึกหัด</h3><p class="small">5 ชุด ตรวจคำตอบทันที</p></a>
+      <a class="box orange" href="quiz.html" style="text-decoration:none;color:inherit"><div class="icon">📝</div><h3 class="c-orange">แบบทดสอบ 20 ข้อ</h3><p class="small">หลังเรียน (เทียบกับก่อนเรียน)</p></a>
+      <a class="box green" href="worksheet.html" style="text-decoration:none;color:inherit"><div class="icon">🖨️</div><h3 class="c-green">ใบงานที่ 1.1</h3><p class="small">พิมพ์ส่งครู</p></a>
+    </div>
+    <p class="small reveal d3" style="margin-top:30px">📖 สัปดาห์หน้า: <b>วัดทดสอบไดโอดด้วยมัลติมิเตอร์</b> และอ่านคู่มือ 1N4007</p>
+  </div>
+</section>
+
+<section class="slide sec-0" id="refs" data-tag="เอกสารอ้างอิง" data-title="เอกสารอ้างอิง (1)">
+  <div class="body" style="font-size:23px;line-height:1.4">
+    <h2 class="title" style="font-size:54px;margin-bottom:14px">เอกสารอ้างอิง</h2>
+    <ol style="margin:0;padding-left:56px">
+      <li style="margin-bottom:9px">จิรกิตติ์ วราภรณ์. <i>แผนการจัดการเรียนรู้ วิชา 20127-2004 อุปกรณ์และวงจรอิเล็กทรอนิกส์</i> (หลักสูตร ปวช. 2567 สาขาวิชาเมคคาทรอนิกส์และหุ่นยนต์) หน่วยที่ 1 ใบความรู้ที่ 1.1 ใบงานที่ 1.1 และภาคผนวก ก. วิทยาลัยเทคนิคอุตรดิตถ์. (เอกสารต้นฉบับของบทเรียนนี้)</li>
+      <li style="margin-bottom:9px">Floyd, T. L. (2018). <i>Electronic Devices: Conventional Current Version</i> (10th ed.). Pearson. (โครงสร้างอะตอม สารกึ่งตัวนำ การโดป รอยต่อพีเอ็น)</li>
+      <li style="margin-bottom:9px">Boylestad, R. L., &amp; Nashelsky, L. (2013). <i>Electronic Devices and Circuit Theory</i> (11th ed.). Pearson.</li>
+      <li style="margin-bottom:9px">Vishay General Semiconductor. (2020). <i>1N4001 thru 1N4007 General Purpose Plastic Rectifier</i> (Doc. 88503). https://www.vishay.com/docs/88503/1n4001.pdf</li>
+      <li style="margin-bottom:9px">Vishay Semiconductors. <i>1N4148 Small Signal Fast Switching Diode</i> (Doc. 81857). https://www.vishay.com/docs/81857/1n4148.pdf</li>
+      <li style="margin-bottom:9px">Vishay General Semiconductor. <i>1N5817, 1N5818, 1N5819 Schottky Barrier Plastic Rectifier</i> (Doc. 88525). https://www.vishay.com/docs/88525/1n5817.pdf</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="เอกสารอ้างอิง (2) และเครดิตภาพ">
+  <div class="body" style="font-size:23px;line-height:1.4">
+    <h2 class="title" style="font-size:54px;margin-bottom:14px">เอกสารอ้างอิง (ต่อ) และเครดิตภาพ</h2>
+    <ol start="7" style="margin:0;padding-left:56px">
+      <li style="margin-bottom:9px">Vishay Semiconductors. <i>1N4728A to 1N4761A Zener Diodes</i> (Doc. 85816). https://www.vishay.com/docs/85816/1n4728a.pdf</li>
+      <li style="margin-bottom:9px">SparkFun Electronics. <i>Polarity: Diode and LED Polarity</i>. https://learn.sparkfun.com/tutorials/polarity/diode-and-led-polarity</li>
+      <li style="margin-bottom:9px">Ryde, D. (2004). <i>File:Dioder.jpg</i> (คำอธิบายภาพ: รายชื่อเบอร์ไดโอดหมายเลข 1–9). Wikimedia Commons. https://commons.wikimedia.org/wiki/File:Dioder.jpg</li>
+      <li style="margin-bottom:9px">Wikipedia. <i>JEDEC</i> (ระบบเลขชิ้นส่วน EIA-370: 1N = ไดโอด, 2N = ทรานซิสเตอร์). https://en.wikipedia.org/wiki/JEDEC</li>
+      <li style="margin-bottom:9px">Wikipedia. <i>Reference designator</i> (ASME Y14.44-2008). https://en.wikipedia.org/wiki/Reference_designator</li>
+    </ol>
+    <div class="box" style="margin-top:12px;padding:12px 24px;font-size:20px;line-height:1.4">
+      <b>เครดิตภาพ (Wikimedia Commons)</b> · แผงวงจรแหล่งจ่ายไฟ: Suyash Dwivedi, CC BY-SA 4.0 · ภาพตัดขวางไดโอด: TubeTimeUS, CC BY-SA 4.0 · 1N4007 ระยะใกล้: Zxelt, CC0 · ไดโอดชนิดต่าง ๆ: Daniel Ryde (DaRy), CC BY-SA 3.0 · 1N4001: oomlout, CC BY-SA 2.0 · 1N4148: Vonvon, CC BY-SA 3.0 · ไดโอดบริดจ์ GBL04: Retired electrician, CC0 · ซีเนอร์ไดโอด: Retired electrician, CC0 · LED สีแดง: oomlout, CC BY-SA 2.0 · สัญลักษณ์ แผนภาพ และตัวจำลองทั้งหมดวาดขึ้นใหม่
+    </div>
+    <p class="tiny" style="margin-top:8px">เข้าถึงแหล่งข้อมูลออนไลน์เมื่อ 19 ตุลาคม 2569</p>
+  </div>
+</section>
+
+</main>
+</div>
+<script src="../assets/js/diodes.js"></script>
+<script src="../assets/js/sims.js"></script>
+<script src="../assets/js/deck.js"></script>
+</body>
+</html>
