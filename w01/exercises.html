@@ -24,6 +24,8 @@
     .item select { max-width: 100%; }
     .item.sym { flex-direction: column; align-items: flex-start; }
     .item.tt { flex-direction: column; align-items: flex-start; }
+    .item .fig { flex: 0 0 calc(100% - 3em); max-width: 330px; margin: 2px 0 4px; align-self: flex-start; }
+    .item:has(.fig) { align-items: flex-start; }
     .item.num .numin { white-space: nowrap; }
     .item.num input[type=text] { width: 6em; }
     .item .qtext { flex: 1 1 260px; }
@@ -48,7 +50,8 @@
         .set + .set { break-before: page; }
         body[data-print-set] .set { display: none; }
         body[data-print-set="s1"] .set[data-set="s1"], body[data-print-set="s2"] .set[data-set="s2"],
-        body[data-print-set="s3"] .set[data-set="s3"], body[data-print-set="s4"] .set[data-set="s4"] { display: block; break-before: auto; }
+        body[data-print-set="s3"] .set[data-set="s3"], body[data-print-set="s4"] .set[data-set="s4"],
+        body[data-print-set="s5"] .set[data-set="s5"] { display: block; break-before: auto; }
         .items { grid-template-columns: 1fr 1fr; gap: 2mm 10mm; }
         .items.wide { grid-template-columns: 1fr; }
         .item { padding: 2.5mm 0; border-bottom: none; }
@@ -61,6 +64,8 @@
         .item.sym .gate-svg { margin: 1mm 0; }
         .gate-svg { width: 34mm; height: 17mm; }
         .diode-svg { width: 36mm; height: 18mm; }
+        .item .fig { max-width: 62mm; }
+        .item:has(.fig) { break-inside: avoid; }
         .doc .item.num input[type=text] { width: 24mm; }
     }
 </style>
@@ -133,6 +138,7 @@
 
     function itemHTML(it, n) {
         const no = `<span class="no">${n}.</span>`;
+        const fig = it.fig ? `<span class="fig" data-loop="${it.fig}"></span>` : '';
         if (it.type === 'conv') {
             return `<div class="item conv" data-id="${it.id}">${no}${convLabel(it)}
                 <input type="text" inputmode="text" autocomplete="off" aria-label="คำตอบข้อ ${n}"><sub>${it.to}</sub><span class="feedback"></span></div>`;
@@ -145,7 +151,7 @@
                 <table class="tt"><tr>${head}</tr>${body}</table></div>`;
         }
         if (it.type === 'num') {
-            return `<div class="item num" data-id="${it.id}" data-dp="${it.dp || 0}">${no}<span class="qtext">${it.q}</span>
+            return `<div class="item num" data-id="${it.id}" data-dp="${it.dp || 0}">${no}${fig}<span class="qtext">${it.q}</span>
                 <span class="numin"><input type="text" inputmode="decimal" autocomplete="off" aria-label="คำตอบข้อ ${n}"> ${it.unit || ''}</span><span class="feedback"></span></div>`;
         }
         const opts = '<option value=""></option>' + it.options.map(o => `<option>${C.esc(o)}</option>`).join('');
@@ -157,12 +163,12 @@
             return `<div class="item sym" data-id="${it.id}">${no}<span data-gate="${it.gate}"></span>
                 <span><select aria-label="ชื่อเกตข้อ ${n}">${opts}</select> <span class="feedback"></span></span></div>`;
         }
-        return `<div class="item" data-id="${it.id}">${no}<span class="qtext">${it.q}</span>
+        return `<div class="item" data-id="${it.id}">${no}${fig}<span class="qtext">${it.q}</span>
             <select aria-label="คำตอบข้อ ${n}">${opts}</select><span class="feedback"></span></div>`;
     }
 
     function partHTML(p) {
-        const wide = p.items.some(it => (it.type === 'pick' && !it.gate && !it.sym && (it.q || '').length > 26) || (it.type === 'num' && (it.q || '').length > 26));
+        const wide = p.items.some(it => !it.fig && ((it.type === 'pick' && !it.gate && !it.sym && (it.q || '').length > 26) || (it.type === 'num' && (it.q || '').length > 26)));
         let n = 0;
         // ตัวเลือกที่ใช้ร่วมกันทั้งตอน แสดงเป็นรายการ (จำเป็นตอนพิมพ์ เพราะกระดาษมองไม่เห็นในช่องเลือก)
         const o = p.items[0].options;

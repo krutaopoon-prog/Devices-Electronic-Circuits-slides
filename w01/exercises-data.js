@@ -1,6 +1,7 @@
 /* ===========================================
    แบบฝึกหัดสัปดาห์ที่ 1 — ไฟล์นี้มีเฉพาะโจทย์ ไม่มีเฉลย
    type: pick (เลือกคำตอบจาก options; มี sym = แสดงสัญลักษณ์ไดโอด), num (ตอบเป็นตัวเลข ทศนิยม dp ตำแหน่ง)
+   fig = แบบวงจรอนุกรมประกอบโจทย์ (รูปแบบเดียวกับ data-loop ใน diodes.js)
    =========================================== */
 (function () {
     const MAT = ['ตัวนำ', 'สารกึ่งตัวนำ', 'ฉนวน'];
@@ -172,19 +173,19 @@
                     {
                         title: 'ตอนที่ 1 ไล่ทิศกระแสจากขั้วบวก แล้วบอกว่าไดโอด D1 นำกระแสหรือไม่',
                         items: [
-                            { id: 'c-1', type: 'pick', q: 'ขั้วบวก → แอโนด D1 → แคโทด D1 → R1 → ขั้วลบ (แรงดัน 9 V)', options: ON },
-                            { id: 'c-2', type: 'pick', q: 'ขั้วบวก → R1 → แคโทด D1 → แอโนด D1 → ขั้วลบ (แรงดัน 9 V)', options: ON },
-                            { id: 'c-3', type: 'pick', q: 'หัวลูกศรของ D1 ชี้สวนทิศกระแสในวงจร', options: ON },
-                            { id: 'c-4', type: 'pick', q: 'D1 ไบแอสตรง แต่แหล่งจ่ายมีเพียง 0.4 V (ซิลิกอน)', options: ON }
+                            { id: 'c-1', type: 'pick', fig: 'v=9 V;d=f;r=', q: 'ขั้วบวก → แอโนด D1 → แคโทด D1 → R1 → ขั้วลบ (แรงดัน 9 V)', options: ON },
+                            { id: 'c-2', type: 'pick', fig: 'v=9 V;d=r;r=;order=rd', q: 'ขั้วบวก → R1 → แคโทด D1 → แอโนด D1 → ขั้วลบ (แรงดัน 9 V)', options: ON },
+                            { id: 'c-3', type: 'pick', fig: 'v=9 V;d=r;r=1 kΩ', q: 'หัวลูกศรของ D1 ชี้สวนทิศกระแสในวงจร', options: ON },
+                            { id: 'c-4', type: 'pick', fig: 'v=0.4 V;d=f', q: 'D1 ไบแอสตรง แต่แหล่งจ่ายมีเพียง 0.4 V (ซิลิกอน)', options: ON }
                         ]
                     },
                     {
                         title: 'ตอนที่ 2 คำนวณกระแสในวงจรอนุกรม (V<sub>D</sub> = 0.7 V, V<sub>LED</sub> = 2.0 V) ตอบเป็น mA ทศนิยม 1 ตำแหน่ง',
                         items: [
-                            { id: 'l-1', type: 'num', q: '9 V → D1 → R1 1 kΩ → LED1 → กลับขั้วลบ', unit: 'mA', dp: 1 },
-                            { id: 'l-2', type: 'num', q: '5 V → R1 220 Ω → LED1 (ไม่มี D1)', unit: 'mA', dp: 1 },
-                            { id: 'l-3', type: 'num', q: '12 V → D1 → R1 680 Ω → LED1', unit: 'mA', dp: 1 },
-                            { id: 'l-4', type: 'num', q: '5 V → D1 → D2 → R1 1 kΩ (ไม่มี LED)', unit: 'mA', dp: 1 }
+                            { id: 'l-1', type: 'num', fig: 'v=9 V;d=f;r=1 kΩ;led=f', q: '9 V → D1 → R1 1 kΩ → LED1 → กลับขั้วลบ', unit: 'mA', dp: 1 },
+                            { id: 'l-2', type: 'num', fig: 'v=5 V;r=220 Ω;led=f', q: '5 V → R1 220 Ω → LED1 (ไม่มี D1)', unit: 'mA', dp: 1 },
+                            { id: 'l-3', type: 'num', fig: 'v=12 V;d=f;r=680 Ω;led=f', q: '12 V → D1 → R1 680 Ω → LED1', unit: 'mA', dp: 1 },
+                            { id: 'l-4', type: 'num', fig: 'v=5 V;d=f;d2=f;r=1 kΩ', q: '5 V → D1 → D2 → R1 1 kΩ (ไม่มี LED)', unit: 'mA', dp: 1 }
                         ]
                     }
                 ]

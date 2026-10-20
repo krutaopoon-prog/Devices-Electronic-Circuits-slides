@@ -50,14 +50,19 @@
     }
 
     /* วงจรอนุกรมวงเดียว: แบตเตอรี่ (ซ้าย ขั้วบวกด้านบน) → D บนสายบน → R บนสายบน → LED ด้านขวา (ถ้ามี)
-       opts: v ("6 V"), d ("f" ไบแอสตรง | "r" กลับขั้ว | ""), dn ("D1 1N4007"), r ("1 kΩ" | ""), rn ("R1"), led ("f" | "r" | ""), ln ("LED1"), flow (true = แสดงลูกศรกระแส) */
+       opts: v ("6 V"), d ("f" ไบแอสตรง | "r" กลับขั้ว | ""), dn ("D1 1N4007"), d2/d2n (ไดโอดตัวที่สองต่อถัดจาก D1),
+             r ("1 kΩ"; ใส่ r= ว่าง = วาด R ไม่บอกค่า; ไม่ใส่ r = ไม่มี R), rn ("R1"), order ("rd" = R มาก่อน D), led ("f" | "r" | ""), ln ("LED1"), flow (true = แสดงลูกศรกระแส) */
     function loop(o) {
         const dia = (x, y, rev) => `<g transform="translate(${x},${y})${rev ? ' rotate(180)' : ''}"><path class="body" d="M-22,-20 L-22,20 L18,0 Z"/><line x1="18" y1="-20" x2="18" y2="20"/></g>`;
+        const hasR = o.r !== undefined && o.r !== false;
+        const rd = o.order === 'rd' && hasR;
+        const dx = rd ? 340 : o.d2 ? 160 : 185, d2x = rd ? 415 : 240, rx = rd ? 130 : 285;
         let s = `<path class="wire" d="M70,60 H480 V270 H70 Z"/><rect class="bg" x="40" y="138" width="60" height="44"/>
             <line x1="44" y1="148" x2="96" y2="148"/><line class="thick" x1="56" y1="172" x2="84" y2="172"/>
             <text class="pm" x="104" y="146">+</text><text class="val" x="-4" y="166" text-anchor="end">${o.v || ''}</text>`;
-        if (o.d) s += `<rect class="bg" x="150" y="36" width="70" height="48"/>${dia(185, 60, o.d === 'r')}<text class="nm" x="185" y="26">${o.dn || 'D1'}</text>`;
-        if (o.r) s += `<rect class="bg" x="285" y="44" width="110" height="32"/><path d="M285,60 l10,-14 l15,28 l15,-28 l15,28 l15,-28 l15,28 l10,-14"/><text class="nm" x="340" y="26">${(o.rn || 'R1') + ' ' + o.r}</text>`;
+        if (o.d) s += `<rect class="bg" x="${dx - 35}" y="36" width="70" height="48"/>${dia(dx, 60, o.d === 'r')}<text class="nm" x="${dx}" y="26">${o.dn || 'D1'}</text>`;
+        if (o.d2) s += `<rect class="bg" x="${d2x - 35}" y="36" width="70" height="48"/>${dia(d2x, 60, o.d2 === 'r')}<text class="nm" x="${d2x}" y="26">${o.d2n || 'D2'}</text>`;
+        if (hasR) s += `<rect class="bg" x="${rx}" y="44" width="110" height="32"/><path d="M${rx},60 l10,-14 l15,28 l15,-28 l15,28 l15,-28 l15,28 l10,-14"/><text class="nm" x="${rx + 55}" y="26">${(o.rn || 'R1') + (o.r ? ' ' + o.r : '')}</text>`;
         if (o.led) {
             s += `<rect class="bg" x="456" y="130" width="48" height="70"/><g transform="translate(480,165) rotate(${o.led === 'r' ? -90 : 90})"><path class="body" d="M-22,-20 L-22,20 L18,0 Z"/><line x1="18" y1="-20" x2="18" y2="20"/></g>
                 <line x1="506" y1="150" x2="530" y2="132"/><path class="fill" d="M534,129 l-11,2 l6,8 z"/><line x1="506" y1="168" x2="530" y2="150"/><path class="fill" d="M534,147 l-11,2 l6,8 z"/>
@@ -71,14 +76,17 @@
         (root || document).querySelectorAll('[data-diode]').forEach(el => {
             el.innerHTML = svg(el.getAttribute('data-diode'), { cls: el.getAttribute('data-cls') || 'diode-svg', ak: el.getAttribute('data-ak') === 'yes' });
         });
-        (root || document).querySelectorAll('[data-loop]').forEach(el => {
-            const o = {}; el.getAttribute('data-loop').split(';').forEach(kv => { const [k, v] = kv.split('='); if (k) o[k.trim()] = (v || '').trim(); });
-            o.flow = o.flow === '1';
-            el.innerHTML = loop(o);
-        });
+        (root || document).querySelectorAll('[data-loop]').forEach(el => { el.innerHTML = loopStr(el.getAttribute('data-loop')); });
     }
 
-    g.Diodes = { NAME, svg, loop, render };
+    /* วาดจากข้อความแบบเดียวกับ data-loop เช่น "v=9 V;d=f;r=1 kΩ;led=f" */
+    function loopStr(str) {
+        const o = {}; (str || '').split(';').forEach(kv => { const [k, v] = kv.split('='); if (k && k.trim()) o[k.trim()] = (v || '').trim(); });
+        o.flow = o.flow === '1';
+        return loop(o);
+    }
+
+    g.Diodes = { NAME, svg, loop, loopStr, render };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => render(document));
     else render(document);
 })(window);

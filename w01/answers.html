@@ -114,6 +114,7 @@
                     } else if (it.sym) q = Diodes.svg(it.sym, {});
                     else if (it.gate) q = Gates.svg(it.gate, { labels: false });
                     else q = it.q;
+                    if (it.fig) q = `<div style="max-width:300px">${Diodes.loopStr(it.fig)}</div>` + q;
                     if (it.type === 'conv') ans += `<sub>${it.to}</sub>`;
                     html += `<div class="ex-row"><span class="muted">${i + 1}.</span><div>${q}<div class="a">ตอบ: ${ans}</div></div><div class="how">${a.explain || ''}</div></div>`;
                 });
