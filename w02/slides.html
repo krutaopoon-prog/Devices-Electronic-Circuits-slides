@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สัปดาห์ที่ 2 วัดทดสอบไดโอดและอ่านคู่มือ</title>
+<meta name="description" content="สไลด์ประกอบการสอน วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์ (20127-2004) สัปดาห์ที่ 2 หน่วยที่ 1 การวัดทดสอบไดโอดและการอ่านคู่มืออุปกรณ์ ระดับ ปวช. พร้อมกิจกรรม แล็บเสมือน และคลิปวิดีโอ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="../assets/css/deck.css">
+<link rel="stylesheet" href="../assets/css/sims.css">
+<style>
+    .slide.sec-5 { --sec: #7a4fc4; --sec-soft: #ece4fa; }
+    .tile { text-align: center; padding: 24px 20px; }
+    .tile .icon { margin-bottom: 6px; }
+    .tile h3 { margin: 0 0 6px; }
+    .tile p { font-size: 29px; line-height: 1.4; margin: 0; color: var(--ink-soft); }
+    .diagram svg text { font-family: 'Kanit', sans-serif; }
+    .steps-act li { margin-bottom: 14px !important; }
+    table.t.plan td, table.t.plan th { font-size: 28px; padding: 7px 18px; }
+    table.t.plan td.mono { white-space: nowrap; }
+    .calc { font-family: var(--font-mono); font-size: 40px; line-height: 1.6; }
+    .calc .frag { display: block; }
+    .mini-q { font-size: 34px; }
+    .vwrap { flex: 0 0 980px; }
+    .lcd { display: inline-block; font: 700 64px/1 var(--font-mono); color: #1f2a18; background: #c9d4b8; border: 3px solid #6b7560; border-radius: 12px; padding: 10px 22px; min-width: 4.2ch; text-align: right; }
+    .lcd.sm { font-size: 46px; padding: 6px 16px; }
+    .case { text-align: center; }
+    .case .lcds { display: flex; gap: 14px; justify-content: center; margin: 10px 0; }
+    .case .dir { font-size: 22px; color: var(--ink-soft); }
+    table.t td.ok { color: var(--green); font-weight: 700; }
+    table.t td.bad { color: var(--rose); font-weight: 700; }
+    .formula { font: 700 54px var(--font-mono); color: var(--teal); text-align: center; background: #fff; border: 3px solid var(--line); border-radius: 24px; padding: 18px 30px; }
+</style>
+</head>
+<body>
+<!--
+  วิธีใช้: ← → / Space เลื่อนสไลด์และแสดงทีละขั้น · T สารบัญ · F เต็มจอ · ลิงก์ #หมายเลข ไปสไลด์นั้น
+  ป้าย "เสริม" = เนื้อหาเพิ่มจากแหล่งภายนอก มีเลขอ้างอิง [n] ลิงก์ไปสไลด์เอกสารอ้างอิง
+  ป้าย "🙋 กิจกรรม" = ช่วงที่นักเรียนลงมือทำ มีตัวจับเวลา (กด ▶ เริ่ม)
+  คลิปวิดีโอเล่นในสไลด์ได้เมื่อเปิดผ่านเว็บ (https) ถ้าเปิดไฟล์ในเครื่อง ให้กด "เปิดใน YouTube"
+-->
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage" data-head="สัปดาห์ที่ 2 · หน่วยที่ 1" data-foot="">
+
+<!-- ================= เปิดบทเรียน ================= -->
+<section class="slide cover" data-title="ปก: สัปดาห์ที่ 2">
+  <div class="body center" style="top:0;bottom:0">
+    <div class="chapter reveal d1">สัปดาห์ที่ 2 · หน่วยที่ 1 งานวัดและทดสอบไดโอด</div>
+    <h1 class="reveal d2">การวัดทดสอบไดโอด<br>และการอ่าน<br>คู่มืออุปกรณ์</h1>
+    <div class="sub reveal d3">วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์ (20127-2004) · ปวช. เมคคาทรอนิกส์และหุ่นยนต์</div>
+    <div class="tiny reveal d4" style="margin-top:40px">เรียบเรียงจากแผนการจัดการเรียนรู้ ใบความรู้ที่ 1.2 ใบงานที่ 1.2 และแหล่งอ้างอิงท้ายสไลด์</div>
+  </div>
+  <div class="reveal d3" style="position:absolute;right:130px;top:250px"><span class="lcd" style="font-size:120px;padding:20px 40px">0.562</span></div>
+</section>
+
+<section class="slide sec-0" data-title="แผนการเรียนวันนี้ 4 ชั่วโมง">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">วันนี้เราจะทำอะไรบ้าง</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:10px">4 ชั่วโมง วัดจริง ลองจริง ตัดสินเอง</h2>
+    <table class="t left plan reveal d2" style="width:100%">
+      <tr><th>เวลา</th><th>กิจกรรม</th><th>นักเรียนทำอะไร</th></tr>
+      <tr><td class="mono">0:00–0:15</td><td>เปิดเรื่อง + ทบทวนสัปดาห์ที่ 1</td><td>🙋 ไดโอด 2 ตัว ตัวไหนเสีย? · โหวต</td></tr>
+      <tr><td class="mono">0:15–0:30</td><td>แบบทดสอบก่อนเรียน</td><td>📱 ทำ 20 ข้อบนมือถือ</td></tr>
+      <tr><td class="mono">0:30–1:15</td><td>5.1 กราฟคุณลักษณะ · 5.2 คู่มืออุปกรณ์</td><td>🙋 วาดกราฟทายก่อน · ตัวจำลอง · เกมเลือกเบอร์</td></tr>
+      <tr><td class="mono">1:15–1:25</td><td>พัก</td><td>☕</td></tr>
+      <tr><td class="mono">1:25–2:10</td><td>5.3 วัดด้วยมัลติมิเตอร์ · 5.4 วงจรหากราฟ</td><td>🎬 คลิป · 🙋 หมอไดโอด · แข่งคำนวณ</td></tr>
+      <tr><td class="mono">2:10–3:20</td><td>ใบงานที่ 1.2</td><td>🛠️ วัดของจริง หรือ 💻 แล็บเสมือน</td></tr>
+      <tr><td class="mono">3:20–3:35</td><td>แบบฝึกหัดออนไลน์</td><td>📱 ตรวจคำตอบทันที</td></tr>
+      <tr><td class="mono">3:35–4:00</td><td>สรุปหน่วยที่ 1 + แบบทดสอบหลังเรียน</td><td>🎲 สุ่มตอบคำถาม · 📱 20 ข้อ</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="slide sec-0" data-tag="เปิดบทเรียน" data-title="หัวข้อเรื่อง">
+  <div class="body">
+    <div class="kicker reveal">หัวข้อเรื่อง · ใบความรู้ที่ 1.2</div>
+    <h2 class="title reveal d1">การวัดทดสอบไดโอดและการอ่านคู่มืออุปกรณ์</h2>
+    <div class="grid g2" style="gap:28px">
+      <div class="box reveal d2" style="--sec:var(--orange)"><h3>5.1 กราฟคุณลักษณะของไดโอด</h3><p class="small">แรงดันคัตอิน · กระแสรั่วไหล · แรงดันพังทลาย</p></div>
+      <div class="box reveal d3"><h3>5.2 ค่าพิกัดในคู่มืออุปกรณ์</h3><p class="small">V<sub>RRM</sub> · I<sub>F(AV)</sub> · I<sub>FSM</sub> · V<sub>F</sub> · I<sub>R</sub> · เลือกเบอร์</p></div>
+      <div class="box reveal d4" style="--sec:var(--blue)"><h3>5.3 วัดไดโอดด้วยมัลติมิเตอร์</h3><p class="small">โหมดทดสอบไดโอด · ดี ลัดวงจร ขาด รั่ว</p></div>
+      <div class="box reveal d5" style="--sec:#0f8a6c"><h3>5.4 วงจรหาค่าคุณลักษณะ</h3><p class="small">I<sub>D</sub> = (V<sub>S</sub> − V<sub>D</sub>) ÷ R · ไบแอสกลับ</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="จุดประสงค์เชิงพฤติกรรม">
+  <div class="body">
+    <div class="kicker reveal">จุดประสงค์เชิงพฤติกรรม</div>
+    <h2 class="title reveal d1">เรียนจบวันนี้ นักเรียนสามารถ…</h2>
+    <ol class="steps">
+      <li class="reveal d2">อธิบาย<b>กราฟคุณลักษณะ</b>ของไดโอดและ<b>ค่าพิกัด</b>สำคัญในคู่มืออุปกรณ์ได้ <span class="small c-sec">(4.4 K2)</span></li>
+      <li class="reveal d3"><b>วัดทดสอบไดโอด</b>ด้วยมัลติมิเตอร์ และ<b>ต่อวงจรหากราฟ</b>ได้ตามขั้นตอน <span class="small c-sec">(4.5 S2)</span></li>
+      <li class="reveal d4">ใช้เครื่องมือวัด<b>อย่างถูกวิธี ปลอดภัย</b> และบันทึก<b>ค่าที่วัดได้จริง</b> <span class="small c-sec">(4.6 A2)</span></li>
+      <li class="reveal d5"><b>ตัดสินสภาพ</b>ไดโอด ดี ลัดวงจร หรือขาด ได้ถูกต้อง <span class="small c-sec">(4.7 Ap1)</span></li>
+    </ol>
+    <p class="small reveal d5">เกณฑ์ผ่าน: <b>ร้อยละ 80</b> · ใบงานที่ 1.2 <b class="mono">16 / 20</b> · แบบทดสอบ <b class="mono">16 / 20</b></p>
+    <div class="src">ที่มา: จุดประสงค์ข้อ 4.4–4.7 และการวัดผลหน่วยที่ 1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-tag="เปิดเรื่อง" data-title="🙋 ไดโอด 2 ตัว ตัวไหนเสีย?">
+  <div class="body">
+    <div><span class="act-badge reveal">🙋 กิจกรรม</span><span class="act-meta reveal">คิดคนเดียว 1 นาที → คุยกับคู่ 2 นาที</span></div>
+    <h2 class="title reveal d1">หน้าตาเหมือนกันทุกอย่าง แต่<span class="hl">ตัวหนึ่งเสีย</span> จะรู้ได้อย่างไร?</h2>
+    <div class="row center">
+      <div class="reveal d2" style="flex:0 0 700px;text-align:center">
+        <svg viewBox="0 0 700 260" style="width:680px" aria-label="ไดโอด 1N4007 สองตัวหน้าตาเหมือนกัน หมายเลข 1 และ 2">
+          <g><line x1="40" y1="70" x2="660" y2="70" stroke="#9a948c" stroke-width="7" stroke-linecap="round"/><rect x="250" y="40" width="200" height="60" rx="18" fill="#2a2733"/><rect x="400" y="40" width="24" height="60" fill="#c9c3cf"/><text x="330" y="82" fill="#fff" font-size="28" text-anchor="middle" font-family="Prompt">1N4007</text><text x="20" y="40" font-size="40" fill="#e8742c" font-family="Prompt" font-weight="700">①</text></g>
+          <g><line x1="40" y1="190" x2="660" y2="190" stroke="#9a948c" stroke-width="7" stroke-linecap="round"/><rect x="250" y="160" width="200" height="60" rx="18" fill="#2a2733"/><rect x="400" y="160" width="24" height="60" fill="#c9c3cf"/><text x="330" y="202" fill="#fff" font-size="28" text-anchor="middle" font-family="Prompt">1N4007</text><text x="20" y="160" font-size="40" fill="#e8742c" font-family="Prompt" font-weight="700">②</text></g>
+        </svg>
+      </div>
+      <div class="reveal d3">
+        <ol class="steps steps-act small">
+          <li>ดูด้วยตา <b>บอกได้ไหม</b>?</li>
+          <li>ถ้ามี<b>มัลติมิเตอร์</b> 1 เครื่อง จะวัดอย่างไร?</li>
+          <li>ค่าที่อ่านได้แบบไหน = <b>ดี</b> แบบไหน = <b>เสีย</b>?</li>
+        </ol>
+        <div data-timer="180"></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ขั้นนำในแผนการจัดการเรียนรู้ ครั้งที่ 2 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="เฉลยเปิดเรื่อง: ใช้โหมดทดสอบไดโอด">
+  <div class="body">
+    <div class="kicker reveal">ลองวัดให้ดู · กด “สลับสาย” เพื่อวัดอีกทิศ</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:10px">วัด <span class="hl">2 ทิศ</span> แล้วเทียบกัน</h2>
+    <div class="reveal d2"><div data-sim="dmm" data-set="d4007,x" data-reveal="1"></div></div>
+    <p class="small reveal d3" style="margin-top:6px">ตัวที่ ① = <b>1N4007</b> · ตัวที่ ② = <b>หมายเลข X</b> · ดีหรือเสีย? เราจะรู้คำตอบภายในวันนี้ 🔍</p>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="🙋 ทบทวน: ไบแอสตรง">
+  <div class="body">
+    <div><span class="act-badge">🙋 ทบทวนสัปดาห์ที่ 1</span><span class="act-meta">ชูนิ้ว 1–4</span></div>
+    <h2 class="title" style="margin-bottom:20px">ไบแอสตรงไดโอด ต้องต่อแหล่งจ่ายอย่างไร?</h2>
+    <div class="vote" data-answer="1">
+      <button type="button" class="opt"><b>☝️ 1</b> ขั้วบวกต่อแคโทด ขั้วลบต่อแอโนด</button>
+      <button type="button" class="opt"><b>✌️ 2</b> ขั้วบวกต่อแอโนด ขั้วลบต่อแคโทด</button>
+      <button type="button" class="opt"><b>🤟 3</b> ต่อขั้วบวกทั้งสองขา</button>
+      <button type="button" class="opt"><b>🖖 4</b> ต่ออย่างไรก็ได้</button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why"><b>บวกเข้า A ลบเข้า K</b> = ไบแอสตรง → นำกระแส · วันนี้ “สายแดง” ของมิเตอร์ดิจิทัลก็คือ <b>ขั้วบวก</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="🙋 ทบทวน: กำแพงศักย์">
+  <div class="body">
+    <div><span class="act-badge">🙋 ทบทวนสัปดาห์ที่ 1</span><span class="act-meta">ชูนิ้ว 1–4</span></div>
+    <h2 class="title" style="margin-bottom:20px">แรงดันกำแพงศักย์ของไดโอดซิลิกอนประมาณเท่าใด?</h2>
+    <div class="vote" data-answer="2">
+      <button type="button" class="opt"><b>☝️ 1</b> 0.1 V</button>
+      <button type="button" class="opt"><b>✌️ 2</b> 0.3 V</button>
+      <button type="button" class="opt"><b>🤟 3</b> 0.7 V</button>
+      <button type="button" class="opt"><b>🖖 4</b> 7 V</button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why">ซิลิกอน ≈ <b>0.7 V</b> · เจอร์เมเนียม ≈ <b>0.3 V</b> · วันนี้จะเห็นตัวเลขนี้ “บนกราฟ” และ “บนจอมิเตอร์”</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="🙋 แบบทดสอบก่อนเรียน">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge reveal">📱 แบบทดสอบก่อนเรียน</span><span class="act-meta reveal">รายบุคคล · 15 นาที</span></div>
+    <h2 class="title reveal d1">ยังไม่รู้ก็ไม่เป็นไร ตอบตามที่คิด!</h2>
+    <p class="reveal d2">เปิด <b>แบบทดสอบ</b> → เลือก “<b>ก่อนเรียน</b>” → ทำ 20 ข้อ → กดส่ง</p>
+    <p class="small reveal d2"><a href="quiz.html">quiz.html</a> (ลิงก์อยู่ในหน้าแรกของวิชา)</p>
+    <div class="reveal d3" style="margin-top:20px"><div data-timer="900"></div></div>
+  </div>
+</section>
+
+<!-- ================= 5.1 กราฟคุณลักษณะ ================= -->
+<section class="slide section sec-1" data-tag="5.1 กราฟคุณลักษณะ" data-title="5.1 กราฟคุณลักษณะของไดโอด">
+  <div class="big-no">5.1</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.1</div>
+    <h2 class="reveal d1">กราฟคุณลักษณะ<br>ของไดโอด</h2>
+    <p class="lead reveal d2">ภาพเดียว เล่าพฤติกรรมไดโอดได้ทั้งหมด</p>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="กราฟคุณลักษณะคืออะไร">
+  <div class="body">
+    <div class="kicker reveal">I-V Characteristic</div>
+    <h2 class="title reveal d1">กราฟ <span class="hl">กระแส</span> เทียบกับ <span class="hl">แรงดัน</span></h2>
+    <div class="row center">
+      <div class="diagram reveal d2" style="flex:0 0 640px">
+        <svg viewBox="0 0 640 420" aria-label="แกนกราฟสี่ส่วน แกนนอน VD แกนตั้ง ID">
+          <rect x="320" y="20" width="300" height="190" fill="#fde9da"/><rect x="20" y="210" width="300" height="190" fill="#e1ebfb"/>
+          <line x1="20" y1="210" x2="625" y2="210" stroke="#2a2733" stroke-width="4"/><line x1="320" y1="405" x2="320" y2="15" stroke="#2a2733" stroke-width="4"/>
+          <text x="585" y="245" font-size="30" fill="#2a2733">V<tspan baseline-shift="sub" font-size="20">D</tspan></text><text x="332" y="40" font-size="30" fill="#2a2733">I<tspan baseline-shift="sub" font-size="20">D</tspan></text>
+          <text x="400" y="120" font-size="28" fill="#e8742c">ไบแอสตรง</text><text x="400" y="155" font-size="22" fill="#5d5866">V<tspan baseline-shift="sub" font-size="15">D</tspan> บวก · I<tspan baseline-shift="sub" font-size="15">D</tspan> บวก</text>
+          <text x="60" y="310" font-size="28" fill="#3b6fd4">ไบแอสกลับ</text><text x="60" y="345" font-size="22" fill="#5d5866">V<tspan baseline-shift="sub" font-size="15">D</tspan> ลบ · I<tspan baseline-shift="sub" font-size="15">D</tspan> ลบ</text>
+        </svg>
+      </div>
+      <div class="reveal d3">
+        <ul class="pts small">
+          <li>แกนนอน = <b>V<sub>D</sub></b> แรงดันตกคร่อมไดโอด</li>
+          <li>แกนตั้ง = <b>I<sub>D</sub></b> กระแสผ่านไดโอด</li>
+          <li>ขวาบน = <b class="c-orange">ไบแอสตรง</b> · ซ้ายล่าง = <b class="c-blue">ไบแอสกลับ</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🙋 ทายก่อน: วาดกราฟของไดโอด">
+  <div class="body">
+    <div><span class="act-badge">🙋 ทายก่อนเฉลย</span><span class="act-meta">วาดบนกระดาษ/ไวท์บอร์ดกลุ่ม · 4 นาที</span></div>
+    <h2 class="title" style="font-size:62px">จากที่รู้เรื่องไบแอสแล้ว กราฟของไดโอดควรหน้าตาแบบไหน?</h2>
+    <div class="row">
+      <ol class="steps steps-act small" style="flex:1.4">
+        <li>วาดแกน V<sub>D</sub> และ I<sub>D</sub> เหมือนหน้าที่แล้ว</li>
+        <li>ไบแอสตรง: ก่อน <b>0.7 V</b> กระแสเป็นอย่างไร? หลัง 0.7 V ล่ะ?</li>
+        <li>ไบแอสกลับ: มีกระแสไหม? ถ้าแรงดันย้อนกลับ<b>สูงมาก ๆ</b> ล่ะ?</li>
+        <li>ชูกระดาษพร้อมกันทุกกลุ่ม เทียบกับเฉลยหน้าถัดไป</li>
+      </ol>
+      <div style="flex:1;text-align:center"><div data-timer="240"></div><div data-board="6" style="margin-top:14px"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="อ่านกราฟทีละย่าน (ภาพที่ 1.6)">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">ภาพที่ 1.6 · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:6px">อ่านกราฟ <span class="hl">ทีละย่าน</span></h2>
+    <div class="row center">
+      <div class="diagram reveal d2" style="flex:0 0 900px">
+        <svg viewBox="0 0 900 520" aria-label="กราฟคุณลักษณะไดโอด ย่านไบแอสตรงและไบแอสกลับ">
+          <line x1="20" y1="300" x2="885" y2="300" stroke="#2a2733" stroke-width="3"/><line x1="470" y1="510" x2="470" y2="15" stroke="#2a2733" stroke-width="3"/>
+          <text x="852" y="285" font-size="28">V<tspan baseline-shift="sub" font-size="18">D</tspan></text><text x="482" y="36" font-size="28">I<tspan baseline-shift="sub" font-size="18">D</tspan></text>
+          <g class="frag"><path d="M470,300 C600,298 680,292 705,260 S725,70 732,25" fill="none" stroke="#e8742c" stroke-width="6"/>
+            <line x1="722" y1="300" x2="722" y2="312" stroke="#2a2733" stroke-width="3"/><text x="700" y="340" font-size="24">0.7 V</text>
+            <text x="745" y="150" font-size="26" fill="#e8742c">ซิลิกอน</text><text x="480" y="390" font-size="22" fill="#5d5866">① ก่อนคัตอิน (0 → 0.7 V): กระแสน้อยมาก</text>
+            <text x="745" y="60" font-size="22" fill="#5d5866">② หลังคัตอิน:</text><text x="745" y="88" font-size="22" fill="#5d5866">กระแสพุ่ง</text></g>
+          <g class="frag"><path d="M470,300 C530,298 560,290 572,260 S585,70 590,25" fill="none" stroke="#00878f" stroke-width="5"/>
+            <line x1="578" y1="300" x2="578" y2="312" stroke="#2a2733" stroke-width="3"/><text x="556" y="340" font-size="24">0.3 V</text>
+            <text x="458" y="130" font-size="26" fill="#00878f" text-anchor="end">เจอร์เมเนียม →</text></g>
+          <g class="frag"><path d="M470,300 C440,309 400,310 140,312" fill="none" stroke="#3b6fd4" stroke-width="6"/>
+            <text x="200" y="350" font-size="24" fill="#3b6fd4">③ กระแสรั่วไหล ระดับ µA</text></g>
+          <g class="frag"><path d="M140,312 C120,316 112,340 108,500" fill="none" stroke="#d6455d" stroke-width="6"/>
+            <line x1="140" y1="290" x2="140" y2="300" stroke="#2a2733" stroke-width="3"/><text x="112" y="282" font-size="24">−V<tspan baseline-shift="sub" font-size="16">BR</tspan></text>
+            <text x="128" y="460" font-size="24" fill="#d6455d">④ ย่านพังทลาย: กระแสสูงทันที</text></g>
+          <text x="885" y="512" font-size="18" fill="#5d5866" text-anchor="end">สเกลแกนด้านลบกับด้านบวกไม่เท่ากัน</text>
+        </svg>
+      </div>
+      <ol class="steps small" style="flex:1">
+        <li class="frag">ไบแอสตรง: ถึง <b>แรงดันคัตอิน</b> กระแสจึงพุ่ง</li>
+        <li class="frag">Ge คัตอิน<b>ต่ำกว่า</b> (0.3 V)</li>
+        <li class="frag">ไบแอสกลับ: มีแค่<b>กระแสรั่วไหล</b> แทบคงที่</li>
+        <li class="frag">ถึง <b>V<sub>BR</sub></b> → กระแสพุ่ง ไดโอดทั่วไป<b>เสีย</b></li>
+      </ol>
+    </div>
+    <div class="src">ที่มา: ภาพที่ 1.6 ใบความรู้ที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup> · วาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="แรงดันคัตอิน (Cut-in Voltage)">
+  <div class="body">
+    <div class="kicker reveal">คำสำคัญ ①</div>
+    <h2 class="title reveal d1">แรงดันคัตอิน = <span class="hl">จุดหักโค้ง</span> ของกราฟ</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box orange tile reveal d2"><div class="bignum mono" style="font-size:96px;font-weight:700;color:var(--orange)">0.7 V</div><h3>ซิลิกอน (Si)</h3><p>ไดโอดส่วนใหญ่ที่ใช้งาน<br>เช่น 1N4007, 1N4148</p></div>
+      <div class="box tint tile reveal d3"><div class="bignum mono" style="font-size:96px;font-weight:700;color:var(--teal)">0.3 V</div><h3>เจอร์เมเนียม (Ge)</h3><p>คัตอินต่ำกว่า<br>พบน้อยในงานปัจจุบัน</p></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:28px">เรียกอีกชื่อว่า <b>แรงดันเข่า</b> (Knee) · ตรงกับ<b>แรงดันกำแพงศักย์</b>ที่เรียนในสัปดาห์ที่ 1</p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ตัวจำลองกราฟคุณลักษณะ">
+  <div class="body" style="top:112px">
+    <div class="kicker reveal">ตัวจำลอง · เลื่อนแถบแรงดัน ดูจุดสีชมพูวิ่งบนกราฟ</div>
+    <h2 class="title reveal d1" style="font-size:52px;margin-bottom:8px">เลื่อนไปทางขวา = ไบแอสตรง · ทางซ้าย = ไบแอสกลับ</h2>
+    <div class="reveal d2"><div data-sim="iv"></div></div>
+    <div class="src">แบบจำลองจากสมการไดโอด <span class="extra">เสริม</span> <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🙋 โหวต: กระแสเพิ่ม 4 เท่า แรงดันเป็นอย่างไร">
+  <div class="body">
+    <div><span class="act-badge">🙋 ทายก่อนลอง</span><span class="act-meta">ชูนิ้ว แล้วลองในตัวจำลองหน้าที่แล้ว</span></div>
+    <h2 class="title" style="margin-bottom:18px">ไดโอดซิลิกอนนำกระแสอยู่ ถ้ากระแสเพิ่มจาก 2 mA เป็น <b>8 mA</b> แรงดันตกคร่อมจะเป็นอย่างไร?</h2>
+    <div class="vote" data-answer="1">
+      <button type="button" class="opt"><b>☝️ 1</b> เพิ่ม 4 เท่าตามกระแส</button>
+      <button type="button" class="opt"><b>✌️ 2</b> เพิ่มขึ้นนิดเดียว ยังราว 0.6–0.7 V</button>
+      <button type="button" class="opt"><b>🤟 3</b> ลดลงครึ่งหนึ่ง</button>
+      <button type="button" class="opt"><b>🖖 4</b> กลายเป็น 0 V</button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why">หลังคัตอิน กราฟ<b>ชันมาก</b>: กระแสเพิ่มหลายเท่า แต่แรงดัน<b>แทบไม่เพิ่ม</b> ช่างจึงประมาณว่าไดโอดซิลิกอนที่นำกระแสมี V<sub>D</sub> <b>คงที่ ≈ 0.7 V</b> <sup class="ref"><a href="#refs">[1]</a></sup></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ประมาณ VD = 0.7 V คำนวณง่าย">
+  <div class="body">
+    <div class="kicker reveal">ใช้กราฟในงานคำนวณ · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">ประมาณ V<sub>D</sub> ≈ 0.7 V → คำนวณกระแสได้ทันที</h2>
+    <div class="row center">
+      <div class="reveal d2" style="flex:0 0 760px"><div data-loop="v=4.7 V;d=f;dn=D1;r=1 kΩ;flow=1"></div></div>
+      <div class="calc" style="flex:1">
+        <span class="frag">I = (V<sub>S</sub> − 0.7) ÷ R</span>
+        <span class="frag">= (4.7 − 0.7) ÷ 1000</span>
+        <span class="frag">= 4.0 ÷ 1000 = 0.004 A</span>
+        <span class="frag"><span class="answer">I = 4.0 mA</span></span>
+      </div>
+    </div>
+    <p class="small frag" style="margin-top:10px">💡 สูตรเดียวกับสัปดาห์ที่ 1 · ที่มาของ “0.7 V” คือ<b>กราฟคุณลักษณะ</b>นี่เอง</p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ตัวอย่างคำนวณเพิ่ม">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่างที่ 2–3 · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">ซิลิกอน 0.7 V · เจอร์เมเนียม 0.3 V</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box reveal d2"><h3>② Si · 9 V · R = 2.2 kΩ</h3>
+        <div class="calc"><span class="frag">I = (9 − 0.7) ÷ 2200</span><span class="frag">= 8.3 ÷ 2200 ≈ <b>3.77 mA</b></span></div></div>
+      <div class="box tint reveal d3"><h3>③ Ge · 3 V · R = 1 kΩ</h3>
+        <div class="calc"><span class="frag">I = (3 − <b>0.3</b>) ÷ 1000</span><span class="frag">= <b>2.7 mA</b></span></div></div>
+    </div>
+    <p class="small frag" style="margin-top:20px">⚠️ ใช้ค่าประมาณเมื่อไดโอด<b>นำกระแสแล้ว</b> (แรงดันแหล่งจ่ายเกินคัตอิน) เท่านั้น</p>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="กระแสรั่วไหลและแรงดันพังทลาย">
+  <div class="body">
+    <div class="kicker reveal">คำสำคัญ ② ③</div>
+    <h2 class="title reveal d1">ย่านไบแอสกลับ: <span class="hl">รั่วนิดหน่อย</span> จนถึงจุด <span class="hl">พัง</span></h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box blue reveal d2"><h3 class="c-blue">กระแสรั่วไหล (Leakage)</h3>
+        <ul class="pts small"><li>กระแสน้อยมาก <b>ระดับ µA</b></li><li><b>แทบคงที่</b> แม้เพิ่มแรงดันย้อนกลับ</li><li>ถือว่าไดโอด “กั้น” กระแส</li></ul></div>
+      <div class="box rose reveal d3"><h3 class="c-rose">แรงดันพังทลาย (V<sub>BR</sub>)</h3>
+        <ul class="pts small"><li>ถึง V<sub>BR</sub> กระแส<b>พุ่งทันที</b></li><li>ไดโอดทั่วไป<b>ร้อนและเสียถาวร</b></li><li>ต้องเลือก V<sub>BR</sub> <b>สูงกว่า</b>แรงดันย้อนกลับในวงจรเสมอ</li></ul></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:22px">🔜 <b>ซีเนอร์ไดโอด</b>ออกแบบให้ทำงานในย่านพังทลายได้ ใช้รักษาระดับแรงดัน (หน่วยที่ 2)</p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🙋 โหวต: ย่านพังทลาย">
+  <div class="body">
+    <div><span class="act-badge">🙋 โหวต</span><span class="act-meta">ชูนิ้ว 1–4</span></div>
+    <h2 class="title" style="margin-bottom:20px">ไดโอดเรียงกระแสทั่วไปได้รับแรงดันย้อนกลับ<b>เกิน V<sub>BR</sub></b> ผลคืออะไร?</h2>
+    <div class="vote" data-answer="3">
+      <button type="button" class="opt"><b>☝️ 1</b> ไม่มีอะไรเกิดขึ้น</button>
+      <button type="button" class="opt"><b>✌️ 2</b> กลายเป็นไบแอสตรง</button>
+      <button type="button" class="opt"><b>🤟 3</b> กระแสรั่วลดลง</button>
+      <button type="button" class="opt"><b>🖖 4</b> กระแสพุ่ง ไดโอดร้อนและเสียหาย</button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why">ย่านพังทลายกระแสย้อนกลับ<b>สูงทันที</b> ไดโอดทั่วไปเสียหายถาวร (ยกเว้นซีเนอร์ที่ออกแบบมาให้ทำงานย่านนี้)</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="เปรียบเทียบซิลิกอนกับเจอร์เมเนียม">
+  <div class="body">
+    <div class="kicker reveal">สรุปเปรียบเทียบ</div>
+    <h2 class="title reveal d1">ซิลิกอน vs เจอร์เมเนียม</h2>
+    <table class="t reveal d2" style="width:100%">
+      <tr><th>หัวข้อ</th><th>ซิลิกอน (Si)</th><th>เจอร์เมเนียม (Ge)</th></tr>
+      <tr><td>แรงดันคัตอิน</td><td class="mono"><b>≈ 0.7 V</b></td><td class="mono"><b>≈ 0.3 V</b></td></tr>
+      <tr class="frag"><td>ค่าที่โหมดทดสอบไดโอดแสดง</td><td class="mono">0.5–0.7</td><td class="mono">0.2–0.3</td></tr>
+      <tr class="frag"><td>กระแสรั่วไหล <span class="extra">เสริม</span></td><td>น้อยกว่า</td><td>มากกว่า</td></tr>
+      <tr class="frag hit"><td>ใช้งานปัจจุบัน</td><td colspan="2"><b>ซิลิกอนเป็นส่วนใหญ่</b></td></tr>
+    </table>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="คลิป: แรงดันตกคร่อม ชอตต์กี vs ซิลิกอน">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">🎬 ดูของจริง <span class="extra">เสริม</span> · ดูช่วงที่วัดแรงดันตกคร่อมเปรียบเทียบ</div>
+    <h2 class="title reveal d1" style="font-size:52px;margin-bottom:12px">ไดโอดต่างชนิด แรงดันตกคร่อมไม่เท่ากัน</h2>
+    <div class="row">
+      <div class="vwrap reveal d2"><div data-video="2-yww2coPWQ" data-title="ไดโอดชอตต์กีกับซิลิกอน ยอมให้ไฟไหลผ่านที่แรงดันตกคร่อมเท่าไร 1N5819 กับ 1N4007" data-credit="somMCU" data-len="13:20"></div></div>
+      <div class="reveal d3"><ul class="pts small"><li>สังเกตค่าแรงดันตกคร่อมของ <b>1N4007</b> (ซิลิกอน)</li><li>เทียบกับ <b>1N5819</b> (ชอตต์กี) ที่รู้จักเมื่อสัปดาห์ที่ 1</li><li>คลิปยาว ครูเลือกเปิดเฉพาะช่วง หรือให้ดูต่อที่บ้าน</li></ul></div>
+    </div>
+    <div class="src">คลิป <sup class="ref"><a href="#videos">[V1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ฝึกคิด 5.1">
+  <div class="body center">
+    <div class="kicker reveal">ฝึกคิด 5.1 · คำถามท้ายใบความรู้ ข้อ 1</div>
+    <h2 class="title reveal d1"><span class="hl">แรงดันคัตอิน</span>คืออะไร<br>ซิลิกอนกับเจอร์เมเนียมมีค่าประมาณเท่าใด?</h2>
+    <div class="box sun frag" style="margin-top:20px"><p class="small" style="margin:0">แรงดันที่จุดหักโค้งของกราฟไบแอสตรง เมื่อถึงค่านี้กระแสจึงเพิ่มขึ้นอย่างรวดเร็ว · <b>Si ≈ 0.7 V</b> · <b>Ge ≈ 0.3 V</b></p></div>
+  </div>
+</section>
+
+<!-- ================= 5.2 คู่มืออุปกรณ์ ================= -->
+<section class="slide section sec-2" data-tag="5.2 คู่มืออุปกรณ์" data-title="5.2 ค่าพิกัดในคู่มืออุปกรณ์">
+  <div class="big-no">5.2</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.2</div>
+    <h2 class="reveal d1">ค่าพิกัดใน<br>คู่มืออุปกรณ์</h2>
+    <p class="lead reveal d2">เปลี่ยนไดโอด ต้องดู “ตัวเลข” ไม่ใช่ “หน้าตา”</p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="คู่มืออุปกรณ์ (Datasheet) คืออะไร">
+  <div class="body">
+    <div class="kicker reveal">Datasheet</div>
+    <h2 class="title reveal d1">เอกสารที่<span class="hl">ผู้ผลิต</span>บอกคุณสมบัติและขีดจำกัด</h2>
+    <div class="row center">
+      <div class="box sun reveal d2" style="text-align:center"><div class="icon">👀</div>
+        <p class="small">1N4001 กับ 1N4007<br><b>หน้าตาเหมือนกันทุกประการ</b></p></div>
+      <div class="box rose reveal d3" style="text-align:center"><div class="icon">⚡</div>
+        <p class="small">แต่ทนแรงดันย้อนกลับ<br><b class="mono">50 V</b> กับ <b class="mono">1000 V</b><br>ต่างกัน <b>20 เท่า!</b></p></div>
+      <div class="box tint reveal d4" style="text-align:center"><div class="icon">📄</div>
+        <p class="small">ช่างต้อง<b>อ่านคู่มือ</b><br>ทุกครั้งก่อนเปลี่ยน</p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [3]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="พิกัดสูงสุด กับ คุณลักษณะทางไฟฟ้า">
+  <div class="body">
+    <div class="kicker reveal">ในคู่มือมี 2 หมวดหลัก</div>
+    <h2 class="title reveal d1">“ห้ามเกิน” กับ “วัดได้จริง”</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box rose reveal d2"><h3 class="c-rose">⛔ พิกัดสูงสุด (Maximum Ratings)</h3>
+        <p class="small">ค่าที่<b>ห้ามเกิน แม้ชั่วขณะ</b></p><p class="small mono">V<sub>RRM</sub> · I<sub>F(AV)</sub> · I<sub>FSM</sub></p></div>
+      <div class="box blue reveal d3"><h3 class="c-blue">📏 คุณลักษณะทางไฟฟ้า (Electrical Characteristics)</h3>
+        <p class="small">ค่าที่<b>วัดได้จริง</b> ภายใต้เงื่อนไขที่ระบุ</p><p class="small mono">V<sub>F</sub> · I<sub>R</sub></p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [3]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ค่าพิกัดสำคัญของ 1N4007">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">ค่าพิกัดสำคัญของ 1N4007 · กด → ทีละแถว</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:12px">5 ค่าที่ต้องอ่านเป็น</h2>
+    <table class="t left compact reveal d2" style="width:100%">
+      <tr><th>ค่าพิกัด</th><th>สัญลักษณ์</th><th>1N4007</th><th>ความหมาย</th></tr>
+      <tr class="frag"><td>แรงดันย้อนกลับสูงสุดซ้ำ</td><td class="mono">V<sub>RRM</sub></td><td class="mono"><b>1000 V</b></td><td>แรงดันไบแอสกลับสูงสุดที่ทนได้</td></tr>
+      <tr class="frag"><td>กระแสไบแอสตรงเฉลี่ย</td><td class="mono">I<sub>F(AV)</sub></td><td class="mono"><b>1.0 A</b></td><td>กระแสเฉลี่ยที่ไหลได้ต่อเนื่อง</td></tr>
+      <tr class="frag"><td>กระแสกระชากสูงสุด</td><td class="mono">I<sub>FSM</sub></td><td class="mono"><b>30 A</b></td><td>กระแสชั่วขณะครึ่งคาบ เช่น ตอนเปิดเครื่อง</td></tr>
+      <tr class="frag"><td>แรงดันตกคร่อมขณะนำกระแส</td><td class="mono">V<sub>F</sub></td><td class="mono"><b>1.1 V</b> ที่ 1.0 A</td><td>ค่าสูงสุดเมื่อนำกระแสเต็มพิกัด</td></tr>
+      <tr class="frag"><td>กระแสรั่วไหลย้อนกลับ</td><td class="mono">I<sub>R</sub></td><td class="mono"><b>5.0 µA</b> ที่ 25 °C</td><td>ค่าสูงสุดที่แรงดันย้อนกลับเต็มพิกัด</td></tr>
+    </table>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup> · ตรงกับคู่มือ Vishay <sup class="ref"><a href="#refs">[3]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="เปรียบเทียบให้จำง่าย">
+  <div class="body">
+    <div class="kicker reveal">เปรียบเทียบกับระบบน้ำ</div>
+    <h2 class="title reveal d1">จำค่าพิกัดด้วย “ท่อน้ำกับวาล์วกันกลับ”</h2>
+    <div class="grid g3" style="gap:26px">
+      <div class="box rose tile reveal d2"><div class="icon">🧱</div><h3>V<sub>RRM</sub></h3><p>วาล์ว<b>ทนแรงดันย้อน</b><br>ได้แค่ไหนก่อนแตก</p></div>
+      <div class="box orange tile reveal d3"><div class="icon">🚰</div><h3>I<sub>F(AV)</sub></h3><p>ท่อปล่อยน้ำ<b>ไหลต่อเนื่อง</b><br>ได้เท่าไร</p></div>
+      <div class="box sun tile reveal d4"><div class="icon">🌊</div><h3>I<sub>FSM</sub></h3><p>น้ำ<b>กระแทกแรงชั่วครู่</b><br>ตอนเปิดวาล์ว</p></div>
+    </div>
+    <p class="small reveal d5" style="margin-top:28px">⚠️ เป็นการเปรียบเทียบเพื่อช่วยจำ · ค่าจริงต้องดูจากคู่มือเสมอ</p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ทำไม VF ในคู่มือ 1.1 V ไม่ใช่ 0.7 V">
+  <div class="body">
+    <div class="kicker reveal">คำถามที่นักเรียนชอบถาม</div>
+    <h2 class="title reveal d1">V<sub>F</sub> = <b class="mono">1.1 V</b> แล้ว 0.7 V หายไปไหน?</h2>
+    <div class="row center">
+      <div class="box sun reveal d2"><h3>วัดที่กระแสต่างกัน</h3>
+        <ul class="pts small"><li>คู่มือ: วัดที่ <b>1.0 A</b> (เต็มพิกัด)</li><li>ห้องปฏิบัติการ: กระแส<b>ระดับ mA</b> → วัดได้ <b>0.5–0.7 V</b></li></ul></div>
+      <div class="box reveal d3"><h3>กระแสสูง = แรงดันตกเพิ่ม</h3>
+        <p class="small">มีแรงดันตกคร่อม<b>ความต้านทานภายในตัวผลึก</b>เพิ่มขึ้น</p>
+        <p class="small c-sec">ค่า 1.1 V เป็นค่า<b>สูงสุด</b> (maximum) ที่ผู้ผลิตรับประกัน</p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [3]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตระกูล 1N4001–1N4007">
+  <div class="body">
+    <div class="kicker reveal">หน้าตาเหมือนกัน · ต่างกันที่ V<sub>RRM</sub></div>
+    <h2 class="title reveal d1">ตระกูล 1N4001–1N4007</h2>
+    <table class="t reveal d2" style="width:100%">
+      <tr><th>เบอร์</th><th>1N4001</th><th>1N4002</th><th>1N4003</th><th>1N4004</th><th>1N4005</th><th>1N4006</th><th>1N4007</th></tr>
+      <tr><td>V<sub>RRM</sub> (V)</td><td class="mono">50</td><td class="mono">100</td><td class="mono">200</td><td class="mono">400</td><td class="mono">600</td><td class="mono">800</td><td class="mono"><b>1000</b></td></tr>
+      <tr class="frag"><td>I<sub>F(AV)</sub></td><td colspan="7" class="mono">1.0 A ทุกเบอร์</td></tr>
+      <tr class="frag"><td>I<sub>FSM</sub> · V<sub>F</sub></td><td colspan="7" class="mono">30 A · 1.1 V ทุกเบอร์</td></tr>
+    </table>
+    <p class="small frag" style="margin-top:20px">💡 เลขท้ายมาก = ทนแรงดันย้อนกลับสูง · <b>1N4007 ใช้แทนทุกเบอร์ในตระกูลได้</b> (ทนสูงสุด)</p>
+    <div class="src">ที่มา: Vishay 1N4001 thru 1N4007 (Doc. 88503) <span class="extra">เสริม</span> <sup class="ref"><a href="#refs">[3]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="หลักการเลือกไดโอด">
+  <div class="body">
+    <div class="kicker reveal">หลักการเลือกไดโอดมาใช้งาน</div>
+    <h2 class="title reveal d1">เผื่อไว้ก่อน <span class="hl">อย่างน้อย 2 เท่า</span></h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box rose reveal d2"><h3 class="c-rose">แรงดัน</h3><p class="formula" style="font-size:44px">V<sub>RRM</sub> ≥ 2 × V<sub>ย้อนกลับสูงสุด</sub></p></div>
+      <div class="box orange reveal d3"><h3 class="c-orange">กระแส</h3><p class="formula" style="font-size:44px">I<sub>F(AV)</sub> &gt; I<sub>ใช้งานจริง</sub> (พอสมควร)</p></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:26px">ทำไมต้องเผื่อ? → <b>แรงดันกระชาก</b>จากสายไฟ และ<b>ความร้อนสะสม</b></p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตัวอย่างเลือกเบอร์">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่าง · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">เลือกเบอร์ในตระกูล 1N4001–1N4007</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box reveal d2"><h3>① แรงดันย้อนกลับสูงสุด 150 V</h3>
+        <div class="calc" style="font-size:36px"><span class="frag">ต้องการ ≥ 2 × 150 = 300 V</span><span class="frag">200 V ✗ · <b>400 V ✓</b></span><span class="frag"><span class="answer" style="font-size:38px">1N4004</span></span></div></div>
+      <div class="box reveal d3"><h3>② แรงดันย้อนกลับสูงสุด 40 V</h3>
+        <div class="calc" style="font-size:36px"><span class="frag">ต้องการ ≥ 2 × 40 = 80 V</span><span class="frag">50 V ✗ · <b>100 V ✓</b></span><span class="frag"><span class="answer" style="font-size:38px">1N4002</span></span></div></div>
+    </div>
+    <p class="small frag" style="margin-top:20px">③ วงจรใช้กระแส <b>2 A</b> → 1N400x ทนแค่ 1.0 A <b>ไม่พอ</b> ต้องหาไดโอดที่ทนกระแสสูงกว่า</p>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🙋 เกมเลือกเบอร์ไดโอด">
+  <div class="body" style="top:112px">
+    <div><span class="act-badge">🙋 เกมเลือกเบอร์</span><span class="act-meta">กลุ่ม · ข้อละ 30 วินาที · ตัวแทนกลุ่มออกมากด</span></div>
+    <h2 class="title" style="font-size:50px;margin-bottom:10px">อ่านโจทย์ → เลือกเบอร์ที่ <span class="hl">พอดีที่สุด</span> ตามหลักเผื่อ 2 เท่า</h2>
+    <div data-sim="ds" data-q="300"></div>
+    <div class="row" style="margin-top:14px;align-items:flex-end"><div data-timer="30" style="flex:0 0 auto"></div><div data-board="6"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="คลิป: อ่านดาต้าชีท 1N4001–1N4007">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">🎬 ดูคลิปประกอบ <span class="extra">เสริม</span></div>
+    <h2 class="title reveal d1" style="font-size:52px;margin-bottom:12px">อ่านดาต้าชีทไดโอดเบอร์ 1N4001–1N4007</h2>
+    <div class="row">
+      <div class="vwrap reveal d2"><div data-video="P2yKWbtsLxU" data-title="ดาต้าชีทไดโอดเบอร์ 1N4001-1N4007" data-credit="Cars &amp; Electronics" data-len="13:17"></div></div>
+      <div class="reveal d3"><ul class="pts small"><li>หาค่า <b>V<sub>RRM</sub></b> ของแต่ละเบอร์ในตาราง</li><li>หาค่า <b>I<sub>F(AV)</sub></b> และ <b>I<sub>FSM</sub></b></li><li>ใช้ทบทวนก่อนทำ<b>ใบงานตอนที่ 2</b> (ดูต่อที่บ้านได้)</li></ul></div>
+    </div>
+    <div class="src">คลิป <sup class="ref"><a href="#videos">[V2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ฝึกคิด 5.2">
+  <div class="body center">
+    <div class="kicker reveal">ฝึกคิด 5.2 · คำถามท้ายใบความรู้ ข้อ 2</div>
+    <h2 class="title reveal d1">ค่า <span class="hl">V<sub>RRM</sub></span> และ <span class="hl">I<sub>F(AV)</sub></span> หมายถึงอะไร<br>และใช้เลือกไดโอดอย่างไร?</h2>
+    <p class="small reveal d2 c-sec">💬 คุยในกลุ่ม 3 นาที แล้วสุ่มเลขที่ตอบ (ตัวสุ่มอยู่หน้าสรุป)</p>
+  </div>
+</section>
+
+<section class="slide sec-0" data-tag="พัก" data-title="☕ พัก 10 นาที">
+  <div class="body center" style="text-align:center">
+    <h2 class="title reveal">☕ พัก 10 นาที</h2>
+    <p class="reveal d1">กลับมาแล้วเราจะเป็น “หมอไดโอด” ใช้มัลติมิเตอร์ตรวจอาการกัน!</p>
+    <div class="reveal d2"><div data-timer="600"></div></div>
+  </div>
+</section>
+
+<!-- ================= 5.3 วัดด้วยมัลติมิเตอร์ ================= -->
+<section class="slide section sec-3" data-tag="5.3 วัดด้วยมัลติมิเตอร์" data-title="5.3 การวัดทดสอบไดโอดด้วยมัลติมิเตอร์">
+  <div class="big-no">5.3</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.3</div>
+    <h2 class="reveal d1">วัดทดสอบไดโอด<br>ด้วยมัลติมิเตอร์</h2>
+    <p class="lead reveal d2">วัด 2 ทิศ → ตัดสิน ดี · ลัดวงจร · ขาด · รั่ว</p>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="โหมดทดสอบไดโอด">
+  <div class="body">
+    <div class="kicker reveal">มัลติมิเตอร์ดิจิทัล · โหมดทดสอบไดโอด</div>
+    <h2 class="title reveal d1">หมุนไปที่สัญลักษณ์ <span class="hl mono">→|</span></h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 600px"><img src="../assets/img/dmm-diode-test.jpg" alt="มัลติมิเตอร์ดิจิทัลในโหมดทดสอบไดโอด หน้าจอแสดง 0.496" style="width:560px"><div class="credit">ภาพ: Dmitry G, Public domain (ครอปภาพ)</div></div>
+      <div class="reveal d3">
+        <ul class="pts small">
+          <li>มิเตอร์จ่าย<b>กระแสเล็ก ๆ ≈ 1 mA</b> ออกจาก<b class="c-rose">สายสีแดง</b></li>
+          <li>จอแสดง<b>แรงดันตกคร่อมไดโอด</b> เป็นโวลต์</li>
+          <li class="frag">ภาพที่ 1.7: แดงที่ A ดำที่ K → แสดง <b class="mono">0.496</b> = <b>นำกระแส</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.3 และภาพที่ 1.7 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ขั้นตอนวัด 4 ขั้น">
+  <div class="body">
+    <div class="kicker reveal">ขั้นตอนการวัด</div>
+    <h2 class="title reveal d1">4 ขั้น วัดไดโอดได้ทุกตัว</h2>
+    <ol class="steps">
+      <li class="reveal d2"><b>ปิดไฟเลี้ยง</b>วงจรก่อนทุกครั้ง</li>
+      <li class="reveal d3">ตั้งมิเตอร์ที่<b>โหมดทดสอบไดโอด</b> (→|)</li>
+      <li class="reveal d4"><b class="c-rose">แดงที่ A</b> · <b>ดำที่ K</b> → จดค่า</li>
+      <li class="reveal d5"><b>สลับสาย</b> แดงที่ K ดำที่ A → จดค่า แล้ว<b>ตัดสินสภาพ</b></li>
+    </ol>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="คลิป: วัดไดโอดด้วยมิเตอร์ดิจิทัล">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">🎬 ดูการวัดจริง (1 นาทีครึ่ง) <span class="extra">เสริม</span></div>
+    <h2 class="title reveal d1" style="font-size:52px;margin-bottom:12px">ดูให้ทันว่า “สายแดงอยู่ขาไหน” ตอนจอขึ้นตัวเลข</h2>
+    <div class="row">
+      <div class="vwrap reveal d2"><div data-video="baAMBUisG-I" data-title="วิธีวัดไดโอดด้วยมิเตอร์ดิจิตอล" data-credit="สุพล การรัม" data-len="1:25"></div></div>
+      <div class="reveal d3"><ol class="steps small"><li>ตั้งย่านที่ใด?</li><li>ทิศไหนขึ้นตัวเลข?</li><li>ทิศไหนขึ้น OL?</li></ol></div>
+    </div>
+    <div class="src">คลิป <sup class="ref"><a href="#videos">[V3]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ตารางตัดสินสภาพไดโอด">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">ตัดสินสภาพจากค่าที่วัด 2 ทิศ · กด → ทีละแถว</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:12px">ตารางหมอไดโอด 🩺</h2>
+    <table class="t compact reveal d2" style="width:100%">
+      <tr><th>สภาพไดโอด</th><th>แดงที่ A ดำที่ K</th><th>แดงที่ K ดำที่ A</th><th>หมายเหตุ</th></tr>
+      <tr class="frag"><td class="ok">ดี (ซิลิกอน)</td><td class="mono">0.5–0.7</td><td class="mono">OL</td><td>นำกระแสทิศเดียว</td></tr>
+      <tr class="frag"><td class="ok">ดี (เจอร์เมเนียม)</td><td class="mono">0.2–0.3</td><td class="mono">OL</td><td>แรงดันคัตอินต่ำกว่า</td></tr>
+      <tr class="frag"><td class="bad">ลัดวงจร (Short)</td><td class="mono">ใกล้ 0.000</td><td class="mono">ใกล้ 0.000</td><td>มิเตอร์บางรุ่นส่งเสียงเตือน</td></tr>
+      <tr class="frag"><td class="bad">ขาด (Open)</td><td class="mono">OL</td><td class="mono">OL</td><td>ไม่นำกระแสทั้งสองทิศ</td></tr>
+      <tr class="frag"><td class="bad">รั่ว (Leaky)</td><td>ต่ำกว่าปกติ</td><td>มีค่าแสดง</td><td>ไม่ควรนำไปใช้งาน</td></tr>
+    </table>
+    <p class="tiny frag" style="margin-top:10px">OL (Over Limit) หรือเลข <b>1</b> ด้านซ้าย = เกินย่านวัด · ค่า 0.5–0.7 เป็นค่าประมาณ ต่างกันตามเบอร์และมิเตอร์ (ภาพที่ 1.7 อ่านได้ 0.496 ก็ยังถือว่าดี)</p>
+    <div class="src">ที่มา: ตารางในใบความรู้ที่ 1.2 ข้อ 5.3 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ตัวจำลองมัลติมิเตอร์">
+  <div class="body" style="top:112px">
+    <div class="kicker reveal">มัลติมิเตอร์เสมือน · เลือกไดโอด → วัด 2 ทิศ → ตัดสิน → ครูกดเฉลย</div>
+    <h2 class="title reveal d1" style="font-size:50px;margin-bottom:8px">ลองวัดไดโอดทุกตัว รวมทั้ง “ไดโอดปริศนา”</h2>
+    <div class="reveal d2"><div data-sim="dmm" data-set="d4007,d4148,led,ge,mys" data-reveal="1"></div></div>
+    <div class="src">ค่าบนจอเป็นค่าตัวอย่าง <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act" data-title="🙋 หมอไดโอด: ตรวจอาการ 4 ราย">
+  <div class="body">
+    <div><span class="act-badge">🙋 หมอไดโอด</span><span class="act-meta">กลุ่ม · รายละ 30 วินาที · เขียนคำตอบบนกระดาษแล้วชูพร้อมกัน</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:16px">ผลวัดแบบนี้ ไดโอดป่วยเป็นอะไร?</h2>
+    <div class="grid g4" style="gap:22px">
+      <div class="box case"><h3>ราย ①</h3><div class="lcds"><span class="lcd sm">0.000</span><span class="lcd sm">0.000</span></div><div class="dir">A→K · K→A</div><p class="small frag" style="margin:8px 0 0"><b class="c-rose">ลัดวงจร</b></p></div>
+      <div class="box case"><h3>ราย ②</h3><div class="lcds"><span class="lcd sm">0.604</span><span class="lcd sm">OL</span></div><div class="dir">A→K · K→A</div><p class="small frag" style="margin:8px 0 0"><b class="c-green">ดี (Si)</b></p></div>
+      <div class="box case"><h3>ราย ③</h3><div class="lcds"><span class="lcd sm">OL</span><span class="lcd sm">OL</span></div><div class="dir">A→K · K→A</div><p class="small frag" style="margin:8px 0 0"><b class="c-rose">ขาด</b></p></div>
+      <div class="box case"><h3>ราย ④</h3><div class="lcds"><span class="lcd sm">0.318</span><span class="lcd sm">1.436</span></div><div class="dir">A→K · K→A</div><p class="small frag" style="margin:8px 0 0"><b class="c-rose">รั่ว</b> ห้ามใช้</p></div>
+    </div>
+    <div class="row" style="margin-top:18px;align-items:flex-end"><div data-timer="120" style="flex:0 0 auto"></div><div data-board="6"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act" data-title="🙋 โหวต: สายแดงอยู่ขาใด">
+  <div class="body">
+    <div><span class="act-badge">🙋 โหวต</span><span class="act-meta">ชูนิ้ว 1–4</span></div>
+    <h2 class="title" style="margin-bottom:20px">วัดไดโอดในโหมดทดสอบไดโอดได้ <b class="mono">0.62</b> ทิศหนึ่ง และ <b class="mono">OL</b> อีกทิศ สายแดงตอนขึ้น 0.62 อยู่ขาใด?</h2>
+    <div class="vote" data-answer="1">
+      <button type="button" class="opt"><b>☝️ 1</b> แคโทด (K)</button>
+      <button type="button" class="opt"><b>✌️ 2</b> แอโนด (A)</button>
+      <button type="button" class="opt"><b>🤟 3</b> ขาใดก็ได้</button>
+      <button type="button" class="opt"><b>🖖 4</b> บอกไม่ได้</button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why">มิเตอร์ดิจิทัล: สายแดง = บวก · ขึ้นตัวเลข = ไบแอสตรง → สายแดงอยู่ที่<b>แอโนด</b> · ใช้วิธีนี้<b>หาขาไดโอด</b>ที่แถบสีลบเลือนได้ด้วย</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ข้อควรระวัง 3 ประการ">
+  <div class="body">
+    <div class="kicker reveal">ข้อควรระวัง</div>
+    <h2 class="title reveal d1">⚠️ ข้อควรระวัง 3 ประการ</h2>
+    <div class="grid g3" style="gap:26px">
+      <div class="box rose tile reveal d2"><div class="icon">🔌</div><h3>① ปิดไฟก่อนวัด</h3><p>วัดไดโอด<b>ขณะไม่มีไฟเลี้ยง</b>วงจรเสมอ</p></div>
+      <div class="box sun tile reveal d3"><div class="icon">🧩</div><h3>② วัดบนแผ่นวงจร</h3><p>อุปกรณ์อื่นที่ต่อขนานทำให้ค่า<b>เพี้ยน</b> · ไม่ชัด → <b>ถอดขาข้างหนึ่ง</b></p></div>
+      <div class="box blue tile reveal d4"><div class="icon">🧭</div><h3>③ มิเตอร์เข็ม</h3><p>ย่านโอห์ม<b>ขั้วกลับกัน</b>: สาย<b>สีดำ</b>เป็นขั้วบวก</p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="คลิป: วัดไดโอดบนแผงวงจร">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">🎬 ข้อควรระวังข้อ ① ② ในงานจริง <span class="extra">เสริม</span></div>
+    <h2 class="title reveal d1" style="font-size:52px;margin-bottom:12px">วัดไดโอดบนแผงวงจร ที่<span class="hl">ไม่มีไฟเลี้ยง</span></h2>
+    <div class="row">
+      <div class="vwrap reveal d2"><div data-video="V7WJJUDH260" data-title="EP.43 การวัดไดโอดและทรานซิสเตอร์ในวงจร ที่ไม่มีไฟเลี้ยงด้วยมิเตอร์ดิจิตอล" data-credit="CEW Media" data-len="6:35"></div></div>
+      <div class="reveal d3"><ul class="pts small"><li>ช่างทำอะไรก่อนวัด?</li><li>ค่าบนแผงวงจร<b>ต่างจาก</b>ค่าที่วัดตัวเปล่าไหม?</li><li>ช่วงทรานซิสเตอร์ข้ามได้ (เรียนหน่วยที่ 3)</li></ul></div>
+    </div>
+    <div class="src">คลิป <sup class="ref"><a href="#videos">[V4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="มิเตอร์แบบเข็ม: ขั้วกลับกัน">
+  <div class="body">
+    <div class="kicker reveal">มิเตอร์แบบเข็ม (ย่านโอห์ม)</div>
+    <h2 class="title reveal d1">สาย<span class="hl">สีดำ</span> = ขั้วบวกของแบตเตอรี่ภายใน</h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 430px"><img src="../assets/img/analog-multimeter.jpg" alt="มัลติมิเตอร์แบบเข็ม" style="width:380px"><div class="credit">ภาพ: KENPEI, CC BY-SA 3.0</div></div>
+      <div class="reveal d3">
+        <table class="t compact">
+          <tr><th>มิเตอร์</th><th>ไบแอสตรงเมื่อ</th></tr>
+          <tr><td>ดิจิทัล (→|)</td><td><b class="c-rose">แดง</b>ที่ A</td></tr>
+          <tr><td>เข็ม (Ω)</td><td><b>ดำ</b>ที่ A → เข็มขึ้น</td></tr>
+        </table>
+        <p class="small frag" style="margin-top:18px">⚠️ นักเรียนที่สลับใช้มิเตอร์ 2 แบบ มัก<b>ตัดสินขาผิด</b>เพราะจุดนี้</p>
+      </div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="คลิป: วัดไดโอดด้วยมิเตอร์เข็ม">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">🎬 มิเตอร์เข็ม: ดูว่าเข็มขึ้นตอนสายดำอยู่ขาไหน <span class="extra">เสริม</span></div>
+    <h2 class="title reveal d1" style="font-size:52px;margin-bottom:12px">วัดไบแอสตรง → วัดรั่ว ด้วยมิเตอร์เข็ม</h2>
+    <div class="row">
+      <div class="vwrap reveal d2"><div data-video="DwwDEbKSkR8" data-title="การวัดไดโอด โดยมัลติมิเตอร์" data-credit="ครูวิ ซ่อมได้" data-len="4:58"></div></div>
+      <div class="reveal d3"><ul class="pts small"><li>ขั้นแรกวัด<b>ไบแอสตรง</b> ดูว่าช็อตไหม</li><li>แล้ว<b>วัดรั่ว</b>ด้วยย่าน ×10k</li><li>ลองกดปุ่ม “มิเตอร์เข็ม” ในตัวจำลองดูด้วย</li></ul></div>
+    </div>
+    <div class="src">คลิป <sup class="ref"><a href="#videos">[V5]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act" data-title="🙋 ถูกหรือผิด: เรื่องการวัด">
+  <div class="body">
+    <div><span class="act-badge">🙋 ถูกหรือผิด?</span><span class="act-meta">ยืน = ถูก · นั่ง = ผิด · ข้อละ 15 วินาที</span></div>
+    <h2 class="title" style="font-size:58px;margin-bottom:14px">5 ข้อ ลุก-นั่ง ทั้งห้อง</h2>
+    <table class="t left compact" style="width:100%">
+      <tr><th>ข้อ</th><th>ข้อความ</th><th>เฉลย</th></tr>
+      <tr><td>1</td><td>วัดไดโอดบนแผงวงจรขณะเปิดเครื่องได้ จะได้ค่าจริง</td><td class="frag bad">ผิด ต้องปิดไฟ</td></tr>
+      <tr><td>2</td><td>ไดโอดดีจะขึ้นตัวเลขทิศหนึ่ง และ OL อีกทิศหนึ่ง</td><td class="frag ok">ถูก</td></tr>
+      <tr><td>3</td><td>OL ทั้งสองทิศ แปลว่าไดโอดลัดวงจร</td><td class="frag bad">ผิด = ขาด</td></tr>
+      <tr><td>4</td><td>มิเตอร์เข็ม เข็มขึ้นเมื่อสายดำอยู่ที่แอโนด</td><td class="frag ok">ถูก</td></tr>
+      <tr><td>5</td><td>ไดโอดรั่วยังใช้งานต่อได้ เพราะทิศหนึ่งยังนำกระแส</td><td class="frag bad">ผิด ไม่ควรใช้</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="คลิป: ขาด ช็อต รั่ว">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">🎬 ทบทวนอาการเสีย 3 แบบ <span class="extra">เสริม</span> · ดูต่อที่บ้าน</div>
+    <h2 class="title reveal d1" style="font-size:52px;margin-bottom:12px">วัดไดโอดขาด ช็อต รั่ว อย่างเข้าใจ</h2>
+    <div class="row">
+      <div class="vwrap reveal d2"><div data-video="GpmfzcubeRk" data-title="วัดไดโอดอย่างเข้าใจ วัดไดโอดขาด ช็อต รั่ว" data-credit="ELECTECH_88" data-len="10:02"></div></div>
+      <div class="reveal d3"><ul class="pts small"><li>ช่างอธิบายว่าต้องเข้าใจ<b>สเปคมิเตอร์</b>และ<b>สเปคไดโอด</b></li><li>เทียบกับ<b>ตารางหมอไดโอด</b>ของเรา</li></ul></div>
+    </div>
+    <div class="src">คลิป <sup class="ref"><a href="#videos">[V6]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ฝึกคิด 5.3">
+  <div class="body center">
+    <div class="kicker reveal">ฝึกคิด 5.3 · คำถามท้ายใบความรู้ ข้อ 3–4</div>
+    <ol class="steps" start="3" style="margin-top:16px;counter-reset:st 2">
+      <li class="reveal d1">ไดโอดตัวหนึ่งวัดในโหมดทดสอบไดโอดได้ <b class="mono">0.000</b> ทั้งสองทิศ อยู่ในสภาพใด</li>
+      <li class="reveal d2">เหตุใดการวัดไดโอดด้วย<b>มิเตอร์แบบเข็ม</b>จึงต้องวาง<b>สายสีดำ</b>ที่ขาแอโนด</li>
+    </ol>
+    <p class="small reveal d3 c-sec">💬 คุยในกลุ่ม 2 นาที แล้วสุ่มเลขที่ตอบ</p>
+  </div>
+</section>
+
+<!-- ================= 5.4 วงจรหาค่าคุณลักษณะ ================= -->
+<section class="slide section sec-4" data-tag="5.4 วงจรหาค่าคุณลักษณะ" data-title="5.4 การต่อวงจรหาค่าคุณลักษณะของไดโอด">
+  <div class="big-no">5.4</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.4</div>
+    <h2 class="reveal d1">ต่อวงจร<br>หาค่าคุณลักษณะ</h2>
+    <p class="lead reveal d2">จากจุดเดียวบนจอ → กราฟทั้งเส้น</p>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="โหมดไดโอดให้แค่จุดเดียว">
+  <div class="body">
+    <div class="kicker reveal">ทำไมต้องต่อวงจร</div>
+    <h2 class="title reveal d1">โหมดทดสอบไดโอด = กราฟแค่ <span class="hl">1 จุด</span></h2>
+    <div class="row center">
+      <div class="box sun reveal d2" style="text-align:center"><div class="icon">📍</div><p class="small">มิเตอร์จ่ายกระแสค่าเดียว (≈ 1 mA)<br>→ ได้ V<sub>D</sub> ค่าเดียว</p></div>
+      <div class="box tint reveal d3" style="text-align:center"><div class="icon">📈</div><p class="small">อยากได้<b>กราฟทั้งเส้น</b><br>→ ปรับแรงดันเป็นขั้น ๆ<br>แล้ววัดทีละจุด</p></div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.4 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="วงจรหาค่าคุณลักษณะ (ภาพที่ 1.8)">
+  <div class="body">
+    <div class="kicker reveal">ภาพที่ 1.8 · วงจรหาค่าคุณลักษณะไบแอสตรง</div>
+    <h2 class="title reveal d1">V<sub>S</sub> 0–12 V · R 1 kΩ · D1 1N4007 · โวลต์มิเตอร์คร่อม D1</h2>
+    <div class="row center">
+      <div class="diagram reveal d2" style="flex:0 0 700px">
+        <svg viewBox="0 0 640 400" aria-label="วงจรแหล่งจ่าย VS อนุกรมตัวต้านทาน 1 กิโลโอห์ม และไดโอด 1N4007 มีโวลต์มิเตอร์วัดคร่อมไดโอด">
+          <g fill="none" stroke="#2a2733" stroke-width="4"><path d="M90,70 H500 V330 H90 Z"/><path d="M500,120 H590 V170"/><path d="M590,230 V280 H500"/></g>
+          <rect x="60" y="170" width="60" height="60" style="fill:var(--paper)"/><line x1="60" y1="188" x2="120" y2="188" stroke="#2a2733" stroke-width="6"/><line x1="74" y1="212" x2="106" y2="212" stroke="#2a2733" stroke-width="10"/>
+          <text x="128" y="186" font-size="32" font-weight="700" fill="#d6455d">+</text><text x="128" y="234" font-size="32" font-weight="700">−</text>
+          <text x="10" y="275" font-size="26">V<tspan baseline-shift="sub" font-size="18">S</tspan> 0–12 V</text>
+          <rect x="230" y="52" width="130" height="36" style="fill:var(--paper)"/><path d="M230,70 l10,-14 l16,28 l16,-28 l16,28 l16,-28 l16,28 l16,-28 l18,14" fill="none" stroke="#2a2733" stroke-width="4"/>
+          <text x="232" y="38" font-size="26">R 1 kΩ</text>
+          <rect x="470" y="150" width="60" height="100" style="fill:var(--paper)"/><path d="M478,165 H522 L500,232 Z" fill="#fff" stroke="#2a2733" stroke-width="4"/><line x1="476" y1="234" x2="524" y2="234" stroke="#2a2733" stroke-width="5"/>
+          <text x="392" y="206" font-size="26">D1</text><text x="370" y="232" font-size="20" fill="#5d5866">1N4007</text>
+          <circle cx="590" cy="200" r="30" fill="#fff" stroke="#2a2733" stroke-width="4"/><text x="579" y="210" font-size="30" font-weight="700" font-family="Prompt">V</text>
+          <text x="560" y="155" font-size="22" fill="#00878f">V<tspan baseline-shift="sub" font-size="15">D</tspan></text>
+          <path d="M160,100 H440" stroke="#e8742c" stroke-width="4" stroke-dasharray="14 10"/><path d="M440,92 l14,8 l-14,8 z" fill="#e8742c"/><text x="280" y="128" font-size="24" fill="#e8742c">I<tspan baseline-shift="sub" font-size="16">D</tspan></text>
+        </svg>
+      </div>
+      <ol class="steps small" style="flex:1">
+        <li class="frag">ปรับ V<sub>S</sub> เป็นขั้น ๆ</li>
+        <li class="frag">วัด <b>V<sub>D</sub></b> ทุกขั้น (มิเตอร์เครื่องเดียว)</li>
+        <li class="frag">คำนวณ <b>I<sub>D</sub></b> จากกฎของโอห์มที่ R</li>
+      </ol>
+    </div>
+    <div class="src">ที่มา: ภาพที่ 1.8 ใบความรู้ที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup> · วาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="สูตรคำนวณกระแส">
+  <div class="body">
+    <div class="kicker reveal">กฎของโอห์มที่ตัวต้านทาน · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">ไม่ต้องย้ายสายไปวัดกระแส</h2>
+    <div class="row center">
+      <div style="flex:1.2">
+        <div class="calc">
+          <span class="frag">แรงดันคร่อม R: V<sub>R</sub> = V<sub>S</sub> − V<sub>D</sub></span>
+          <span class="frag">กระแสผ่าน R = กระแสผ่าน D (อนุกรม)</span>
+        </div>
+        <p class="formula frag" style="margin-top:16px">I<sub>D</sub> = (V<sub>S</sub> − V<sub>D</sub>) ÷ R</p>
+      </div>
+      <div class="box rose frag"><div class="icon">💥</div><p class="small">ย้ายสายไปวัดกระแส เสี่ยง<b>ต่อแอมมิเตอร์ผิด</b>จน<b>ฟิวส์ขาด</b></p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ตัวอย่างที่ 1: VS 5 V">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่างในใบความรู้ · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">V<sub>S</sub> = 5 V · วัด V<sub>D</sub> ได้ 0.65 V · R = 1 kΩ</h2>
+    <div class="row center">
+      <div class="calc" style="flex:1">
+        <span class="frag">① I<sub>D</sub> = (V<sub>S</sub> − V<sub>D</sub>) ÷ R</span>
+        <span class="frag">② = (5 − 0.65) ÷ 1000</span>
+        <span class="frag">③ = 4.35 ÷ 1000 = 0.00435 A</span>
+        <span class="frag"><span class="answer">I<sub>D</sub> = 4.35 mA</span></span>
+      </div>
+      <div class="box sun frag" style="flex:0 0 520px"><h3>จุดบนกราฟ</h3><p class="calc" style="font-size:36px;margin:0">(V<sub>D</sub>, I<sub>D</sub>) = (0.65 V, 4.35 mA)</p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ตัวอย่างที่ 2–3">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่างที่ 2–3 · กด → ทีละขั้น · R = 1 kΩ</div>
+    <h2 class="title reveal d1">ฝึกหาจุดบนกราฟอีก 2 จุด</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box reveal d2"><h3>② V<sub>S</sub> = 2 V · V<sub>D</sub> = 0.58 V</h3>
+        <div class="calc"><span class="frag">I<sub>D</sub> = (2 − 0.58) ÷ 1000</span><span class="frag">= <b>1.42 mA</b></span></div></div>
+      <div class="box reveal d3"><h3>③ V<sub>S</sub> = 8 V · V<sub>D</sub> = 0.66 V</h3>
+        <div class="calc"><span class="frag">I<sub>D</sub> = (8 − 0.66) ÷ 1000</span><span class="frag">= <b>7.34 mA</b></span></div></div>
+    </div>
+    <p class="small frag" style="margin-top:20px">💡 V<sub>S</sub> เพิ่ม 4 เท่า (2 → 8 V) กระแสเพิ่ม ≈ 5 เท่า แต่ V<sub>D</sub> เพิ่มแค่ <b>0.08 V</b> = ส่วนที่ชันของกราฟ</p>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ไบแอสกลับในวงจรเดียวกัน">
+  <div class="body">
+    <div class="kicker reveal">กลับขั้วไดโอด · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">ไบแอสกลับ: V<sub>D</sub> ≈ V<sub>S</sub> และ I<sub>D</sub> ≈ 0</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box blue reveal d2"><h3 class="c-blue">ตัวอย่าง: V<sub>S</sub> = 5 V กลับขั้ว D1</h3>
+        <div class="calc" style="font-size:36px"><span class="frag">วัด V<sub>D</sub> ≈ 5.00 V</span><span class="frag">I<sub>D</sub> = (5 − 5.00) ÷ 1000 ≈ <b>0</b></span></div></div>
+      <div class="box sun reveal d3"><h3>แปลว่าอะไร?</h3>
+        <p class="small frag">แรงดัน<b>ตกคร่อมไดโอดทั้งหมด</b> R ไม่มีแรงดัน → <b>ไม่มีกระแส</b></p>
+        <p class="small frag">ยืนยันว่าไดโอด<b>กั้นกระแส</b>ในทิศนี้</p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="🙋 แข่งคำนวณ ID">
+  <div class="body" style="top:112px">
+    <div><span class="act-badge">🙋 แข่งคำนวณเป็นกลุ่ม</span><span class="act-meta">ข้อละ 1 นาที · R = 1 kΩ · ตอบเป็น mA</span></div>
+    <h2 class="title" style="font-size:54px;margin-bottom:6px">I<sub>D</sub> = (V<sub>S</sub> − V<sub>D</sub>) ÷ R</h2>
+    <div class="row">
+      <table class="t compact" style="flex:1.2">
+        <tr><th>ข้อ</th><th>V<sub>S</sub></th><th>V<sub>D</sub> ที่วัดได้</th><th>I<sub>D</sub></th></tr>
+        <tr><td>1</td><td class="mono">3 V</td><td class="mono">0.61 V</td><td class="frag mono">2.39 mA</td></tr>
+        <tr><td>2</td><td class="mono">10 V</td><td class="mono">0.68 V</td><td class="frag mono">9.32 mA</td></tr>
+        <tr><td>3</td><td class="mono">1 V</td><td class="mono">0.53 V</td><td class="frag mono">0.47 mA</td></tr>
+        <tr><td>4</td><td class="mono">10 V (กลับขั้ว)</td><td class="mono">10.00 V</td><td class="frag mono">≈ 0</td></tr>
+      </table>
+      <div style="flex:1"><div data-timer="60"></div><div data-board="6" style="margin-top:14px"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="แล็บเสมือน: วงจรหาค่าคุณลักษณะ">
+  <div class="body" style="top:108px">
+    <div class="kicker reveal">แล็บเสมือน · กดค่า V<sub>S</sub> → อ่านมิเตอร์ → 📍 ลงจุด</div>
+    <h2 class="title reveal d1" style="font-size:46px;margin-bottom:6px">ครูสาธิต 2–3 จุด แล้วนักเรียนทำครบในใบงานตอนที่ 3–4</h2>
+    <div class="reveal d2"><div data-sim="curve"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ฝึกคิด 5.4">
+  <div class="body center">
+    <div class="kicker reveal">ฝึกคิด 5.4 · คำถามท้ายใบความรู้ ข้อ 5</div>
+    <h2 class="title reveal d1">ไดโอดอนุกรม R 1 kΩ จ่าย <b>10 V</b><br>วัด V<sub>D</sub> ได้ <b>0.68 V</b> จงคำนวณกระแส</h2>
+    <div class="calc frag" style="text-align:center">I = (10 − 0.68) ÷ 1000 = <span class="answer">9.32 mA</span></div>
+  </div>
+</section>
+
+<!-- ================= ใบงานที่ 1.2 ================= -->
+<section class="slide section sec-5" data-tag="ใบงานที่ 1.2" data-title="ใบงานที่ 1.2 การวัดทดสอบไดโอดและหากราฟคุณลักษณะ">
+  <div class="big-no">1.2</div>
+  <div class="body center">
+    <div class="label reveal">ใบงานที่ 1.2 · ปฏิบัติ</div>
+    <h2 class="reveal d1">การวัดทดสอบไดโอด<br>และหากราฟคุณลักษณะ</h2>
+    <p class="lead reveal d2">4 ตอน · 20 คะแนน · ผ่าน 16 คะแนน</p>
+  </div>
+</section>
+
+<section class="slide sec-5" data-title="ทำได้ 2 ทาง: ของจริง หรือ แล็บเสมือน">
+  <div class="body">
+    <div class="kicker reveal">เลือกตามอุปกรณ์ที่มี · ตารางบันทึกผลใช้แผ่นเดียวกัน</div>
+    <h2 class="title reveal d1">ทำได้ 2 ทาง</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box reveal d2"><h3>🛠️ ทาง ก: อุปกรณ์จริง</h3><ul class="pts small">
+        <li>มัลติมิเตอร์ดิจิทัล <b>1 เครื่อง/คน</b></li>
+        <li>แหล่งจ่าย <b>0–12 V</b> · แผงต่อวงจร · สายต่อ</li>
+        <li>1N4007 · 1N4148 · LED แดง · ไดโอด X, Y</li>
+        <li>R 1 kΩ 0.5 W · คู่มือ 1N4007</li></ul></div>
+      <div class="box tint reveal d3"><h3>💻 ทาง ข: แล็บเสมือน</h3><ul class="pts small">
+        <li>ตอนที่ 1: <b>มัลติมิเตอร์เสมือน</b> (2 หน้าถัดไป)</li>
+        <li>ตอนที่ 2: ตารางคู่มือในสไลด์ 5.2</li>
+        <li>ตอนที่ 3–4: <b>วงจรเสมือน</b> ภาพที่ 1.8</li>
+        <li>เปิดบนมือถือ/คอมพิวเตอร์ได้</li></ul></div>
+    </div>
+    <div class="src">ที่มา: ใบงานที่ 1.2 ข้อ 5 <sup class="ref"><a href="#refs">[1]</a></sup> · ทาง ข เพิ่มเติมสำหรับห้องที่ไม่มีอุปกรณ์ครบ</div>
+  </div>
+</section>
+
+<section class="slide sec-5" data-title="ข้อควรระวังในใบงาน">
+  <div class="body">
+    <div class="kicker reveal">คำแนะนำ / ข้อควรระวัง (ทาง ก)</div>
+    <h2 class="title reveal d1">⚠️ 3 กฎก่อนจ่ายไฟ</h2>
+    <ol class="steps">
+      <li class="reveal d2">วัดด้วยโหมดทดสอบไดโอด<b>ขณะไม่มีไฟเลี้ยง</b>วงจรเท่านั้น</li>
+      <li class="reveal d3"><b>ปิดแหล่งจ่าย</b>ทุกครั้งก่อนเปลี่ยนหรือกลับขั้วไดโอด และ<b>ให้ครูตรวจวงจร</b>ก่อนจ่ายไฟ</li>
+      <li class="reveal d4"><b>ห้าม</b>ต่อไดโอดเข้ากับแหล่งจ่ายโดย<b>ไม่มีตัวต้านทานจำกัดกระแส</b></li>
+    </ol>
+    <p class="small reveal d5 c-sec">บันทึก<b>ค่าที่วัดได้จริง</b> ไม่ลอกค่าจากเพื่อนหรือจากตัวอย่าง (ประเมินพฤติกรรม 15 คะแนน)</p>
+    <div class="src">ที่มา: ใบงานที่ 1.2 ข้อ 6 และจุดประสงค์ 4.6 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-5" data-title="ใบงาน ตอนที่ 1–2">
+  <div class="body">
+    <div class="kicker reveal">ขั้นตอนการปฏิบัติงาน</div>
+    <h2 class="title reveal d1">ตอนที่ 1–2</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box orange reveal d2"><h3 class="c-orange">ตอนที่ 1 วัดด้วยมัลติมิเตอร์ (6 คะแนน)</h3>
+        <p class="small">วัดไดโอด <b>5 ตัว</b> ทั้งสองทิศ (1N4007, 1N4148, LED แดง, X, Y) → บันทึกค่า → <b>ตัดสินสภาพ</b>ตามตารางหมอไดโอด</p></div>
+      <div class="box tint reveal d3"><h3>ตอนที่ 2 อ่านคู่มือ (3 คะแนน)</h3>
+        <p class="small">อ่าน V<sub>RRM</sub> I<sub>F(AV)</sub> I<sub>FSM</sub> V<sub>F</sub> ของ 1N4007 <b>พร้อมหน่วย</b> · วงจรย้อนกลับ <b>300 V</b> ควรเลือกเบอร์ใด เพราะอะไร</p></div>
+    </div>
+    <div class="src">ที่มา: ใบงานที่ 1.2 ข้อ 7 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-5" data-title="ใบงาน ตอนที่ 3–4">
+  <div class="body">
+    <div class="kicker reveal">ขั้นตอนการปฏิบัติงาน</div>
+    <h2 class="title reveal d1">ตอนที่ 3–4</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box blue reveal d2"><h3 class="c-blue">ตอนที่ 3 ไบแอสตรง (8 คะแนน)</h3>
+        <p class="small">ต่อวงจรภาพที่ 1.8 → ปรับ V<sub>S</sub> = <span class="mono">0, 0.5, 1, 2, 3, 5, 8, 10</span> V → วัด V<sub>D</sub> → คำนวณ I<sub>D</sub> → <b>เขียนกราฟ</b></p></div>
+      <div class="box green reveal d3"><h3 class="c-green">ตอนที่ 4 ไบแอสกลับ (3 คะแนน)</h3>
+        <p class="small"><b>ปิดแหล่งจ่าย</b> กลับขั้วไดโอด → V<sub>S</sub> = 5 และ 10 V → วัด V<sub>D</sub> คำนวณ I<sub>D</sub> → <b>สรุปพฤติกรรม</b></p></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:20px">💡 รอคิวแหล่งจ่าย? ทำ<b>ตอนที่ 2</b> ก่อนได้ · เขียนกราฟด้วย<b>ค่าที่วัดจริง</b> ไม่ใช่ค่าจากสไลด์</p>
+    <div class="src">ที่มา: ใบงานที่ 1.2 ข้อ 7 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-5" data-title="แล็บเสมือน ตอนที่ 1: วัดไดโอด 5 ตัว">
+  <div class="body" style="top:108px">
+    <div class="kicker reveal">💻 ทาง ข · ตอนที่ 1 · วัดทั้งสองทิศ แล้วจดลงตาราง</div>
+    <h2 class="title reveal d1" style="font-size:46px;margin-bottom:6px">มัลติมิเตอร์เสมือน: ไดโอด 5 ตัวของใบงาน</h2>
+    <div class="reveal d2"><div data-sim="dmm" data-set="d4007,d4148,led,x,y"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-5" data-title="แล็บเสมือน ตอนที่ 3–4: วงจรภาพที่ 1.8">
+  <div class="body" style="top:108px">
+    <div class="kicker reveal">💻 ทาง ข · ตอนที่ 3–4 · จด V<sub>D</sub> ทุกค่า แล้วคำนวณ I<sub>D</sub> เอง</div>
+    <h2 class="title reveal d1" style="font-size:46px;margin-bottom:6px">แล็บเสมือน: หาค่าคุณลักษณะไบแอสตรงและไบแอสกลับ</h2>
+    <div class="reveal d2"><div data-sim="curve"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-5 act" data-title="🛠️ ลงมือทำใบงาน 1.2">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">🛠️ ลงมือทำใบงานที่ 1.2</span><span class="act-meta">รายบุคคล · 70 นาที</span></div>
+    <h2 class="title">ครูตรวจวงจรก่อนจ่ายไฟทุกครั้ง ✋</h2>
+    <div data-timer="4200"></div>
+    <p class="small" style="margin-top:16px">พิมพ์ <a href="worksheet.html">ใบงานที่ 1.2</a> · เสร็จก่อน? ไปทำ <a href="exercises.html">แบบฝึกหัดออนไลน์</a> ต่อได้เลย</p>
+  </div>
+</section>
+
+<section class="slide sec-5" data-title="เกณฑ์การประเมินใบงาน 20 คะแนน">
+  <div class="body">
+    <div class="kicker reveal">การประเมินผลใบงานที่ 1.2</div>
+    <h2 class="title reveal d1">20 คะแนน · ผ่าน <span class="hl">16</span> คะแนน (80%)</h2>
+    <table class="t left compact reveal d2" style="width:100%">
+      <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนน</th></tr>
+      <tr><td>1</td><td>วัดไดโอดครบทั้งสองทิศ ค่าอยู่ในช่วงที่ยอมรับ และตัดสินสภาพไดโอด X และ Y ถูกต้อง (ตอนที่ 1)</td><td class="mono">6</td></tr>
+      <tr><td>2</td><td>อ่านค่าพิกัด 1N4007 ถูกต้องพร้อมหน่วย และเลือกเบอร์ไดโอดพร้อมเหตุผลได้ (ตอนที่ 2)</td><td class="mono">3</td></tr>
+      <tr><td>3</td><td>ต่อวงจรถูกต้องก่อนจ่ายไฟ บันทึกค่าครบ คำนวณกระแสถูก และเขียนกราฟจากค่าจริง (ตอนที่ 3)</td><td class="mono">8</td></tr>
+      <tr><td>4</td><td>บันทึกค่าไบแอสกลับและสรุปพฤติกรรมของไดโอดได้ถูกต้อง (ตอนที่ 4)</td><td class="mono">3</td></tr>
+    </table>
+    <div class="src">ที่มา: ใบงานที่ 1.2 ข้อ 9 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<!-- ================= ปิดบทเรียน ================= -->
+<section class="slide sec-0" data-tag="สรุปบทเรียน" data-title="สรุปบทเรียน (1)">
+  <div class="body">
+    <div class="kicker reveal">สรุป (1)</div>
+    <h2 class="title reveal d1">อ่านกราฟเป็น อ่านคู่มือเป็น</h2>
+    <div class="grid g2" style="gap:26px">
+      <div class="box orange reveal d2"><h3 class="c-orange">5.1 กราฟคุณลักษณะ</h3><p class="small">คัตอิน <b>Si 0.7 V · Ge 0.3 V</b> · หลังคัตอิน V<sub>D</sub> แทบคงที่ · ไบแอสกลับมีแค่กระแสรั่ว จนถึง <b>V<sub>BR</sub></b> แล้วเสีย</p></div>
+      <div class="box tint reveal d3"><h3>5.2 คู่มืออุปกรณ์</h3><p class="small">1N4007: V<sub>RRM</sub> <b>1000 V</b> · I<sub>F(AV)</sub> <b>1 A</b> · I<sub>FSM</sub> <b>30 A</b> · เลือก V<sub>RRM</sub> <b>≥ 2 เท่า</b></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="สรุปบทเรียน (2)">
+  <div class="body">
+    <div class="kicker reveal">สรุป (2)</div>
+    <h2 class="title reveal d1">วัดเป็น ตัดสินเป็น</h2>
+    <div class="grid g2" style="gap:26px">
+      <div class="box blue reveal d2"><h3 class="c-blue">5.3 มัลติมิเตอร์</h3><p class="small">ดี = <b>0.5–0.7 / OL</b> · ลัด = <b>0 / 0</b> · ขาด = <b>OL / OL</b> · ปิดไฟก่อนวัด · มิเตอร์เข็ม<b>สายดำ = บวก</b></p></div>
+      <div class="box green reveal d3"><h3 class="c-green">5.4 วงจรหาค่าคุณลักษณะ</h3><p class="small">I<sub>D</sub> = (V<sub>S</sub> − V<sub>D</sub>) ÷ R · ไบแอสกลับ V<sub>D</sub> ≈ V<sub>S</sub> · I<sub>D</sub> ≈ 0</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="สรุปหน่วยที่ 1">
+  <div class="body">
+    <div class="kicker reveal">ปิดหน่วยที่ 1 งานวัดและทดสอบไดโอด</div>
+    <h2 class="title reveal d1">ตอนนี้เราเป็นช่างที่ “ดูไดโอดเป็น” แล้ว ✅</h2>
+    <div class="grid g4" style="gap:22px">
+      <div class="box tint tile reveal d2"><div class="icon">⚛️</div><h3>โครงสร้าง</h3><p>สาร P, N<br>รอยต่อพีเอ็น</p></div>
+      <div class="box sun tile reveal d3"><div class="icon">🔣</div><h3>ชนิดและขา</h3><p>สัญลักษณ์<br>แถบสี = K</p></div>
+      <div class="box orange tile reveal d4"><div class="icon">📄</div><h3>คู่มือ</h3><p>V<sub>RRM</sub> I<sub>F(AV)</sub><br>เลือกเบอร์แทน</p></div>
+      <div class="box blue tile reveal d5"><div class="icon">🩺</div><h3>วัดทดสอบ</h3><p>ดี ลัด ขาด รั่ว<br>กราฟคุณลักษณะ</p></div>
+    </div>
+    <p class="small reveal d5" style="margin-top:26px">🔜 สัปดาห์ที่ 3 หน่วยที่ 2: นำไดโอดไปทำ<b>วงจรเรียงกระแส</b> ในแหล่งจ่ายไฟ</p>
+    <div class="src">ที่มา: ผลลัพธ์การเรียนรู้หน่วยที่ 1 และตารางหน่วยการเรียนรู้ <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="🎲 สุ่มตอบคำถามท้ายใบความรู้">
+  <div class="body">
+    <div><span class="act-badge">🎲 สุ่มเลขที่ตอบ</span><span class="act-meta">ตอบถูกได้คะแนนกลุ่ม</span></div>
+    <h2 class="title" style="font-size:58px">คำถามท้ายใบความรู้ 1.2 ทั้ง 5 ข้อ</h2>
+    <div class="row">
+      <ol class="small" style="flex:1.4;padding-left:40px;margin:0">
+        <li>แรงดันคัตอินคืออะไร Si และ Ge ≈ เท่าใด</li>
+        <li>V<sub>RRM</sub> และ I<sub>F(AV)</sub> หมายถึงอะไร ใช้เลือกไดโอดอย่างไร</li>
+        <li>วัดได้ 0.000 ทั้งสองทิศ ไดโอดอยู่ในสภาพใด</li>
+        <li>ทำไมมิเตอร์เข็มต้องวางสายดำที่ขาแอโนด</li>
+        <li>10 V · R 1 kΩ · V<sub>D</sub> 0.68 V กระแสเท่าใด</li>
+      </ol>
+      <div style="flex:1"><div data-picker="40"></div><div data-board="6" style="margin-top:16px"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="กิจกรรมต่อไป">
+  <div class="body center" style="text-align:center">
+    <div class="kicker reveal">กิจกรรมต่อไป</div>
+    <h2 class="title reveal d1">ทบทวน ฝึก แล้ววัดผล</h2>
+    <div class="grid g3 reveal d2" style="gap:30px">
+      <a class="box tint" href="exercises.html" style="text-decoration:none;color:inherit"><div class="icon">✏️</div><h3>แบบฝึกหัด</h3><p class="small">4 ชุด ตรวจคำตอบทันที</p></a>
+      <a class="box orange" href="quiz.html" style="text-decoration:none;color:inherit"><div class="icon">📝</div><h3 class="c-orange">แบบทดสอบ 20 ข้อ</h3><p class="small">หลังเรียน (เทียบกับก่อนเรียน)</p></a>
+      <a class="box green" href="worksheet.html" style="text-decoration:none;color:inherit"><div class="icon">🖨️</div><h3 class="c-green">ใบงานที่ 1.2</h3><p class="small">พิมพ์ส่งครู</p></a>
+    </div>
+    <p class="small reveal d3" style="margin-top:30px">📖 สัปดาห์หน้า: หน่วยที่ 2 <b>วงจรเรียงกระแสและวงจรกรองแรงดัน</b></p>
+  </div>
+</section>
+
+<section class="slide sec-0" id="videos" data-tag="คลิปวิดีโอ" data-title="รายการคลิปวิดีโอ">
+  <div class="body" style="font-size:23px;line-height:1.4">
+    <h2 class="title" style="font-size:54px;margin-bottom:14px">คลิปวิดีโอในบทเรียน</h2>
+    <ol style="margin:0;padding-left:20px;list-style:none">
+      <li style="margin-bottom:9px"><b>[V1]</b> somMCU. <i>ไดโอด ช็อทกี้ กับ ซิลิกอน ยอมให้ไฟไหลผ่านที่แรงดันตกคร่อมอย่างน้อยเท่าไร เบอร์ 1N5819 กับ 1N4007</i> (13:20). https://www.youtube.com/watch?v=2-yww2coPWQ</li>
+      <li style="margin-bottom:9px"><b>[V2]</b> Cars &amp; Electronics. <i>ดาต้าชีทไดโอดเบอร์1N4001-1N4007</i> (13:17). https://www.youtube.com/watch?v=P2yKWbtsLxU</li>
+      <li style="margin-bottom:9px"><b>[V3]</b> สุพล การรัม. <i>วิธีวัดไดโอดด้วยมิเตอร์ดิจิตอล</i> (1:25). https://www.youtube.com/watch?v=baAMBUisG-I</li>
+      <li style="margin-bottom:9px"><b>[V4]</b> CEW Media. <i>EP.43 การวัดไดโอดและทรานซิสเตอร์ในวงจร ที่ไม่มีไฟเลี้ยงด้วยมิเตอร์ดิจิตอล</i> (6:35). https://www.youtube.com/watch?v=V7WJJUDH260</li>
+      <li style="margin-bottom:9px"><b>[V5]</b> ครูวิ ซ่อมได้. <i>การวัดไดโอด โดยมัลติมิเตอร์</i> (4:58). https://www.youtube.com/watch?v=DwwDEbKSkR8</li>
+      <li style="margin-bottom:9px"><b>[V6]</b> ELECTECH_88. <i>Test Diode วัดไดโอดอย่างเข้าใจ (คลิปนี้มีคำตอบ) วัดไดโอดขาด ซ๊อต รั่ว</i> (10:02). https://www.youtube.com/watch?v=GpmfzcubeRk</li>
+    </ol>
+    <p class="tiny" style="margin-top:10px">ตรวจสอบรหัสคลิปและการเล่นในหน้าเว็บ (playableInEmbed) เมื่อ 25 ตุลาคม 2569 · ความยาวคลิปตามที่ YouTube แสดง</p>
+  </div>
+</section>
+
+<section class="slide sec-0" id="refs" data-tag="เอกสารอ้างอิง" data-title="เอกสารอ้างอิงและเครดิตภาพ">
+  <div class="body" style="font-size:23px;line-height:1.4">
+    <h2 class="title" style="font-size:54px;margin-bottom:14px">เอกสารอ้างอิง และเครดิตภาพ</h2>
+    <ol style="margin:0;padding-left:56px">
+      <li style="margin-bottom:9px">จิรกิตติ์ วราภรณ์. <i>แผนการจัดการเรียนรู้ วิชา 20127-2004 อุปกรณ์และวงจรอิเล็กทรอนิกส์</i> (หลักสูตร ปวช. 2567 สาขาวิชาเมคคาทรอนิกส์และหุ่นยนต์) หน่วยที่ 1 ใบความรู้ที่ 1.2 ใบงานที่ 1.2 และแบบทดสอบหลังเรียนหน่วยที่ 1. วิทยาลัยเทคนิคอุตรดิตถ์. (เอกสารต้นฉบับของบทเรียนนี้)</li>
+      <li style="margin-bottom:9px">Boylestad, R. L., &amp; Nashelsky, L. (2013). <i>Electronic Devices and Circuit Theory</i> (11th ed.). Pearson. (กราฟคุณลักษณะ สมการไดโอด การเปรียบเทียบ Si กับ Ge)</li>
+      <li style="margin-bottom:9px">Vishay General Semiconductor. (2020, April 29). <i>1N4001 thru 1N4007 General Purpose Plastic Rectifier</i> (Doc. 88503). https://www.vishay.com/docs/88503/1n4001.pdf</li>
+    </ol>
+    <div class="box" style="margin-top:16px;padding:12px 24px;font-size:20px;line-height:1.4">
+      <b>เครดิตภาพ (Wikimedia Commons)</b> · มัลติมิเตอร์ในโหมดทดสอบไดโอด (ภาพที่ 1.7): Dmitry G, Public domain (File:Multimeters-MS8215-Diode.JPG, ครอปภาพ) · มัลติมิเตอร์แบบเข็ม: KENPEI, CC BY-SA 3.0 (File:Analog Multimeter.jpg) · กราฟ แผนภาพ วงจร และตัวจำลองทั้งหมดวาดขึ้นใหม่
+    </div>
+    <p class="tiny" style="margin-top:8px">เข้าถึงแหล่งข้อมูลออนไลน์เมื่อ 25 ตุลาคม 2569</p>
+  </div>
+</section>
+
+</main>
+</div>
+<script src="../assets/js/diodes.js"></script>
+<script src="../assets/js/sims.js"></script>
+<script src="../assets/js/deck.js"></script>
+</body>
+</html>

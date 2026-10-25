@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ใบงานที่ 1.2 วัดทดสอบไดโอด</title>
+<meta name="description" content="ใบงานที่ 1.2 การวัดทดสอบไดโอดและหากราฟคุณลักษณะ วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์ สำหรับพิมพ์ A4 ทำได้ทั้งกับอุปกรณ์จริงและแล็บเสมือน">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="../assets/css/sims.css">
+<style>
+    .ws h2 { font-size: 20px; margin: 18px 0 6px; color: var(--teal); }
+    .ws h3 { font-size: 17px; margin: 12px 0 4px; }
+    .ws p, .ws li { margin: 2px 0; }
+    .ws ol, .ws ul { margin: 2px 0 6px; padding-left: 26px; }
+    .ws table.grid { width: 100%; border-collapse: collapse; margin: 6px 0 10px; background: #fff; }
+    .ws table.grid th, .ws table.grid td { border: 1px solid #555; padding: 4px 8px; vertical-align: top; }
+    .ws table.grid th { background: var(--cream); font-family: var(--font-display); font-weight: 500; text-align: center; }
+    .ws table.grid td.n { text-align: center; width: 2.4em; }
+    .ws table.grid.blank td { height: 10mm; }
+    .ws table.grid.vals th, .ws table.grid.vals td { text-align: center; font-family: var(--font-mono); }
+    .ws table.grid.vals td { height: 10mm; }
+    .ws table.score td:nth-child(3), .ws table.score td:nth-child(4) { text-align: center; width: 6em; }
+    .ws .lines div { border-bottom: 1px dotted #000; height: 9mm; }
+    .ws .head { border: 1.5px solid #000; padding: 8px 12px; margin-bottom: 10px; background: #fff; }
+    .ws .head .line { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    .ws .warn { border-left: 4px solid var(--rose); background: var(--rose-soft); padding: 6px 12px; border-radius: 0 10px 10px 0; }
+    .ws .alt { border-left: 4px solid var(--teal); background: var(--teal-soft); padding: 6px 12px; border-radius: 0 10px 10px 0; margin: 6px 0; }
+    .fig { display: block; margin: 6px auto; max-width: 520px; width: 100%; }
+    .fig line, .fig path { stroke: #000; stroke-width: 2.5; fill: none; }
+    .fig .bg { fill: #fff; stroke: none; }
+    .fig text { font: 15px 'Sarabun', sans-serif; fill: #000; stroke: none; }
+    .plot { display: block; margin: 6px auto; width: 100%; max-width: 640px; }
+    .plot .mi { stroke: #bbb; stroke-width: .5; } .plot .ma { stroke: #777; stroke-width: 1; } .plot .ax { stroke: #000; stroke-width: 2; }
+    .plot text { font: 12px 'Prompt', sans-serif; fill: #000; }
+    .rating { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
+    .rating div { border-bottom: 1px dotted #000; padding: 6px 0 2px; }
+    @media print {
+        body.doc { font-size: 12pt; line-height: 1.4; }
+        .ws h2 { color: #000; font-size: 14.5pt; margin: 4mm 0 1.5mm; }
+        .ws h3 { font-size: 13.5pt; }
+        .ws table.grid th { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .ws table.grid th, .ws table.grid td { border-color: #000; font-size: 12pt; }
+        .ws .warn, .ws .alt { background: none; border: 1px solid #000; border-radius: 0; }
+        .ws .avoid { break-inside: avoid; }
+        .ws .p2 { break-before: page; }
+    }
+</style>
+</head>
+<body class="doc">
+<div class="doc-wrap">
+    <nav class="topbar no-print">
+        <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="exercises.html">แบบฝึกหัด</a> · <a href="quiz.html">แบบทดสอบ</a>
+    </nav>
+
+    <section class="card no-print">
+        <span class="chip orange">สัปดาห์ที่ 2 · ปฏิบัติ</span>
+        <h1 style="margin-top:8px">ใบงานที่ 1.2 สำหรับพิมพ์</h1>
+        <p class="muted" style="margin:0 0 10px">พิมพ์คนละ 1 ชุด (A4 ประมาณ 4 หน้า) · ทำกับ<b>อุปกรณ์จริง</b> หรือ<b>แล็บเสมือน</b>ในสไลด์ก็ได้ ตารางบันทึกผลใช้แผ่นเดียวกัน</p>
+        <div class="btn-row"><button class="btn" type="button" onclick="window.print()">🖨 พิมพ์ใบงาน (A4)</button><a class="btn ghost" href="slides.html">💻 เปิดสไลด์ (แล็บเสมือนอยู่ในหัวข้อใบงานที่ 1.2)</a></div>
+    </section>
+
+    <main class="ws card">
+        <div class="head">
+            <b>ใบงานที่ 1.2 การวัดทดสอบไดโอดและหากราฟคุณลักษณะ</b><br>
+            วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์ (20127-2004) · หน่วยที่ 1 งานวัดและทดสอบไดโอด · สอนครั้งที่ 2
+            <div class="line" style="margin-top:4px"><span>ชื่อ-สกุล ......................................................</span><span>ชั้น ...............</span><span>เลขที่ ........</span><span>คะแนน ............ / 20</span></div>
+            <div class="line" style="margin-top:2px"><span>ทำงานด้วย ☐ ทาง ก อุปกรณ์จริง &nbsp; ☐ ทาง ข แล็บเสมือน</span></div>
+        </div>
+
+        <h2>1. ผลลัพธ์การเรียนรู้จากการปฏิบัติงาน</h2>
+        <p>วัดทดสอบไดโอดด้วยมัลติมิเตอร์และตัดสินสภาพ ดี ลัดวงจร หรือขาด อ่านค่าพิกัดของไดโอด 1N4007 จากคู่มืออุปกรณ์ ต่อวงจรไบแอสตรงและไบแอสกลับ บันทึกค่าแรงดันและกระแส และเขียนกราฟคุณลักษณะของไดโอดจากค่าที่วัดได้จริง</p>
+        <h2>2. จุดประสงค์เชิงพฤติกรรม</h2>
+        <p>4.4 อธิบายกราฟคุณลักษณะของไดโอดและค่าพิกัดสำคัญในคู่มืออุปกรณ์ได้ (K2) · 4.5 วัดทดสอบไดโอดด้วยมัลติมิเตอร์และต่อวงจรหากราฟคุณลักษณะได้ตามขั้นตอน (S2) · 4.7 ปฏิบัติงานวัดทดสอบไดโอดและตัดสินสภาพดีหรือเสียของไดโอดได้ถูกต้อง (Ap1)</p>
+        <h2>3. เครื่องมือ วัสดุ และอุปกรณ์</h2>
+        <ul><li><b>ทาง ก:</b> มัลติมิเตอร์แบบดิจิทัล 1 เครื่อง/คน · แหล่งจ่ายไฟฟ้ากระแสตรงปรับค่าได้ 0–12 V แผงต่อวงจรทดลองพร้อมสายต่อ · ไดโอด 1N4007 1N4148 แอลอีดีสีแดง และไดโอดที่ชำรุดซึ่งครูเตรียมไว้ 2 ตัว (หมายเลข X และ Y) · ตัวต้านทาน 1 kΩ 0.5 W · คู่มืออุปกรณ์ของไดโอด 1N4007</li>
+            <li><b>ทาง ข (ไม่มีอุปกรณ์จริง):</b> โทรศัพท์หรือคอมพิวเตอร์ เปิดสไลด์สัปดาห์ที่ 2 กด <b>T</b> แล้วเลือกสไลด์ “แล็บเสมือน ตอนที่ 1” และ “แล็บเสมือน ตอนที่ 3–4” · ตอนที่ 2 ใช้ตารางค่าพิกัดในสไลด์หัวข้อ 5.2</li></ul>
+        <h2>4. คำแนะนำ / ข้อควรระวัง</h2>
+        <div class="warn avoid"><ol style="margin:0">
+            <li>วัดไดโอดด้วยโหมดทดสอบไดโอดขณะไม่มีไฟเลี้ยงวงจรเท่านั้น</li>
+            <li>ปิดแหล่งจ่ายทุกครั้งก่อนเปลี่ยนหรือกลับขั้วไดโอด และให้ครูตรวจวงจรก่อนจ่ายไฟ</li>
+            <li>ห้ามต่อไดโอดเข้ากับแหล่งจ่ายโดยไม่มีตัวต้านทานจำกัดกระแส</li>
+            <li>บันทึกค่าที่วัดได้จริงของตนเอง ไม่ลอกค่าจากเพื่อนหรือจากตัวอย่างในสไลด์</li></ol></div>
+
+        <div class="avoid">
+            <h2>5. ขั้นตอนการปฏิบัติงาน</h2>
+            <h3>ตอนที่ 1 การวัดทดสอบไดโอดด้วยมัลติมิเตอร์ (6 คะแนน)</h3>
+            <ol><li>ตั้งมัลติมิเตอร์ที่โหมดทดสอบไดโอด (→|) วัดไดโอดทุกตัวทั้งสองทิศ และบันทึกค่าที่มิเตอร์แสดง</li>
+                <li>ตัดสินสภาพของไดโอดแต่ละตัวตามตารางในใบความรู้ที่ 1.2 (ดี · ลัดวงจร · ขาด · รั่ว)</li></ol>
+            <table class="grid blank">
+                <tr><th>ที่</th><th>ไดโอด</th><th>แดงที่ A ดำที่ K</th><th>แดงที่ K ดำที่ A</th><th>สภาพ</th></tr>
+                <tr><td class="n">1</td><td>1N4007</td><td></td><td></td><td></td></tr>
+                <tr><td class="n">2</td><td>1N4148</td><td></td><td></td><td></td></tr>
+                <tr><td class="n">3</td><td>แอลอีดีสีแดง</td><td></td><td></td><td></td></tr>
+                <tr><td class="n">4</td><td>ไดโอดหมายเลข X</td><td></td><td></td><td></td></tr>
+                <tr><td class="n">5</td><td>ไดโอดหมายเลข Y</td><td></td><td></td><td></td></tr>
+            </table>
+        </div>
+
+        <div class="avoid">
+            <h3>ตอนที่ 2 การอ่านค่าพิกัดจากคู่มืออุปกรณ์ (3 คะแนน)</h3>
+            <p>1. อ่านค่าพิกัดของไดโอด 1N4007 จากคู่มืออุปกรณ์ แล้วบันทึกค่าพร้อมหน่วย</p>
+            <div class="rating"><div>V<sub>RRM</sub> =</div><div>I<sub>F(AV)</sub> =</div><div>I<sub>FSM</sub> =</div><div>V<sub>F</sub> =</div></div>
+            <p style="margin-top:8px">2. ถ้าวงจรมีแรงดันย้อนกลับสูงสุด 300 โวลต์ ควรเลือกไดโอดเบอร์ใดในตระกูล 1N4001–1N4007 เพราะเหตุใด</p>
+            <div class="lines"><div></div><div></div></div>
+        </div>
+
+        <div class="avoid p2">
+            <h3>ตอนที่ 3 การหาค่าคุณลักษณะไบแอสตรง (8 คะแนน)</h3>
+            <ol><li>ต่อวงจรตามภาพที่ 1.8 ในใบความรู้ที่ 1.2 ใช้ไดโอด 1N4007 และตัวต้านทาน 1 kΩ ให้ครูตรวจก่อนจ่ายไฟ</li>
+                <li>ปรับ V<sub>S</sub> ตามค่าในตาราง วัด V<sub>D</sub> แล้วคำนวณ I<sub>D</sub> = (V<sub>S</sub> − V<sub>D</sub>) ÷ R</li>
+                <li>เขียนกราฟ I<sub>D</sub> เทียบกับ V<sub>D</sub> ลงในตารางกราฟ</li></ol>
+            <svg class="fig" viewBox="0 0 520 220" aria-label="วงจรภาพที่ 1.8 แหล่งจ่าย VS ตัวต้านทาน 1 กิโลโอห์ม ไดโอด 1N4007 และโวลต์มิเตอร์คร่อมไดโอด">
+                <path d="M60,40 H380 V190 H60 Z"/><path d="M380,80 H450 V100"/><path d="M450,140 V160 H380"/>
+                <rect class="bg" x="40" y="95" width="40" height="40"/><line x1="40" y1="105" x2="80" y2="105"/><line x1="50" y1="122" x2="70" y2="122" style="stroke-width:6"/>
+                <text x="84" y="104">+</text><text x="84" y="134">−</text><text x="14" y="160">V<tspan baseline-shift="sub" font-size="11">S</tspan></text><text x="0" y="180">0–12 V</text>
+                <rect class="bg" x="170" y="30" width="80" height="20"/><path d="M170,40 l8,-10 l12,20 l12,-20 l12,20 l12,-20 l12,20 l12,-10"/>
+                <text x="178" y="20">R 1 kΩ</text>
+                <rect class="bg" x="365" y="95" width="30" height="45"/><path d="M368,100 L392,100 L380,128 Z" style="fill:#fff"/><line x1="366" y1="130" x2="394" y2="130"/>
+                <text x="270" y="120">D1 1N4007</text>
+                <circle cx="450" cy="120" r="20" style="fill:#fff;stroke:#000;stroke-width:2.5"/><text x="444" y="126" style="font-weight:700">V</text><text x="476" y="125">V<tspan baseline-shift="sub" font-size="11">D</tspan></text>
+            </svg>
+            <table class="grid vals">
+                <tr><th>V<sub>S</sub> (V)</th><td>0</td><td>0.5</td><td>1</td><td>2</td><td>3</td><td>5</td><td>8</td><td>10</td></tr>
+                <tr><th>V<sub>D</sub> (V)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><th>I<sub>D</sub> (mA)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </table>
+            <svg class="plot" viewBox="0 0 640 420" aria-label="ตารางกราฟ แกนนอน VD 0 ถึง 0.8 โวลต์ แกนตั้ง ID 0 ถึง 10 มิลลิแอมแปร์" id="plot"></svg>
+        </div>
+
+        <div class="avoid">
+            <h3>ตอนที่ 4 การทดลองไบแอสกลับ (3 คะแนน)</h3>
+            <p>1. ปิดแหล่งจ่าย กลับขั้วไดโอด แล้วจ่าย V<sub>S</sub> เท่ากับ 5 และ 10 โวลต์ วัด V<sub>D</sub> และคำนวณ I<sub>D</sub></p>
+            <table class="grid vals" style="max-width:520px">
+                <tr><th>V<sub>S</sub></th><th>V<sub>D</sub> (V)</th><th>I<sub>D</sub> (mA)</th></tr>
+                <tr><td>5 V</td><td></td><td></td></tr>
+                <tr><td>10 V</td><td></td><td></td></tr>
+            </table>
+            <p>สรุปพฤติกรรมของไดโอดในย่านไบแอสกลับ</p>
+            <div class="lines"><div></div><div></div></div>
+        </div>
+
+        <div class="avoid">
+            <h2>6. สรุปและวิจารณ์ผล</h2>
+            <div class="lines"><div></div><div></div><div></div></div>
+        </div>
+
+        <div class="avoid">
+            <h2>7. การประเมินผล (คะแนนเต็ม 20 ผ่านที่ 16 คะแนน ร้อยละ 80)</h2>
+            <table class="grid score">
+                <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้</th></tr>
+                <tr><td class="n">1</td><td>วัดไดโอดครบทั้งสองทิศ ค่าอยู่ในช่วงที่ยอมรับ และตัดสินสภาพไดโอด X และ Y ถูกต้อง (ตอนที่ 1)</td><td>6</td><td></td></tr>
+                <tr><td class="n">2</td><td>อ่านค่าพิกัด 1N4007 ถูกต้องพร้อมหน่วย และเลือกเบอร์ไดโอดพร้อมเหตุผลได้ (ตอนที่ 2)</td><td>3</td><td></td></tr>
+                <tr><td class="n">3</td><td>ต่อวงจรถูกต้องก่อนจ่ายไฟ บันทึกค่าครบ คำนวณกระแสถูก และเขียนกราฟจากค่าจริง (ตอนที่ 3)</td><td>8</td><td></td></tr>
+                <tr><td class="n">4</td><td>บันทึกค่าไบแอสกลับและสรุปพฤติกรรมของไดโอดได้ถูกต้อง (ตอนที่ 4)</td><td>3</td><td></td></tr>
+                <tr><th colspan="2" style="text-align:right">รวม</th><td><b>20</b></td><td></td></tr>
+            </table>
+            <p class="muted" style="font-size:13px">ที่มา: ใบงานที่ 1.2 ในแผนการจัดการเรียนรู้ วิชา 20127-2004 (นายจิรกิตติ์ วราภรณ์) · ทาง ข (แล็บเสมือน) เพิ่มเติมสำหรับห้องที่ไม่มีอุปกรณ์ครบ · แบบวงจรและตารางกราฟวาดขึ้นใหม่ตามต้นฉบับ</p>
+        </div>
+    </main>
+</div>
+<script>
+/* ตารางกราฟ: V_D 0–0.8 V (ช่องย่อย 0.02 V) · I_D 0–10 mA (ช่องย่อย 0.25 mA) */
+(function () {
+    const x0 = 60, y0 = 372, W = 560, H = 340, svg = document.getElementById('plot');
+    let s = '';
+    for (let i = 0; i <= 40; i++) { const x = x0 + W * i / 40; s += `<line class="${i % 5 ? 'mi' : 'ma'}" x1="${x}" y1="${y0}" x2="${x}" y2="${y0 - H}"/>`; }
+    for (let j = 0; j <= 40; j++) { const y = y0 - H * j / 40; s += `<line class="${j % 4 ? 'mi' : 'ma'}" x1="${x0}" y1="${y}" x2="${x0 + W}" y2="${y}"/>`; }
+    for (let i = 0; i <= 8; i++) s += `<text x="${x0 + W * i / 8 - 9}" y="${y0 + 18}">${(i / 10).toFixed(1)}</text>`;
+    for (let j = 0; j <= 10; j += 2) s += `<text x="${x0 - 24}" y="${y0 - H * j / 10 + 4}">${j}</text>`;
+    s += `<line class="ax" x1="${x0}" y1="${y0}" x2="${x0 + W}" y2="${y0}"/><line class="ax" x1="${x0}" y1="${y0}" x2="${x0}" y2="${y0 - H}"/>
+        <text x="${x0 + W - 70}" y="${y0 + 36}">V<tspan baseline-shift="sub" font-size="9">D</tspan> (V)</text><text x="4" y="${y0 - H - 6}">I<tspan baseline-shift="sub" font-size="9">D</tspan> (mA)</text>`;
+    svg.innerHTML = s;
+})();
+</script>
+</body>
+</html>

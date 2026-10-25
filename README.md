@@ -8,11 +8,13 @@
 - `w01/quiz.html` แบบทดสอบ 20 ข้อ ก่อน/หลังเรียน
 - `w01/worksheet.html` ใบงานที่ 1.1 สำหรับพิมพ์
 - `w01/answers.html` เฉลยสำหรับครู (ต้องใส่รหัสครู) รวมแนวคำตอบใบงาน
-- `assets/js/diodes.js` วาดสัญลักษณ์ไดโอด/วงจรอนุกรม · `assets/js/sims.js` กิจกรรมและตัวจำลอง
+- `w02/slides.html` สไลด์สัปดาห์ที่ 2 การวัดทดสอบไดโอดและการอ่านคู่มืออุปกรณ์ (มีคลิป YouTube แล็บเสมือน มัลติมิเตอร์เสมือน)
+- `w02/exercises.html` แบบฝึกหัด 77 ข้อ · `w02/quiz.html` แบบทดสอบ 20 ข้อ · `w02/worksheet.html` ใบงานที่ 1.2 · `w02/answers.html` เฉลยครู
+- `assets/js/diodes.js` วาดสัญลักษณ์ไดโอด/วงจรอนุกรม · `assets/js/sims.js` กิจกรรม ตัวจำลอง (`dope` `hole` `pn` `bias` `iv` `dmm` `curve` `ds`) และวิดีโอ (`data-video`)
 
 ## แก้เฉลย / เปลี่ยนรหัสครู
-1. แก้ `_private/answers-w01.json` (โจทย์ตัวเลขใส่ `calc` ให้สคริปต์ตรวจสูตรซ้ำได้)
-2. รัน `node _private/encrypt-answers.mjs w01 "รหัสใหม่"` (ต้องมี Node.js 18 ขึ้นไป)
-3. อัปโหลดไฟล์ `w01/answers.enc.js` และ `w01/check-data.js` ใหม่
+1. แก้ `_private/answers-wNN.json` (โจทย์ตัวเลขใส่ `calc` ให้สคริปต์ตรวจสูตรซ้ำได้)
+2. รัน `node _private/encrypt-answers.mjs wNN "รหัสใหม่"` (ต้องมี Node.js 18 ขึ้นไป)
+3. อัปโหลดไฟล์ `wNN/answers.enc.js` และ `wNN/check-data.js` ใหม่
 
 โฟลเดอร์ `_private/` และ `บทเรียน/` อยู่ใน `.gitignore` — ห้ามอัปขึ้น GitHub

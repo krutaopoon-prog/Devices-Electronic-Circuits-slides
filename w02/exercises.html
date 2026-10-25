@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบฝึกหัด สัปดาห์ที่ 2</title>
+<meta name="description" content="แบบฝึกหัด สัปดาห์ที่ 2 การวัดทดสอบไดโอดและการอ่านคู่มืออุปกรณ์ วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์ ตรวจคำตอบทันทีและพิมพ์เป็นใบงานได้">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="../assets/css/sims.css">
+<style>
+    .set-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: space-between; }
+    .part { margin-top: 18px; }
+    .part h3 { color: var(--teal); }
+    .items { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 12px 22px; }
+    .items.wide { grid-template-columns: 1fr; }
+    .item { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+    .item .no { font-family: var(--font-display); color: var(--ink-soft); min-width: 2.2em; }
+    .item .val { font-family: var(--font-mono); font-size: 19px; }
+    .item input[type=text] { width: 7.5em; }
+    .item.conv { flex-wrap: nowrap; white-space: nowrap; }
+    .item select { max-width: 100%; }
+    .item.sym { flex-direction: column; align-items: flex-start; }
+    .item.tt { flex-direction: column; align-items: flex-start; }
+    .item .fig { flex: 0 0 calc(100% - 3em); max-width: 330px; margin: 2px 0 4px; align-self: flex-start; }
+    .item:has(.fig) { align-items: flex-start; }
+    .item.num .numin { white-space: nowrap; }
+    .item.num input[type=text] { width: 6em; }
+    .item .qtext { flex: 1 1 260px; }
+    .feedback { font-weight: 600; min-width: 1.6em; }
+    .score { font-family: var(--font-display); font-size: 18px; }
+    .tt select { width: 3.6em; font-family: var(--font-mono); }
+    .opts { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 16px; background: var(--cream); border-radius: 10px; padding: 6px 12px; margin-bottom: 6px; }
+    .opts.col { flex-direction: column; }
+    .who { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; }
+    .who label { display: flex; flex-direction: column; font-size: 15px; color: var(--ink-soft); gap: 4px; }
+    .who input { width: 100%; }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+    #result .big { font: 500 40px var(--font-display); color: var(--teal); }
+    @media (max-width: 620px) { .who { grid-template-columns: 1fr 1fr; } .who label:first-child { grid-column: 1 / -1; } }
+    .random-note { display: none; }
+    .random .random-note { display: block; }
+    .sheet-head { border: 1.5px solid #000; padding: 8px 12px; margin-bottom: 8mm; font-size: 12.5pt; }
+    .sheet-head .line { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
+    .sheet-head .line span { white-space: nowrap; }
+    @media (max-width: 560px) { .items { grid-template-columns: 1fr; } }
+    @media print {
+        .set + .set { break-before: page; }
+        body[data-print-set] .set { display: none; }
+        body[data-print-set="s1"] .set[data-set="s1"], body[data-print-set="s2"] .set[data-set="s2"],
+        body[data-print-set="s3"] .set[data-set="s3"], body[data-print-set="s4"] .set[data-set="s4"],
+        body[data-print-set="s5"] .set[data-set="s5"] { display: block; break-before: auto; }
+        .items { grid-template-columns: 1fr 1fr; gap: 2mm 10mm; }
+        .items.wide { grid-template-columns: 1fr; }
+        .item { padding: 2.5mm 0; border-bottom: none; }
+        .doc .item input[type=text] { width: 34mm; }
+        .doc .item select { min-width: 30mm; }
+        .doc .tt select { min-width: 12mm; width: 12mm; }
+        .score { display: none; }
+        .opts { background: none; border: 1px solid #999; font-size: 12pt; }
+        .part { break-inside: avoid; }
+        .item.sym .gate-svg { margin: 1mm 0; }
+        .gate-svg { width: 34mm; height: 17mm; }
+        .diode-svg { width: 36mm; height: 18mm; }
+        .item .fig { max-width: 62mm; }
+        .item:has(.fig) { break-inside: avoid; }
+        .doc .item.num input[type=text] { width: 24mm; }
+    }
+</style>
+</head>
+<body class="doc">
+<div class="doc-wrap">
+    <nav class="topbar no-print">
+        <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="quiz.html">แบบทดสอบ</a>
+        <span class="spacer"></span>
+        <a href="answers.html">สำหรับครู 🔒</a>
+    </nav>
+
+    <!-- หัวกระดาษใบงาน (แสดงเฉพาะตอนพิมพ์) -->
+    <div class="sheet-head print-only">
+        <b>แบบฝึกหัด สัปดาห์ที่ 2 การวัดทดสอบไดโอดและการอ่านคู่มืออุปกรณ์</b> · วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์
+        <div class="line"><span>ชื่อ-สกุล ......................................................</span><span>ชั้น ...............</span><span>เลขที่ ........</span></div>
+        <div class="line"><span>วันที่ ......../......../........</span><span>คะแนนที่ได้ ............ / <span class="total-print"></span></span></div>
+    </div>
+
+    <header class="card no-print">
+        <span class="chip orange">สัปดาห์ที่ 2 · หน่วยที่ 1</span>
+        <h1 style="margin-top:8px">แบบฝึกหัด: วัดทดสอบไดโอดและอ่านคู่มือ</h1>
+        <p class="muted" style="margin:0 0 12px">ทำทีละชุด แล้วกด “ตรวจคำตอบ” — ✓ = ถูก, ✗ = ลองใหม่อีกครั้ง (ทบทวนได้ในสไลด์) · ทำครบแล้วกด <b>ส่งคำตอบทั้งหมด</b> ท้ายหน้า เพื่อรับใบคะแนน</p>
+        <div class="who">
+            <label>ชื่อ-สกุล <input class="name-field" type="text" id="name" autocomplete="name"></label>
+            <label>ชั้น <input class="name-field" type="text" id="room"></label>
+            <label>เลขที่ <input class="name-field" type="text" id="no" inputmode="numeric"></label>
+        </div>
+        <div class="btn-row">
+            <button class="btn" type="button" data-print="all">🖨 พิมพ์ใบงานทั้งหมด</button>
+            <a class="btn ghost" href="answers.html">เฉลยสำหรับครู 🔒</a>
+        </div>
+    </header>
+
+    <main id="sets"></main>
+
+    <section class="card no-print" id="submitBox">
+        <h2>ส่งคำตอบทั้งหมด</h2>
+        <p class="muted" style="margin:0 0 6px">ระบบจะตรวจทุกชุด บันทึกคะแนนพร้อมเวลาส่ง และล็อกคำตอบ แล้วจึงพิมพ์ใบคะแนนได้</p>
+        <div class="btn-row">
+            <button class="btn orange" type="button" id="submitAll">📨 ส่งคำตอบทั้งหมด</button>
+            <button class="btn ghost" type="button" id="unlockAll" hidden>แก้คำตอบแล้วส่งใหม่</button>
+        </div>
+        <div id="result" aria-live="polite"></div>
+    </section>
+
+    <!-- ใบรายงานคะแนน (สร้างหลังกดส่ง แสดงบนจอและพิมพ์ได้) -->
+    <section class="score-sheet" id="scoreSheet" hidden aria-label="ใบรายงานคะแนน"></section>
+</div>
+
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/gates.js"></script>
+<script src="../assets/js/diodes.js"></script>
+<script src="exercises-data.js"></script>
+<script src="check-data.js"></script>
+<script src="../assets/js/scoresheet.js"></script>
+<script>
+/* ===========================================
+   แบบฝึกหัด: สร้างโจทย์จาก exercises-data.js, ตรวจคำตอบด้วยค่าแฮชใน check-data.js
+   =========================================== */
+(function () {
+    const C = LessonCommon, E = window.EXERCISES, H = window.CHECK;
+    const root = document.getElementById('sets');
+    const TH = ['ก', 'ข', 'ค', 'ง', 'จ', 'ฉ'];
+    let total = 0;
+
+    function convLabel(it) {
+        return `<span class="val">${C.esc(it.value)}<sub>${it.from}</sub></span> → ฐาน ${it.to} =`;
+    }
+
+    function itemHTML(it, n) {
+        const no = `<span class="no">${n}.</span>`;
+        const fig = it.fig ? `<span class="fig" data-loop="${it.fig}"></span>` : '';
+        if (it.type === 'conv') {
+            return `<div class="item conv" data-id="${it.id}">${no}${convLabel(it)}
+                <input type="text" inputmode="text" autocomplete="off" aria-label="คำตอบข้อ ${n}"><sub>${it.to}</sub><span class="feedback"></span></div>`;
+        }
+        if (it.type === 'tt') {
+            const rows = it.gate === 'NOT' ? [[0], [1]] : [[0, 0], [0, 1], [1, 0], [1, 1]];
+            const head = it.gate === 'NOT' ? '<th>A</th><th>Q</th>' : '<th>A</th><th>B</th><th>Q</th>';
+            const body = rows.map(r => `<tr>${r.map(v => `<td>${v}</td>`).join('')}<td><select aria-label="Q"><option value=""></option><option>0</option><option>1</option></select></td></tr>`).join('');
+            return `<div class="item tt" data-id="${it.id}" data-tt="${it.gate}"><div>${no}<b>${it.gate} gate</b> <span class="feedback"></span></div>
+                <table class="tt"><tr>${head}</tr>${body}</table></div>`;
+        }
+        if (it.type === 'num') {
+            return `<div class="item num" data-id="${it.id}" data-dp="${it.dp || 0}">${no}${fig}<span class="qtext">${it.q}</span>
+                <span class="numin"><input type="text" inputmode="decimal" autocomplete="off" aria-label="คำตอบข้อ ${n}"> ${it.unit || ''}</span><span class="feedback"></span></div>`;
+        }
+        const opts = '<option value=""></option>' + it.options.map(o => `<option>${C.esc(o)}</option>`).join('');
+        if (it.sym) {
+            return `<div class="item sym" data-id="${it.id}">${no}<span data-diode="${it.sym}" data-cls="diode-svg"></span>
+                <span><select aria-label="ชนิดไดโอดข้อ ${n}">${opts}</select> <span class="feedback"></span></span></div>`;
+        }
+        if (it.gate) {
+            return `<div class="item sym" data-id="${it.id}">${no}<span data-gate="${it.gate}"></span>
+                <span><select aria-label="ชื่อเกตข้อ ${n}">${opts}</select> <span class="feedback"></span></span></div>`;
+        }
+        return `<div class="item" data-id="${it.id}">${no}${fig}<span class="qtext">${it.q}</span>
+            <select aria-label="คำตอบข้อ ${n}">${opts}</select><span class="feedback"></span></div>`;
+    }
+
+    function partHTML(p) {
+        const wide = p.items.some(it => !it.fig && ((it.type === 'pick' && !it.gate && !it.sym && (it.q || '').length > 26) || (it.type === 'num' && (it.q || '').length > 26)));
+        let n = 0;
+        // ตัวเลือกที่ใช้ร่วมกันทั้งตอน แสดงเป็นรายการ (จำเป็นตอนพิมพ์ เพราะกระดาษมองไม่เห็นในช่องเลือก)
+        const o = p.items[0].options;
+        const shared = o && p.items.every(it => it.options && it.options.join('|') === o.join('|'));
+        const optList = shared ? `<div class="opts${o.some(x => x.length > 20) ? ' col' : ''}"><b>ตัวเลือก:</b> ${o.map(x => `<span>${C.esc(x)}</span>`).join('')}</div>` : '';
+        return `<div class="part"><h3>${p.title}</h3>${optList}<div class="items${wide ? ' wide' : ''}">${p.items.map(it => itemHTML(it, ++n)).join('')}</div></div>`;
+    }
+
+    function countItems(set) {
+        return set.parts.reduce((a, p) => a + p.items.reduce((b, it) => b + (it.type === 'tt' ? (it.gate === 'NOT' ? 2 : 4) : 1), 0), 0);
+    }
+
+    function renderSet(set) {
+        const sec = document.createElement('section');
+        sec.className = 'card set';
+        sec.dataset.set = set.id;
+        const max = countItems(set);
+        total += max;
+        sec.innerHTML = `
+            <div class="set-head"><h2 style="margin:0">${set.title}</h2><span class="score" aria-live="polite"></span></div>
+            <p class="note random-note no-print">โหมดฝึกเพิ่ม: โจทย์สุ่มใหม่ ตรวจแล้วจะแสดงคำตอบที่ถูกให้ด้วย</p>
+            <div class="parts">${set.parts.map(partHTML).join('')}</div>
+            <div class="btn-row">
+                <button class="btn" type="button" data-act="check">ตรวจคำตอบ</button>
+                <button class="btn ghost" type="button" data-act="clear">ล้างคำตอบ</button>
+                ${set.random ? '<button class="btn orange" type="button" data-act="random">🎲 สุ่มโจทย์ใหม่ (ฝึกเพิ่ม)</button><button class="btn ghost" type="button" data-act="std">กลับไปโจทย์ชุดมาตรฐาน</button>' : ''}
+                <button class="btn ghost" type="button" data-print="${set.id}">🖨 พิมพ์เฉพาะชุดนี้</button>
+            </div>`;
+        sec.dataset.max = max;
+        root.appendChild(sec);
+        Gates.render(sec);
+        if (window.Diodes) Diodes.render(sec);
+    }
+
+    /* --- ตรวจคำตอบ --- */
+    function mark(el, ok) {
+        el.classList.toggle('is-ok', ok === true);
+        el.classList.toggle('is-bad', ok === false);
+    }
+
+    function checkSet(sec) {
+        let got = 0;
+        const random = sec.classList.contains('random');
+        sec.querySelectorAll('.item').forEach(div => {
+            const fb = div.querySelector('.feedback');
+            if (div.classList.contains('tt')) {
+                const fn = Gates.FN[div.dataset.tt];
+                let all = true;
+                div.querySelectorAll('tr').forEach((tr, i) => {
+                    if (i === 0) return;
+                    const ins = Array.from(tr.querySelectorAll('td')).slice(0, -1).map(td => +td.textContent);
+                    const sel = tr.querySelector('select');
+                    if (sel.value === '') { mark(sel, null); all = false; return; }
+                    const ok = +sel.value === fn(...ins);
+                    mark(sel, ok); if (ok) got++; else all = false;
+                });
+                fb.innerHTML = all ? '<span class="ok">✓</span>' : '';
+                return;
+            }
+            const inp = div.querySelector('input, select');
+            if (inp.value.trim() === '') { mark(inp, null); fb.textContent = ''; return; }
+            let ok;
+            if (random) {
+                ok = C.norm(inp.value) === C.norm(div.dataset.ans);
+            } else {
+                const v = div.classList.contains('num') ? C.numNorm(inp.value, +div.dataset.dp) : inp.value;
+                const h = H.h[div.dataset.id];
+                ok = v !== '' && (Array.isArray(h) ? h : [h]).includes(C.answerHash(H.salt, div.dataset.id, v));
+            }
+            mark(inp, ok);
+            if (ok) got++;
+            fb.innerHTML = ok ? '<span class="ok">✓</span>' : '<span class="bad">✗</span>' + (random ? ` <span class="muted">(${C.esc(div.dataset.ans)})</span>` : '');
+        });
+        sec.querySelector('.score').textContent = `ได้ ${got} / ${sec.dataset.max} คะแนน`;
+        return got;
+    }
+
+    function clearSet(sec) {
+        sec.querySelectorAll('input, select').forEach(i => { i.value = ''; mark(i, null); });
+        sec.querySelectorAll('.feedback').forEach(f => f.textContent = '');
+        sec.querySelector('.score').textContent = '';
+    }
+
+    /* --- โหมดสุ่มโจทย์ชุดที่ 1 (คำตอบคำนวณจากโจทย์) --- */
+    function randomItems() {
+        const r = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+        const kinds = [
+            () => ({ value: String(r(10, 255)), from: 10, to: 2 }),
+            () => ({ value: String(r(10, 255)), from: 10, to: 2 }),
+            () => ({ value: String(r(20, 120)), from: 10, to: [3, 4, 5, 8][r(0, 3)] }),
+            () => ({ value: r(5, 255).toString(2), from: 2, to: 10 }),
+            () => ({ value: r(5, 255).toString(2), from: 2, to: 10 }),
+            () => { const b = [3, 5, 8][r(0, 2)]; return { value: r(20, 400).toString(b), from: b, to: 10 }; },
+            () => ({ value: String(r(30, 999)), from: 10, to: 16 }),
+            () => ({ value: r(16, 4095).toString(16).toUpperCase(), from: 16, to: 10 }),
+            () => ({ value: r(16, 255).toString(2), from: 2, to: 16 }),
+            () => ({ value: r(16, 255).toString(16).toUpperCase(), from: 16, to: 2 }),
+            () => ({ value: String(r(256, 2000)), from: 10, to: 16 }),
+            () => ({ value: r(256, 4095).toString(16).toUpperCase(), from: 16, to: 10 })
+        ];
+        return kinds.map((k, i) => Object.assign({ id: 'r' + i, type: 'conv' }, k()));
+    }
+
+    function setRandom(sec, on) {
+        const set = E.sets.find(s => s.id === sec.dataset.set);
+        const items = on ? randomItems() : set.parts[0].items;
+        sec.classList.toggle('random', on);
+        const part = { title: set.parts[0].title, items };
+        sec.querySelector('.parts').innerHTML = partHTML(part);
+        if (on) items.forEach(it => {
+            sec.querySelector(`[data-id="${it.id}"]`).dataset.ans = parseInt(it.value, it.from).toString(it.to).toUpperCase();
+        });
+        sec.querySelector('.score').textContent = '';
+    }
+
+    /* --- พิมพ์ใบงาน (ช่องคำตอบว่าง) --- */
+    function printSheet(which) {
+        document.body.classList.add('print-blank');
+        if (which !== 'all') document.body.dataset.printSet = which; else delete document.body.dataset.printSet;
+        const max = which === 'all' ? total : +root.querySelector(`[data-set="${which}"]`).dataset.max;
+        document.querySelector('.total-print').textContent = max;
+        // โหมดสุ่มไม่ตรงกับเฉลย จึงกลับไปโจทย์มาตรฐานก่อนพิมพ์
+        root.querySelectorAll('.set.random').forEach(sec => setRandom(sec, false));
+        window.print();
+    }
+    window.addEventListener('afterprint', () => { document.body.classList.remove('print-blank'); delete document.body.dataset.printSet; });
+
+    E.sets.forEach(renderSet);
+    document.querySelector('.total-print').textContent = total;
+
+    /* --- ส่งคำตอบทั้งหมด: ตรวจทุกชุด บันทึกคะแนน+เวลา ล็อกคำตอบ แล้วสร้างใบคะแนน --- */
+    let loadedAt = Date.now(), startedAt = null, confirmBlank = false, locked = false;
+    root.addEventListener('input', () => { if (!startedAt) startedAt = Date.now(); confirmBlank = false; });
+    root.addEventListener('change', () => { if (!startedAt) startedAt = Date.now(); confirmBlank = false; });
+    const resBox = document.getElementById('result');
+    const who = () => ({ name: document.getElementById('name').value.trim(), room: document.getElementById('room').value.trim(), no: document.getElementById('no').value.trim() });
+
+    function setLocked(on) {
+        locked = on;
+        root.classList.toggle('locked', on);
+        root.querySelectorAll('input, select').forEach(i => { i.disabled = on; });
+        root.querySelectorAll('[data-act]').forEach(b => { b.disabled = on; });
+        ['name', 'room', 'no'].forEach(id => { document.getElementById(id).disabled = on; });
+        document.getElementById('submitAll').disabled = on;
+        document.getElementById('unlockAll').hidden = !on;
+    }
+
+    function submitAll() {
+        if (locked) return;
+        const w = who();
+        if (!w.name || !w.room || !w.no) { resBox.innerHTML = '<p class="bad">กรุณากรอก ชื่อ-สกุล ชั้น และเลขที่ ด้านบนให้ครบก่อนส่ง</p>'; document.getElementById('name').focus(); return; }
+        if (root.querySelector('.set.random')) { resBox.innerHTML = '<p class="bad">ชุดที่ 1 อยู่ในโหมดฝึกเพิ่ม (โจทย์สุ่ม) — กด “กลับไปโจทย์ชุดมาตรฐาน” แล้วทำให้ครบก่อนส่ง</p>'; return; }
+        const blank = Array.from(root.querySelectorAll('input, select')).filter(i => i.value.trim() === '').length;
+        if (blank && !confirmBlank) {
+            confirmBlank = true;
+            resBox.innerHTML = `<p class="bad">ยังไม่ได้ตอบ ${blank} ช่อง — ถ้าต้องการส่งเลย ให้กด “ส่งคำตอบทั้งหมด” อีกครั้ง</p>`;
+            return;
+        }
+        const sets = Array.from(root.querySelectorAll('.set')).map(sec => ({
+            id: sec.dataset.set, title: E.sets.find(x => x.id === sec.dataset.set).title, got: checkSet(sec), max: +sec.dataset.max
+        }));
+        const score = sets.reduce((a, x) => a + x.got, 0);
+        const submittedAt = Date.now(), start = startedAt || loadedAt;
+        const k = 'dec-w02-ex:' + w.room + ':' + w.no + ':' + w.name;
+        const rec = C.store.get(k, { history: [] });
+        const attempt = rec.history.length + 1;
+        rec.history.push({ score, total, sets: sets.map(x => x.got), submittedAt, startedAt: start, attempt });
+        C.store.set(k, rec);
+        setLocked(true);
+
+        const detail = `<table class="ss-sets"><tr><th>ชุด</th><th>เรื่อง</th><th>ได้</th><th>เต็ม</th></tr>${sets.map((x, i) => {
+            const m = x.title.match(/^ชุดที่ \d+ (.*)$/);
+            return `<tr><td>${i + 1}</td><td>${C.esc(m ? m[1] : x.title)}</td><td><b>${x.got}</b></td><td>${x.max}</td></tr>`;
+        }).join('')}<tr><th colspan="2" style="text-align:right">รวม</th><td><b>${score}</b></td><td>${total}</td></tr></table>`;
+        ScoreSheet.render(document.getElementById('scoreSheet'), {
+            kind: 'แบบฝึกหัด', chapter: E.chapter, who: w, score, total, submittedAt, startedAt: start, attempt, detailHTML: detail
+        });
+        resBox.innerHTML = `<p class="ok" style="margin:10px 0 0">ส่งคำตอบเรียบร้อย · ${C.thaiDateTime(submittedAt)}</p>
+            <div class="big">${score} / ${total} คะแนน (${Math.round(score / total * 100)}%)</div>
+            <div class="score-actions" style="margin-top:10px">
+                <button class="btn orange" type="button" id="printScore">🖨 พิมพ์ใบคะแนน</button>
+                <span class="hint">ในหน้าต่างพิมพ์ เลือกปลายทาง “บันทึกเป็น PDF” แล้วนำไฟล์ไปแนบส่งใน Google Classroom</span>
+            </div>`;
+        document.getElementById('printScore').addEventListener('click', () => ScoreSheet.print());
+        document.getElementById('scoreSheet').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('submitAll').addEventListener('click', submitAll);
+    document.getElementById('unlockAll').addEventListener('click', () => {
+        setLocked(false);
+        confirmBlank = false;
+        resBox.innerHTML = '<p class="muted">ปลดล็อกแล้ว แก้คำตอบได้ — เมื่อส่งอีกครั้งจะนับเป็นการส่งครั้งถัดไป</p>';
+        document.getElementById('scoreSheet').hidden = true;
+    });
+
+    document.addEventListener('click', e => {
+        const p = e.target.closest('[data-print]');
+        if (p) { printSheet(p.dataset.print); return; }
+        const b = e.target.closest('[data-act]'); if (!b || locked) return;
+        const sec = b.closest('.set');
+        ({ check: () => checkSet(sec), clear: () => clearSet(sec), random: () => setRandom(sec, true), std: () => setRandom(sec, false) })[b.dataset.act]();
+    });
+})();
+</script>
+</body>
+</html>
