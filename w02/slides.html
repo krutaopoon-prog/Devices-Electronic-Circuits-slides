@@ -66,7 +66,7 @@
       <tr><td class="mono">0:15–0:30</td><td>แบบทดสอบก่อนเรียน</td><td>📱 ทำ 20 ข้อบนมือถือ</td></tr>
       <tr><td class="mono">0:30–1:15</td><td>5.1 กราฟคุณลักษณะ · 5.2 คู่มืออุปกรณ์</td><td>🙋 วาดกราฟทายก่อน · ตัวจำลอง · เกมเลือกเบอร์</td></tr>
       <tr><td class="mono">1:15–1:25</td><td>พัก</td><td>☕</td></tr>
-      <tr><td class="mono">1:25–2:10</td><td>5.3 วัดด้วยมัลติมิเตอร์ · 5.4 วงจรหากราฟ</td><td>🎬 คลิป · 🙋 หมอไดโอด · แข่งคำนวณ</td></tr>
+      <tr><td class="mono">1:25–2:10</td><td>5.3 วัดด้วยมัลติมิเตอร์ · 5.4 วงจรหากราฟ</td><td>🎬 คลิป · 🙋 หมอไดโอด · ฝึกคำนวณ</td></tr>
       <tr><td class="mono">2:10–3:20</td><td>ใบงานที่ 1.2</td><td>🛠️ วัดของจริง หรือ 💻 แล็บเสมือน</td></tr>
       <tr><td class="mono">3:20–3:35</td><td>แบบฝึกหัดออนไลน์</td><td>📱 ตรวจคำตอบทันที</td></tr>
       <tr><td class="mono">3:35–4:00</td><td>สรุปหน่วยที่ 1 + แบบทดสอบหลังเรียน</td><td>🎲 สุ่มตอบคำถาม · 📱 20 ข้อ</td></tr>
@@ -222,7 +222,7 @@
         <li>ไบแอสกลับ: มีกระแสไหม? ถ้าแรงดันย้อนกลับ<b>สูงมาก ๆ</b> ล่ะ?</li>
         <li>ชูกระดาษพร้อมกันทุกกลุ่ม เทียบกับเฉลยหน้าถัดไป</li>
       </ol>
-      <div style="flex:1;text-align:center"><div data-timer="240"></div><div data-board="6" style="margin-top:14px"></div></div>
+      <div style="flex:1;text-align:center"><div data-timer="240"></div></div>
     </div>
   </div>
 </section>
@@ -341,8 +341,129 @@
       <div class="box rose reveal d3"><h3 class="c-rose">แรงดันพังทลาย (V<sub>BR</sub>)</h3>
         <ul class="pts small"><li>ถึง V<sub>BR</sub> กระแส<b>พุ่งทันที</b></li><li>ไดโอดทั่วไป<b>ร้อนและเสียถาวร</b></li><li>ต้องเลือก V<sub>BR</sub> <b>สูงกว่า</b>แรงดันย้อนกลับในวงจรเสมอ</li></ul></div>
     </div>
-    <p class="small reveal d4" style="margin-top:22px">🔜 <b>ซีเนอร์ไดโอด</b>ออกแบบให้ทำงานในย่านพังทลายได้ ใช้รักษาระดับแรงดัน (หน่วยที่ 2)</p>
+    <p class="small reveal d4" style="margin-top:22px">🔜 <b>ซีเนอร์ไดโอด</b>ออกแบบให้ทำงานในย่านพังทลายได้ ใช้รักษาระดับแรงดัน (หน่วยที่ 2) · 5 หน้าถัดไปขยายความ V<sub>BR</sub> ทีละเรื่อง</p>
     <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="VBR คืออะไร อ่านชื่อให้ออก">
+  <div class="body">
+    <div class="kicker reveal">ขยายความ V<sub>BR</sub> ① · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">V<sub>BR</sub> = <span class="hl">Breakdown Voltage</span> = แรงดันพังทลาย</h2>
+    <div class="row center">
+      <div class="box reveal d2" style="flex:0 0 620px"><h3>แยกชื่อทีละส่วน</h3>
+        <table class="t compact" style="width:100%">
+          <tr><th>ตัวอักษร</th><th>มาจาก</th><th>แปลว่า</th></tr>
+          <tr class="frag"><td class="mono"><b>V</b></td><td>Voltage</td><td>แรงดัน</td></tr>
+          <tr class="frag"><td class="mono"><b>BR</b> (ตัวห้อย)</td><td><b>BR</b>eakdown</td><td>พังทลาย / ทะลุผ่าน</td></tr>
+        </table>
+        <p class="small frag" style="margin:14px 0 0">อ่านว่า “วี-บี-อาร์” · บางตำราเขียน V<sub>(BR)</sub> หรือ V<sub>(BR)R</sub> (R = Reverse ย้อนกลับ)</p></div>
+      <div class="box rose reveal d3" style="flex:1"><h3 class="c-rose">ความหมาย</h3>
+        <p class="small">แรงดัน<b>ไบแอสกลับ</b>ค่าที่ทำให้รอยต่อพีเอ็น<b>หยุดกั้นกระแส</b> กระแสย้อนกลับจึงเพิ่มจากระดับ µA เป็นระดับ mA–A อย่างรวดเร็ว</p>
+        <p class="small frag" style="margin:10px 0 0">บนกราฟอยู่<b>ฝั่งลบ</b> จึงเขียนเป็น <b>−V<sub>BR</sub></b> แต่เวลาพูดถึงค่า เราพูดเป็นตัวเลขบวก เช่น “V<sub>BR</sub> ประมาณ 1,000 V”</p></div>
+    </div>
+    <p class="small frag" style="margin-top:18px">💧 เปรียบเทียบ: <b>เขื่อน</b>กั้นน้ำ → ซึมผ่านนิดหน่อย (= กระแสรั่วไหล) · ถ้าน้ำดันเกินที่เขื่อนรับได้ เขื่อน<b>แตก</b> น้ำทะลักทันที (= ถึง V<sub>BR</sub>)</p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ทำไมถึงพังทลาย: หิมะถล่ม">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">ขยายความ V<sub>BR</sub> ② · เกิดอะไรขึ้นในรอยต่อ · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:10px">ทำไมถึง “พัง”? → ปรากฏการณ์ <span class="hl">หิมะถล่ม</span> (Avalanche)</h2>
+    <div class="row center">
+      <ol class="steps small" style="flex:1.25">
+        <li class="frag">ไบแอสกลับ → <b>บริเวณปลอดพาหะกว้างขึ้น</b> (สัปดาห์ที่ 1) ไดโอดกั้นกระแส</li>
+        <li class="frag">ยังมี<b>พาหะส่วนน้อย</b>จำนวนน้อยมากข้ามได้ → คือ<b>กระแสรั่วไหล</b> ระดับ µA</li>
+        <li class="frag">เพิ่มแรงดันย้อนกลับ → <b>สนามไฟฟ้า</b>ในรอยต่อแรงขึ้น เร่งพาหะเหล่านั้นให้วิ่งเร็วขึ้น</li>
+        <li class="frag">ถึง <b>V<sub>BR</sub></b>: พาหะเร็วจน<b>ชนอะตอม</b>แล้วกระแทกอิเล็กตรอนให้หลุดออกมาเพิ่ม</li>
+        <li class="frag">ตัวที่หลุดใหม่ถูกเร่งไปชนต่อ → <b>ทวีคูณ</b>เป็นลูกโซ่ กระแสพุ่ง</li>
+      </ol>
+      <div class="diagram reveal d2" style="flex:0 0 560px">
+        <svg viewBox="0 0 560 400" aria-label="การชนแบบลูกโซ่ อิเล็กตรอน 1 ตัว กลายเป็น 2 4 8 ตัว">
+          <g font-size="22" fill="#5d5866"><text x="40" y="30">รอบที่</text><text x="40" y="385">1</text><text x="190" y="385">2</text><text x="340" y="385">3</text><text x="480" y="385">4</text></g>
+          <g class="frag">
+            <circle cx="48" cy="200" r="16" fill="#3b6fd4"/>
+            <g stroke="#d6455d" stroke-width="3" fill="none"><path d="M64,200 L180,130"/><path d="M64,200 L180,270"/></g>
+            <circle cx="196" cy="130" r="16" fill="#3b6fd4"/><circle cx="196" cy="270" r="16" fill="#3b6fd4"/>
+            <g stroke="#d6455d" stroke-width="3" fill="none"><path d="M212,130 L330,95"/><path d="M212,130 L330,165"/><path d="M212,270 L330,235"/><path d="M212,270 L330,305"/></g>
+            <g fill="#3b6fd4"><circle cx="346" cy="95" r="14"/><circle cx="346" cy="165" r="14"/><circle cx="346" cy="235" r="14"/><circle cx="346" cy="305" r="14"/></g>
+            <g stroke="#d6455d" stroke-width="2.5" fill="none"><path d="M360,95 L470,75"/><path d="M360,95 L470,115"/><path d="M360,165 L470,145"/><path d="M360,165 L470,185"/><path d="M360,235 L470,215"/><path d="M360,235 L470,255"/><path d="M360,305 L470,285"/><path d="M360,305 L470,325"/></g>
+            <g fill="#3b6fd4"><circle cx="484" cy="75" r="11"/><circle cx="484" cy="115" r="11"/><circle cx="484" cy="145" r="11"/><circle cx="484" cy="185" r="11"/><circle cx="484" cy="215" r="11"/><circle cx="484" cy="255" r="11"/><circle cx="484" cy="285" r="11"/><circle cx="484" cy="325" r="11"/></g>
+            <g font-size="26" font-weight="700" fill="#d6455d"><text x="36" y="245">1</text><text x="186" y="320">2</text><text x="336" y="350">4</text><text x="506" y="210">8</text></g>
+          </g>
+        </svg>
+        <p class="small c-sec frag" style="margin:4px 0 0;text-align:center">1 → 2 → 4 → 8 → … เหมือน<b>หิมะก้อนเล็กกลิ้งจนถล่มทั้งภูเขา</b></p>
+      </div>
+    </div>
+    <div class="src">ที่มา: <span class="extra">เสริม</span> <sup class="ref"><a href="#refs">[2]</a></sup> · แผนภาพวาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="พังทลาย 2 แบบ: หิมะถล่ม กับ ซีเนอร์">
+  <div class="body">
+    <div class="kicker reveal">ขยายความ V<sub>BR</sub> ③ <span class="extra">เสริม</span></div>
+    <h2 class="title reveal d1">การพังทลายมี <span class="hl">2 แบบ</span></h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box blue reveal d2"><h3 class="c-blue">❄️ แบบหิมะถล่ม (Avalanche)</h3>
+        <ul class="pts small"><li>พาหะถูกเร่งจน<b>ชนแล้วทวีคูณ</b> (หน้าที่แล้ว)</li><li>เกิดในรอยต่อที่<b>เจือสารน้อย</b> บริเวณปลอดพาหะกว้าง</li><li>V<sub>BR</sub> <b>สูง</b> ระดับหลายสิบถึงหลายพันโวลต์</li><li>พบใน<b>ไดโอดเรียงกระแส</b> เช่น 1N4001–1N4007</li></ul></div>
+      <div class="box sun reveal d3"><h3>⚡ แบบซีเนอร์ (Zener)</h3>
+        <ul class="pts small"><li>รอยต่อ<b>เจือสารมาก</b> บริเวณปลอดพาหะ<b>บางมาก</b></li><li>สนามไฟฟ้าแรงจน<b>ดึงอิเล็กตรอนหลุดจากพันธะ</b>โดยตรง ไม่ต้องชน</li><li>V<sub>BR</sub> <b>ต่ำ</b> ประมาณไม่เกิน 5 V</li><li>ตั้งชื่อตามนักฟิสิกส์ Clarence Zener</li></ul></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:22px">💡 ทั้ง 2 แบบเรียกรวมว่า “ย่านพังทลาย” บนกราฟ · ผู้ผลิตกำหนด V<sub>BR</sub> ได้จาก<b>ปริมาณสารเจือ</b> · ซีเนอร์ไดโอดที่เรียนหน่วยที่ 2 อาศัยทั้งสองแบบ</p>
+    <div class="src">ที่มา: <span class="extra">เสริม</span> <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="พังแล้วทำไมไดโอดเสีย: ความร้อน">
+  <div class="body">
+    <div class="kicker reveal">ขยายความ V<sub>BR</sub> ④ · กด → ทีละขั้น</div>
+    <h2 class="title reveal d1">ตัวการที่ทำให้ไดโอดเสีย คือ <span class="hl">ความร้อน</span> P = V × I</h2>
+    <div class="grid g3" style="gap:24px">
+      <div class="box blue reveal d2"><h3 class="c-blue">① ไบแอสกลับปกติ</h3>
+        <div class="calc"><span class="frag">P = 1000 V × 5 µA</span><span class="frag">= 0.005 W</span><span class="frag"><span class="answer">5 mW เย็น</span></span></div></div>
+      <div class="box orange reveal d3"><h3 class="c-orange">② ไบแอสตรงเต็มที่</h3>
+        <div class="calc"><span class="frag">P = 1.1 V × 1 A</span><span class="frag">≈ 1.1 W</span><span class="frag"><span class="answer">งานปกติ</span></span></div></div>
+      <div class="box rose reveal d4"><h3 class="c-rose">③ ถึง V<sub>BR</sub></h3>
+        <div class="calc"><span class="frag">P = 1000 V × 10 mA</span><span class="frag">= 10 W</span><span class="frag"><span class="answer">≈ 9 เท่า!</span></span></div></div>
+    </div>
+    <ul class="pts small frag" style="margin-top:14px">
+      <li>แรงดันสูง<b>คูณ</b>กระแสที่พุ่ง → ร้อนจัดในตัวถังเล็ก ๆ → เสียถาวร มักเป็น<b>ลัดวงจร</b> (วัดได้ 0.000 ทั้งสองทิศ)</li>
+      <li><b>จำกัดกระแส</b>ด้วยตัวต้านทาน → ร้อนน้อย ไม่เสีย = หลักการใช้<b>ซีเนอร์ไดโอด</b></li>
+    </ul>
+    <div class="src">① ② ตัวเลขจากคู่มือ 1N4007 <sup class="ref"><a href="#refs">[3]</a></sup> · ③ ตัวอย่างสมมติ V<sub>BR</sub> ≈ 1000 V กระแส 10 mA</div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="VBR กับ VRRM ต่างกันอย่างไร">
+  <div class="body" style="top:112px">
+    <div class="kicker reveal">ขยายความ V<sub>BR</sub> ⑤ · เชื่อมกับคู่มืออุปกรณ์ (หัวข้อ 5.2)</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:8px">V<sub>BR</sub> = <span class="hl">จุดพังจริง</span> · V<sub>RRM</sub> = <span class="hl">ค่าที่ผู้ผลิตรับรอง</span></h2>
+    <div class="row center">
+      <div class="diagram reveal d2" style="flex:0 0 660px">
+        <svg viewBox="0 0 660 470" aria-label="บันไดแรงดันย้อนกลับ จากแรงดันใช้งาน ถึง VRRM และ VBR">
+          <rect x="150" y="320" width="90" height="140" fill="#2e9b57" opacity=".85"/>
+          <rect x="150" y="180" width="90" height="140" fill="#f7b733" opacity=".9"/>
+          <rect x="150" y="95" width="90" height="85" fill="#e8742c" opacity=".85"/>
+          <rect x="150" y="15" width="90" height="80" fill="#d6455d"/>
+          <g stroke="#2a2733" stroke-width="3"><line x1="135" y1="460" x2="255" y2="460"/><line x1="135" y1="320" x2="255" y2="320"/><line x1="135" y1="180" x2="255" y2="180"/><line x1="135" y1="95" x2="255" y2="95"/></g>
+          <g font-size="27" text-anchor="end" fill="#2a2733"><text x="125" y="467">0 V</text><text x="125" y="314">แรงดัน</text><text x="125" y="340">ในวงจร</text><text x="125" y="187" font-weight="700">V<tspan baseline-shift="sub" font-size="18">RRM</tspan></text><text x="125" y="102" font-weight="700" fill="#d6455d">V<tspan baseline-shift="sub" font-size="18">BR</tspan></text></g>
+          <g font-size="27" fill="#2a2733">
+            <text x="268" y="385" fill="#2e9b57" font-weight="700">ใช้งานจริง</text><text x="268" y="420">แรงดันย้อนกลับสูงสุดในวงจร</text>
+            <text x="268" y="245" fill="#b07a00" font-weight="700">ระยะเผื่อ (อย่างน้อยเท่าตัว)</text><text x="268" y="280">กันแรงดันกระชาก</text>
+            <text x="268" y="132" fill="#e8742c" font-weight="700">เกินค่ารับรอง</text><text x="268" y="166">ผู้ผลิตไม่รับประกัน ห้ามใช้</text>
+            <text x="268" y="48" fill="#d6455d" font-weight="700">พังทลาย</text><text x="268" y="84">กระแสพุ่ง ไดโอดเสีย</text>
+          </g>
+        </svg>
+      </div>
+      <ul class="pts small" style="flex:1">
+        <li class="frag">V<sub>BR</sub> ของไดโอดแต่ละตัว<b>ไม่เท่ากัน</b> และ<b>สูงกว่า</b> V<sub>RRM</sub> เสมอ</li>
+        <li class="frag">คู่มือจึงให้ <b>V<sub>RRM</sub></b> เป็นค่าที่<b>รับประกันว่าทนได้ซ้ำ ๆ</b> แทน</li>
+        <li class="frag">เราออกแบบโดยดู V<sub>RRM</sub> แล้วเผื่อ <b>2 เท่า</b> → ไม่มีทางไปถึง V<sub>BR</sub></li>
+        <li class="frag">ตำราบางเล่มเรียกค่าใกล้เคียงกันว่า <b>PIV</b> (Peak Inverse Voltage)</li>
+      </ul>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2] [3]</a></sup> · แผนภาพวาดขึ้นใหม่ ความสูงไม่ได้ตามสเกล</div>
   </div>
 </section>
 
@@ -357,6 +478,21 @@
       <button type="button" class="opt"><b>🖖 4</b> กระแสพุ่ง ไดโอดร้อนและเสียหาย</button>
       <button type="button" class="reveal">เฉลย</button>
       <div class="why">ย่านพังทลายกระแสย้อนกลับ<b>สูงทันที</b> ไดโอดทั่วไปเสียหายถาวร (ยกเว้นซีเนอร์ที่ออกแบบมาให้ทำงานย่านนี้)</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🙋 โหวต: เรียงแรงดันจากน้อยไปมาก">
+  <div class="body">
+    <div><span class="act-badge">🙋 โหวต</span><span class="act-meta">ชูนิ้ว 1–4 · ทวนหน้า V<sub>BR</sub> กับ V<sub>RRM</sub></span></div>
+    <h2 class="title" style="margin-bottom:20px">วงจรที่ออกแบบถูกต้อง ค่าใดเรียงจาก<b>น้อยไปมาก</b>ได้ถูกต้อง?</h2>
+    <div class="vote" data-answer="1">
+      <button type="button" class="opt"><b>☝️ 1</b> V<sub>RRM</sub> &lt; แรงดันในวงจร &lt; V<sub>BR</sub></button>
+      <button type="button" class="opt"><b>✌️ 2</b> แรงดันในวงจร &lt; V<sub>RRM</sub> &lt; V<sub>BR</sub></button>
+      <button type="button" class="opt"><b>🤟 3</b> V<sub>BR</sub> &lt; V<sub>RRM</sub> &lt; แรงดันในวงจร</button>
+      <button type="button" class="opt"><b>🖖 4</b> แรงดันในวงจร &lt; V<sub>BR</sub> &lt; V<sub>RRM</sub></button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why">แรงดันย้อนกลับในวงจรต้องต่ำกว่า V<sub>RRM</sub> (เผื่ออย่างน้อย 2 เท่า) และ V<sub>RRM</sub> ที่ผู้ผลิตรับรองต่ำกว่าจุดพังจริง V<sub>BR</sub> เสมอ</div>
     </div>
   </div>
 </section>
@@ -527,7 +663,7 @@
     <div><span class="act-badge">🙋 เกมเลือกเบอร์</span><span class="act-meta">กลุ่ม · ข้อละ 30 วินาที · ตัวแทนกลุ่มออกมากด</span></div>
     <h2 class="title" style="font-size:50px;margin-bottom:10px">อ่านโจทย์ → เลือกเบอร์ที่ <span class="hl">พอดีที่สุด</span> ตามหลักเผื่อ 2 เท่า</h2>
     <div data-sim="ds" data-q="300"></div>
-    <div class="row" style="margin-top:14px;align-items:flex-end"><div data-timer="30" style="flex:0 0 auto"></div><div data-board="6"></div></div>
+    <div style="margin-top:14px"><div data-timer="30"></div></div>
   </div>
 </section>
 
@@ -649,7 +785,7 @@
       <div class="box case"><h3>ราย ③</h3><div class="lcds"><span class="lcd sm">OL</span><span class="lcd sm">OL</span></div><div class="dir">A→K · K→A</div><p class="small frag" style="margin:8px 0 0"><b class="c-rose">ขาด</b></p></div>
       <div class="box case"><h3>ราย ④</h3><div class="lcds"><span class="lcd sm">0.318</span><span class="lcd sm">1.436</span></div><div class="dir">A→K · K→A</div><p class="small frag" style="margin:8px 0 0"><b class="c-rose">รั่ว</b> ห้ามใช้</p></div>
     </div>
-    <div class="row" style="margin-top:18px;align-items:flex-end"><div data-timer="120" style="flex:0 0 auto"></div><div data-board="6"></div></div>
+    <div style="margin-top:18px"><div data-timer="120"></div></div>
   </div>
 </section>
 
@@ -878,9 +1014,9 @@
   </div>
 </section>
 
-<section class="slide sec-4 act" data-title="🙋 แข่งคำนวณ ID">
+<section class="slide sec-4 act" data-title="🙋 ฝึกคำนวณ ID">
   <div class="body" style="top:112px">
-    <div><span class="act-badge">🙋 แข่งคำนวณเป็นกลุ่ม</span><span class="act-meta">ข้อละ 1 นาที · R = 1 kΩ · ตอบเป็น mA</span></div>
+    <div><span class="act-badge">🙋 ฝึกคำนวณเป็นกลุ่ม</span><span class="act-meta">ข้อละ 1 นาที · R = 1 kΩ · ตอบเป็น mA</span></div>
     <h2 class="title" style="font-size:54px;margin-bottom:6px">I<sub>D</sub> = (V<sub>S</sub> − V<sub>D</sub>) ÷ R</h2>
     <div class="row">
       <table class="t compact" style="flex:1.2">
@@ -890,7 +1026,7 @@
         <tr><td>3</td><td class="mono">1 V</td><td class="mono">0.53 V</td><td class="frag mono">0.47 mA</td></tr>
         <tr><td>4</td><td class="mono">10 V (กลับขั้ว)</td><td class="mono">10.00 V</td><td class="frag mono">≈ 0</td></tr>
       </table>
-      <div style="flex:1"><div data-timer="60"></div><div data-board="6" style="margin-top:14px"></div></div>
+      <div style="flex:1;text-align:center"><div data-timer="60"></div></div>
     </div>
   </div>
 </section>
@@ -1064,7 +1200,7 @@
 
 <section class="slide sec-0 act" data-title="🎲 สุ่มตอบคำถามท้ายใบความรู้">
   <div class="body">
-    <div><span class="act-badge">🎲 สุ่มเลขที่ตอบ</span><span class="act-meta">ตอบถูกได้คะแนนกลุ่ม</span></div>
+    <div><span class="act-badge">🎲 สุ่มเลขที่ตอบ</span><span class="act-meta">ตอบปากเปล่า</span></div>
     <h2 class="title" style="font-size:58px">คำถามท้ายใบความรู้ 1.2 ทั้ง 5 ข้อ</h2>
     <div class="row">
       <ol class="small" style="flex:1.4;padding-left:40px;margin:0">
@@ -1074,7 +1210,7 @@
         <li>ทำไมมิเตอร์เข็มต้องวางสายดำที่ขาแอโนด</li>
         <li>10 V · R 1 kΩ · V<sub>D</sub> 0.68 V กระแสเท่าใด</li>
       </ol>
-      <div style="flex:1"><div data-picker="40"></div><div data-board="6" style="margin-top:16px"></div></div>
+      <div style="flex:1;text-align:center"><div data-picker="40"></div></div>
     </div>
   </div>
 </section>
