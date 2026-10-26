@@ -122,6 +122,8 @@
 <script src="check-data.js"></script>
 <script src="answers.enc.js"></script>
 <script src="../assets/js/scoresheet.js"></script>
+<script src="../assets/js/classroom-loader.js" data-course="dec" data-parts="identity,quiz-sync"></script>
+<script>window.addEventListener('load', () => { if (window.ClassroomQuiz) ClassroomQuiz.init({ name: 'name', room: 'room', no: 'no' }); });</script>
 <script>
 /* ===========================================
    แบบทดสอบ: สลับลำดับตัวเลือกบนจอ (พิมพ์ใช้ลำดับเดิม) ตรวจด้วยค่าแฮช ไม่มีเฉลยในหน้าเว็บ
@@ -177,12 +179,13 @@
             return;
         }
         let score = 0;
-        const marks = [];
+        const marks = [], picked = {};
         box.querySelectorAll('.q').forEach(div => {
             const id = div.dataset.id;
             const sel = div.querySelector('input:checked');
             const res = div.querySelector('.res');
             if (!sel) { marks.push('–'); res.innerHTML = ' <span class="bad">(ไม่ได้ตอบ)</span>'; return; }
+            picked[id] = +sel.value;
             const ok = C.answerHash(H.salt, id, sel.value) === H.h[id];
             if (ok) score++;
             marks.push(ok ? '✓' : '✗');
@@ -227,6 +230,14 @@
                 <span class="hint">ในหน้าต่างพิมพ์ เลือกปลายทาง “บันทึกเป็น PDF” แล้วนำไฟล์ไปแนบส่งใน Google Classroom</span>
             </div>`;
         document.getElementById('printScore').addEventListener('click', () => ScoreSheet.print());
+        /* ส่งคะแนนเข้าระบบห้องเรียน (ตรวจซ้ำที่เซิร์ฟเวอร์) · ใบคะแนนแบบพิมพ์ยังใช้ได้ตามเดิม */
+        if (window.ClassroomQuiz) {
+            r.insertAdjacentHTML('beforeend', '<div class="muted" id="syncMsg" style="margin-top:8px">⏳ กำลังส่งคะแนนเข้าระบบห้องเรียน…</div>');
+            ClassroomQuiz.submit({ course: 'dec', lesson: 'w01', mode: m, answers: picked, startedAt: start, clientScore: score }).then(x => {
+                const el = document.getElementById('syncMsg');
+                if (el) el.innerHTML = x.ok ? '✅ ส่งคะแนนเข้าระบบห้องเรียนแล้ว ครูเห็นคะแนนทันที' : '⚠️ ' + x.reason;
+            });
+        }
         r.scrollIntoView({ behavior: 'smooth' });
     }
 

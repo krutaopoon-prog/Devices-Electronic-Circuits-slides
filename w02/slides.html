@@ -43,7 +43,7 @@
   คลิปวิดีโอเล่นในสไลด์ได้เมื่อเปิดผ่านเว็บ (https) ถ้าเปิดไฟล์ในเครื่อง ให้กด "เปิดใน YouTube"
 -->
 <div class="deck-viewport">
-<main class="deck-stage" id="deckStage" data-head="สัปดาห์ที่ 2 · หน่วยที่ 1" data-foot="">
+<main class="deck-stage" id="deckStage" data-course="dec" data-head="สัปดาห์ที่ 2 · หน่วยที่ 1" data-foot="">
 
 <!-- ================= เปิดบทเรียน ================= -->
 <section class="slide cover" data-title="ปก: สัปดาห์ที่ 2">
@@ -213,16 +213,16 @@
 
 <section class="slide sec-1 act" data-title="🙋 ทายก่อน: วาดกราฟของไดโอด">
   <div class="body">
-    <div><span class="act-badge">🙋 ทายก่อนเฉลย</span><span class="act-meta">วาดบนกระดาษ/ไวท์บอร์ดกลุ่ม · 4 นาที</span></div>
+    <div><span class="act-badge">🙋 ทายก่อนเฉลย</span><span class="act-meta">วาดบนกระดาษ หรือวาดบนเครื่องตัวเอง · 4 นาที</span></div>
     <h2 class="title" style="font-size:62px">จากที่รู้เรื่องไบแอสแล้ว กราฟของไดโอดควรหน้าตาแบบไหน?</h2>
     <div class="row">
       <ol class="steps steps-act small" style="flex:1.4">
         <li>วาดแกน V<sub>D</sub> และ I<sub>D</sub> เหมือนหน้าที่แล้ว</li>
         <li>ไบแอสตรง: ก่อน <b>0.7 V</b> กระแสเป็นอย่างไร? หลัง 0.7 V ล่ะ?</li>
         <li>ไบแอสกลับ: มีกระแสไหม? ถ้าแรงดันย้อนกลับ<b>สูงมาก ๆ</b> ล่ะ?</li>
-        <li>ชูกระดาษพร้อมกันทุกกลุ่ม เทียบกับเฉลยหน้าถัดไป</li>
+        <li>ชูกระดาษ หรือกด <b>✏️ วาดคำตอบ</b> บนเครื่อง แล้วเทียบกับเฉลยหน้าถัดไป</li>
       </ol>
-      <div style="flex:1;text-align:center"><div data-timer="240"></div></div>
+      <div style="flex:1;text-align:center"><div data-timer="240"></div><div class="live" data-kind="draw" data-q="วาดกราฟคุณลักษณะไดโอดที่คาดไว้" style="text-align:left"></div></div>
     </div>
   </div>
 </section>
@@ -1026,7 +1026,7 @@
         <tr><td>3</td><td class="mono">1 V</td><td class="mono">0.53 V</td><td class="frag mono">0.47 mA</td></tr>
         <tr><td>4</td><td class="mono">10 V (กลับขั้ว)</td><td class="mono">10.00 V</td><td class="frag mono">≈ 0</td></tr>
       </table>
-      <div style="flex:1;text-align:center"><div data-timer="60"></div></div>
+      <div style="flex:1;text-align:center"><div data-timer="60"></div><div class="live" data-kind="number" data-q="ข้อ 2: I<sub>D</sub> เท่าใด" data-answer="9.32" data-tol="0.05" data-unit="mA" style="text-align:left"></div></div>
     </div>
   </div>
 </section>
@@ -1198,6 +1198,18 @@
   </div>
 </section>
 
+<section class="slide sec-0 act" data-title="🙋 Word cloud: คำสำคัญของวันนี้">
+  <div class="body">
+    <div><span class="act-badge">🙋 Word cloud</span><span class="act-meta">พิมพ์บนเครื่องตัวเอง · คนละ 1–3 คำ · 2 นาที</span></div>
+    <h2 class="title" style="font-size:62px">คำสำคัญที่สุดที่ได้จากวันนี้คืออะไร?</h2>
+    <p class="small" style="margin:0 0 10px">พิมพ์สั้น ๆ คำเดียว (ส่งได้หลายครั้ง ระบบเก็บคำล่าสุด) · คำที่หลายคนตอบตรงกันจะตัวใหญ่ขึ้น</p>
+    <div class="row" style="align-items:flex-start">
+      <div class="live" data-kind="wordcloud" data-q="คำสำคัญที่สุดของวันนี้" style="flex:1.6"></div>
+      <div style="flex:1;text-align:center"><div data-timer="120"></div></div>
+    </div>
+  </div>
+</section>
+
 <section class="slide sec-0 act" data-title="🎲 สุ่มตอบคำถามท้ายใบความรู้">
   <div class="body">
     <div><span class="act-badge">🎲 สุ่มเลขที่ตอบ</span><span class="act-meta">ตอบปากเปล่า</span></div>
@@ -1263,5 +1275,6 @@
 <script src="../assets/js/diodes.js"></script>
 <script src="../assets/js/sims.js"></script>
 <script src="../assets/js/deck.js"></script>
+<script src="../assets/js/classroom-loader.js" data-course="dec" data-parts="identity,ink,live"></script>
 </body>
 </html>

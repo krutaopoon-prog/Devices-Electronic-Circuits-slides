@@ -38,7 +38,7 @@
   ป้าย "🙋 กิจกรรม" = ช่วงที่นักเรียนลงมือทำ มีตัวจับเวลา (กด ▶ เริ่ม)
 -->
 <div class="deck-viewport">
-<main class="deck-stage" id="deckStage" data-head="สัปดาห์ที่ 1 · หน่วยที่ 1" data-foot="">
+<main class="deck-stage" id="deckStage" data-course="dec" data-head="สัปดาห์ที่ 1 · หน่วยที่ 1" data-foot="">
 
 <!-- ================= เปิดบทเรียน ================= -->
 <section class="slide cover" data-title="ปก: สัปดาห์ที่ 1">
@@ -685,7 +685,7 @@
         <tr><td>3</td><td class="mono">3.7 V</td><td class="mono">300 Ω</td><td class="frag mono">10 mA</td></tr>
         <tr><td>4</td><td class="mono">0.6 V</td><td class="mono">100 Ω</td><td class="frag mono">≈ 0 (ไม่ถึง 0.7 V)</td></tr>
       </table>
-      <div style="flex:1;text-align:center"><div data-timer="60"></div></div>
+      <div style="flex:1;text-align:center"><div data-timer="60"></div><div class="live" data-kind="number" data-q="ข้อ 1: กระแสเท่าใด" data-answer="8.3" data-tol="0.05" data-unit="mA" style="text-align:left"></div></div>
     </div>
   </div>
 </section>
@@ -1185,6 +1185,18 @@
   </div>
 </section>
 
+<section class="slide sec-0 act" data-title="🙋 Word cloud: คำสำคัญของวันนี้">
+  <div class="body">
+    <div><span class="act-badge">🙋 Word cloud</span><span class="act-meta">พิมพ์บนเครื่องตัวเอง · คนละ 1–3 คำ · 2 นาที</span></div>
+    <h2 class="title" style="font-size:62px">คำสำคัญที่สุดที่ได้จากวันนี้คืออะไร?</h2>
+    <p class="small" style="margin:0 0 10px">พิมพ์สั้น ๆ คำเดียว (ส่งได้หลายครั้ง ระบบเก็บคำล่าสุด) · คำที่หลายคนตอบตรงกันจะตัวใหญ่ขึ้น</p>
+    <div class="row" style="align-items:flex-start">
+      <div class="live" data-kind="wordcloud" data-q="คำสำคัญที่สุดของวันนี้" style="flex:1.6"></div>
+      <div style="flex:1;text-align:center"><div data-timer="120"></div></div>
+    </div>
+  </div>
+</section>
+
 <section class="slide sec-0 act" data-title="🎲 สุ่มตอบคำถามท้ายใบความรู้">
   <div class="body">
     <div><span class="act-badge">🎲 สุ่มเลขที่ตอบ</span><span class="act-meta">ตอบปากเปล่า</span></div>
@@ -1251,5 +1263,6 @@
 <script src="../assets/js/diodes.js"></script>
 <script src="../assets/js/sims.js"></script>
 <script src="../assets/js/deck.js"></script>
+<script src="../assets/js/classroom-loader.js" data-course="dec" data-parts="identity,ink,live"></script>
 </body>
 </html>
