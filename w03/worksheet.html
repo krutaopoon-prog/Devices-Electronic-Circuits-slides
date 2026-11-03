@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ใบงานที่ 2.1 วงจรเรียงกระแสและวงจรกรองแรงดัน</title>
+<meta name="description" content="ใบงานที่ 2.1 การต่อวงจรเรียงกระแสและวงจรกรองแรงดัน วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์ สำหรับพิมพ์ A4 ทำได้ทั้งกับอุปกรณ์จริงและแล็บเสมือน">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="../assets/css/sims.css">
+<style>
+    .ws h2 { font-size: 20px; margin: 18px 0 6px; color: var(--teal); }
+    .ws h3 { font-size: 17px; margin: 12px 0 4px; }
+    .ws p, .ws li { margin: 2px 0; }
+    .ws ol, .ws ul { margin: 2px 0 6px; padding-left: 26px; }
+    .ws table.grid { width: 100%; border-collapse: collapse; margin: 6px 0 10px; background: #fff; }
+    .ws table.grid th, .ws table.grid td { border: 1px solid #555; padding: 4px 8px; vertical-align: top; }
+    .ws table.grid th { background: var(--cream); font-family: var(--font-display); font-weight: 500; text-align: center; }
+    .ws table.grid td.n { text-align: center; width: 2.4em; }
+    .ws table.grid.vals th, .ws table.grid.vals td { text-align: center; font-family: var(--font-mono); }
+    .ws table.grid.vals td { height: 10mm; }
+    .ws table.score td:nth-child(3), .ws table.score td:nth-child(4) { text-align: center; width: 6em; }
+    .ws .lines div { border-bottom: 1px dotted #000; height: 9mm; }
+    .ws .head { border: 1.5px solid #000; padding: 8px 12px; margin-bottom: 10px; background: #fff; }
+    .ws .head .line { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    .ws .warn { border-left: 4px solid var(--rose); background: var(--rose-soft); padding: 6px 12px; border-radius: 0 10px 10px 0; }
+    .ws .rec { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px 18px; margin: 6px 0; }
+    .ws .rec div { border-bottom: 1px dotted #000; padding: 6px 0 2px; font-family: var(--font-mono); }
+    .ws .rec.r3 { grid-template-columns: repeat(3, 1fr); }
+    .ws .circs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 6px 0; }
+    .ws .circs figure { margin: 0; text-align: center; }
+    .ws .circs figcaption { font-size: 14px; }
+    .ws .circs svg { width: 100%; height: auto; }
+    .ws .frames { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 6px 0; }
+    .ws .frames figure { margin: 0; text-align: center; }
+    .ws .frames figcaption { font-size: 14px; margin-bottom: 2px; }
+    .ws .frames svg { width: 100%; height: auto; display: block; }
+    .grid10 .mi { stroke: #ccc; stroke-width: .6; } .grid10 .ma { stroke: #888; stroke-width: 1; } .grid10 .bd { fill: none; stroke: #000; stroke-width: 2; }
+    .grid10 text { font: 11px 'Prompt', sans-serif; fill: #000; }
+    .ws .set { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; margin-top: 2px; }
+    .ws .set span { border-bottom: 1px dotted #000; min-width: 9em; }
+    @media print {
+        body.doc { font-size: 12pt; line-height: 1.4; }
+        .ws h2 { color: #000; font-size: 14.5pt; margin: 4mm 0 1.5mm; }
+        .ws h3 { font-size: 13.5pt; }
+        .ws table.grid th { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .ws table.grid th, .ws table.grid td { border-color: #000; font-size: 12pt; }
+        .ws .warn { background: none; border: 1px solid #000; border-radius: 0; }
+        .ws .avoid { break-inside: avoid; }
+        .ws .p2 { break-before: page; }
+        .ws .circs svg { max-height: 40mm; }
+        .ws .frames svg { max-height: 62mm; }
+        .ws .lines div { height: 8mm; }
+    }
+</style>
+</head>
+<body class="doc">
+<div class="doc-wrap">
+    <nav class="topbar no-print">
+        <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="exercises.html">แบบฝึกหัด</a> · <a href="quiz.html">แบบทดสอบ</a>
+    </nav>
+
+    <section class="card no-print">
+        <span class="chip orange">สัปดาห์ที่ 3 · ปฏิบัติ</span>
+        <h1 style="margin-top:8px">ใบงานที่ 2.1 สำหรับพิมพ์</h1>
+        <p class="muted" style="margin:0 0 10px">พิมพ์คนละ 1 ชุด (A4) · ทำกับ<b>อุปกรณ์จริง</b> หรือ<b>แล็บเสมือน</b>ในสไลด์ก็ได้ ตารางบันทึกผลใช้แผ่นเดียวกัน</p>
+        <div class="btn-row"><button class="btn" type="button" onclick="window.print()">🖨 พิมพ์ใบงาน (A4)</button><a class="btn ghost" href="slides.html#lab">💻 เปิดแล็บเสมือน</a></div>
+    </section>
+
+    <main class="ws card">
+        <div class="head">
+            <b>ใบงานที่ 2.1 การต่อวงจรเรียงกระแสและวงจรกรองแรงดัน</b><br>
+            วิชาอุปกรณ์และวงจรอิเล็กทรอนิกส์ (20127-2004) · หน่วยที่ 2 งานประกอบวงจรแหล่งจ่ายไฟฟ้า · สอนครั้งที่ 3
+            <div class="line" style="margin-top:4px"><span>ชื่อ-สกุล ......................................................</span><span>ชั้น ...............</span><span>เลขที่ ........</span><span>คะแนน ............ / 20</span></div>
+            <div class="line" style="margin-top:2px"><span>ทำงานด้วย ☐ ทาง ก อุปกรณ์จริง &nbsp; ☐ ทาง ข แล็บเสมือน</span><span>กลุ่มที่ ........</span></div>
+        </div>
+
+        <h2>1. ผลลัพธ์การเรียนรู้จากการปฏิบัติงาน</h2>
+        <p>ผู้เรียนต่อวงจรเรียงกระแสแบบครึ่งคลื่นและแบบบริดจ์จากหม้อแปลง 12 โวลต์ วัดแรงดันและรูปคลื่นด้วยมัลติมิเตอร์และออสซิลโลสโคป ต่อตัวเก็บประจุกรองแรงดัน บันทึกแรงดันพลิ้วที่ค่าความจุและโหลดต่าง ๆ และเปรียบเทียบค่าที่วัดได้กับค่าที่คำนวณ</p>
+        <h2>2. จุดประสงค์เชิงพฤติกรรม</h2>
+        <p>4.1 อธิบายหลักการทำงานของวงจรเรียงกระแสแบบครึ่งคลื่น แบบเต็มคลื่น และแบบบริดจ์ และวงจรกรองแรงดันได้ถูกต้อง (K2) · 4.2 คำนวณแรงดันเอาต์พุต แรงดันพลิ้ว และค่าตัวเก็บประจุกรองของวงจรเรียงกระแสได้ถูกต้อง (K3) · 4.3 ต่อวงจรเรียงกระแสและวงจรกรองแรงดัน และวัดแรงดันและรูปคลื่นด้วยออสซิลโลสโคปได้ถูกต้อง (S3)</p>
+        <h2>3. เครื่องมือ วัสดุ และอุปกรณ์</h2>
+        <ul><li><b>ทาง ก:</b> หม้อแปลงไฟฟ้า 220/12 V 1 A ในกล่องปิด 1 ชุด/กลุ่ม · ออสซิลโลสโคปแบบดิจิทัลและมัลติมิเตอร์แบบดิจิทัล · ไดโอด 1N4007 4 ตัว · ตัวเก็บประจุอิเล็กโทรไลต์ 470 และ 2200 µF 35 V · ตัวต้านทาน 1 kΩ 0.5 W และ 220 Ω 2 W · แผงต่อวงจรและสายต่อ</li>
+            <li><b>ทาง ข (ไม่มีอุปกรณ์จริง):</b> โทรศัพท์หรือคอมพิวเตอร์ เปิดสไลด์สัปดาห์ที่ 3 กด <b>T</b> แล้วเลือก “แล็บเสมือน ตอนที่ 1–2” และ “แล็บเสมือน ตอนที่ 3” (หรือปุ่ม 💻 แล็บเสมือน ในหน้าแรกของวิชา)</li></ul>
+        <h2>4. คำแนะนำ / ข้อควรระวัง</h2>
+        <div class="warn avoid"><ol style="margin:0">
+            <li>หม้อแปลงไฟฟ้าต่อสายด้านไฟบ้าน 220 โวลต์ไว้ในกล่องปิดมิดชิดโดยครูผู้สอน ผู้เรียนต่อวงจรเฉพาะด้านแรงดันต่ำเท่านั้น</li>
+            <li>ตรวจขั้วตัวเก็บประจุอิเล็กโทรไลต์ทุกตัวก่อนจ่ายไฟ และให้ครูตรวจวงจรทุกครั้ง</li>
+            <li>ตัวต้านทาน 220 โอห์มรับกำลังประมาณ 1 วัตต์และร้อน ห้ามจับขณะจ่ายไฟ และคายประจุตัวเก็บประจุก่อนแก้วงจร</li>
+            <li>คีบสายกราวด์ของโพรบออสซิลโลสโคปไว้ที่ขั้วลบของโหลด ในวงจรบริดจ์ให้วัด v<sub>s</sub> แยกทีละครั้ง</li></ol></div>
+
+        <div class="avoid">
+            <h2>5. แบบวงจร</h2>
+            <div class="circs">
+                <figure><svg viewBox="0 0 920 520" class="sx sx-svg" data-circ="half" data-rl="1 kΩ" aria-label="ภาพที่ 2.2 วงจรเรียงกระแสแบบครึ่งคลื่น"></svg><figcaption>ภาพที่ 2.2 วงจรเรียงกระแสแบบครึ่งคลื่น</figcaption></figure>
+                <figure><svg viewBox="0 0 920 520" class="sx sx-svg" data-circ="bridge" data-rl="1 kΩ" data-cap="470/2200 µF" aria-label="ภาพที่ 2.3 วงจรเรียงกระแสแบบบริดจ์ พร้อมตัวเก็บประจุกรองในตอนที่ 3"></svg><figcaption>ภาพที่ 2.3 วงจรบริดจ์ (ตัวเก็บประจุต่อเฉพาะตอนที่ 3)</figcaption></figure>
+            </div>
+        </div>
+
+        <div class="avoid">
+            <h2>6. ขั้นตอนการปฏิบัติงาน</h2>
+            <h3>ตอนที่ 1 วงจรเรียงกระแสแบบครึ่งคลื่น (4 คะแนน)</h3>
+            <ol><li>ต่อวงจรตามภาพที่ 2.2 ใช้ R<sub>L</sub> 1 กิโลโอห์ม ให้ครูตรวจก่อนจ่ายไฟ</li>
+                <li>วัดแรงดันขาออกหม้อแปลงด้วยย่านไฟสลับ และแรงดันที่โหลดด้วยย่านไฟตรง</li>
+                <li>วัดรูปคลื่นที่โหลดด้วยออสซิลโลสโคป บันทึกแรงดันยอดและความถี่</li></ol>
+            <div class="rec"><div>V<sub>s(rms)</sub> = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V</div><div>V<sub>dc</sub> = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V</div><div>V<sub>p(out)</sub> = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V</div><div>ความถี่ = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hz</div></div>
+        </div>
+
+        <div class="avoid">
+            <h3>ตอนที่ 2 วงจรเรียงกระแสแบบบริดจ์ (5 คะแนน)</h3>
+            <ol><li>ปิดไฟ ต่อวงจรตามภาพที่ 2.3 (ยังไม่ต่อตัวเก็บประจุ) ใช้ R<sub>L</sub> 1 กิโลโอห์ม แล้ววัดค่าเหมือนตอนที่ 1</li>
+                <li>วาดรูปคลื่นที่ได้จากตอนที่ 1 และตอนที่ 2 ลงในกรอบ พร้อมบันทึกค่า VOLTS/DIV และ TIME/DIV ที่ตั้งไว้</li></ol>
+            <div class="rec r3"><div>V<sub>dc</sub> = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V</div><div>V<sub>p(out)</sub> = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V</div><div>ความถี่ = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hz</div></div>
+            <div class="frames">
+                <figure><figcaption>ครึ่งคลื่น</figcaption><svg class="grid10" viewBox="0 0 400 330" data-frame="1"></svg><div class="set"><span>VOLTS/DIV</span><span>TIME/DIV</span></div></figure>
+                <figure><figcaption>บริดจ์</figcaption><svg class="grid10" viewBox="0 0 400 330" data-frame="1"></svg><div class="set"><span>VOLTS/DIV</span><span>TIME/DIV</span></div></figure>
+            </div>
+        </div>
+
+        <div class="avoid">
+            <h3>ตอนที่ 3 วงจรกรองแรงดันด้วยตัวเก็บประจุ (7 คะแนน)</h3>
+            <ol><li>ปิดไฟ ต่อตัวเก็บประจุขนานกับโหลดของวงจรบริดจ์ โดยขาบวกต่อทางขั้วบวก ให้ครูตรวจก่อนจ่ายไฟ</li>
+                <li>วัดแรงดันไฟตรงที่โหลดด้วยมัลติมิเตอร์ และแรงดันพลิ้วยอดถึงยอดด้วยออสซิลโลสโคปแบบคัปปลิงไฟสลับ (AC Coupling)</li>
+                <li>คำนวณ V<sub>r(pp)</sub> = I<sub>L</sub> ÷ (f × C) โดยใช้ I<sub>L</sub> ≈ V<sub>dc</sub> ÷ R<sub>L</sub> และ f = 100 Hz</li></ol>
+            <table class="grid vals">
+                <tr><th>ตัวเก็บประจุ</th><th>โหลด</th><th>V<sub>dc</sub> ที่วัดได้ (V)</th><th>V<sub>r(pp)</sub> ที่วัดได้ (V)</th><th>V<sub>r(pp)</sub> คำนวณ (V)</th></tr>
+                <tr><td>470 µF</td><td>1 kΩ</td><td></td><td></td><td></td></tr>
+                <tr><td>470 µF</td><td>220 Ω</td><td></td><td></td><td></td></tr>
+                <tr><td>2200 µF</td><td>1 kΩ</td><td></td><td></td><td></td></tr>
+                <tr><td>2200 µF</td><td>220 Ω</td><td></td><td></td><td></td></tr>
+            </table>
+        </div>
+
+        <div class="avoid">
+            <h3>ตอนที่ 4 การเปรียบเทียบและสรุปผล (4 คะแนน)</h3>
+            <ol><li>คำนวณ V<sub>dc</sub> ของวงจรครึ่งคลื่นและบริดจ์จาก V<sub>s(rms)</sub> ที่วัดได้ แล้วเทียบกับค่าที่วัด</li>
+                <li>สรุปผลของค่าความจุและกระแสโหลดที่มีต่อแรงดันพลิ้ว</li></ol>
+            <table class="grid vals" style="max-width:640px">
+                <tr><th></th><th>V<sub>dc</sub> คำนวณ (V)</th><th>V<sub>dc</sub> ที่วัดได้ (V)</th></tr>
+                <tr><td>ครึ่งคลื่น</td><td></td><td></td></tr>
+                <tr><td>บริดจ์</td><td></td><td></td></tr>
+            </table>
+            <p>การคำนวณ</p>
+            <div class="lines"><div></div><div></div></div>
+            <p>สรุปผล</p>
+            <div class="lines"><div></div><div></div></div>
+        </div>
+
+        <div class="avoid">
+            <h2>7. สรุปและวิจารณ์ผล</h2>
+            <div class="lines"><div></div><div></div><div></div></div>
+        </div>
+
+        <div class="avoid">
+            <h2>8. การประเมินผล (คะแนนเต็ม 20 ผ่านที่ 16 คะแนน ร้อยละ 80)</h2>
+            <table class="grid score">
+                <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้</th></tr>
+                <tr><td class="n">1</td><td>ต่อวงจรครึ่งคลื่นถูกต้อง วัดแรงดันและความถี่ได้ค่าในช่วงที่ยอมรับ (ตอนที่ 1)</td><td>4</td><td></td></tr>
+                <tr><td class="n">2</td><td>ต่อวงจรบริดจ์ถูกต้อง วัดค่าครบ และวาดรูปคลื่นทั้งสองแบบถูกต้อง (ตอนที่ 2)</td><td>5</td><td></td></tr>
+                <tr><td class="n">3</td><td>ต่อตัวเก็บประจุถูกขั้ว วัดและคำนวณแรงดันพลิ้วครบทั้งสี่กรณี (ตอนที่ 3)</td><td>7</td><td></td></tr>
+                <tr><td class="n">4</td><td>คำนวณเทียบกับค่าที่วัดและสรุปผลได้ถูกต้อง (ตอนที่ 4)</td><td>4</td><td></td></tr>
+                <tr><th colspan="2" style="text-align:right">รวม</th><td><b>20</b></td><td></td></tr>
+            </table>
+            <p class="muted" style="font-size:13px">ที่มา: ใบงานที่ 2.1 ในแผนการจัดการเรียนรู้ วิชา 20127-2004 (นายจิรกิตติ์ วราภรณ์) · ข้อควรระวังเรื่องกราวด์โพรบ และทาง ข (แล็บเสมือน) เพิ่มเติมสำหรับห้องที่ไม่มีอุปกรณ์ครบ · แบบวงจรและกรอบวาดรูปคลื่นวาดขึ้นใหม่ตามต้นฉบับ</p>
+        </div>
+    </main>
+</div>
+<script src="../assets/js/sims.js"></script>
+<script>
+/* กรอบวาดรูปคลื่น 10 × 8 ช่อง (ช่องละ 36 px) เหมือนจอออสซิลโลสโคป */
+document.querySelectorAll('svg[data-frame]').forEach(svg => {
+    const X = 20, Y = 10, D = 36;
+    let s = '';
+    for (let i = 1; i < 10; i++) s += `<line class="${i === 5 ? 'ma' : 'mi'}" x1="${X + i * D}" y1="${Y}" x2="${X + i * D}" y2="${Y + 8 * D}"/>`;
+    for (let j = 1; j < 8; j++) s += `<line class="${j === 4 ? 'ma' : 'mi'}" x1="${X}" y1="${Y + j * D}" x2="${X + 10 * D}" y2="${Y + j * D}"/>`;
+    s += `<rect class="bd" x="${X}" y="${Y}" width="${10 * D}" height="${8 * D}"/><text x="${X - 16}" y="${Y + 4 * D + 4}">0</text>`;
+    svg.innerHTML = s;
+});
+</script>
+</body>
+</html>

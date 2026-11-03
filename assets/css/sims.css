@@ -258,3 +258,76 @@
 .vid .vd-cap a { color: var(--blue); white-space: nowrap; }
 
 @media print { .timer, .board, .picker, .sx-ctl, .vote .reveal { display: none !important; } .vote .why { display: block; } }
+
+/* ===================== สัปดาห์ที่ 3 วงจรเรียงกระแส / แล็บเสมือน / ออสซิลโลสโคป ===================== */
+.rect .rc-row, .psu .ps-row, .scoperead .sr-row { display: flex; gap: 24px; align-items: flex-start; }
+.rect .rc-svg { flex: 0 0 900px; width: 900px; }
+.rect .rc-plot { width: 100%; max-height: 470px; }
+.rect .rc-ms { display: flex; gap: 8px; width: 100%; margin-bottom: 4px; }
+.rect .sx-ctl { justify-content: flex-start; flex-wrap: wrap; }
+.rect .sx-ctl button { font-size: 24px; padding: 6px 14px; }
+.rect .rc-r { flex: 1; min-width: 0; }
+.rect .rc-out, .scoperead .sr-r > div:not(.sx-ctl) { font-size: 29px; line-height: 1.45; }
+.rect .rc-out { background: #fff; border: 2px solid var(--line); border-radius: 18px; padding: 10px 18px; margin-top: 6px; min-height: 96px; }
+.rect .sx-ctl { margin-top: 10px; }
+.rect .rc-gap { display: inline-block; width: 24px; }
+.sx .rc-box { fill: var(--cream); stroke: #c9c3cf; stroke-width: 3; stroke-dasharray: 10 7; }
+.sx .rc-core { stroke: var(--ink); stroke-width: 4; }
+.sx .rc-coil { stroke: var(--ink); stroke-width: 4; }
+.sx .rc-dot { fill: var(--ink); }
+.sx .rc-d path { fill: #c9c3cf; stroke: #a8a1b0; stroke-width: 3; stroke-linejoin: round; }
+.sx .rc-d line { stroke: #a8a1b0; stroke-width: 6; }
+.sx .rc-d.lit path { fill: var(--orange); stroke: var(--orange); } .sx .rc-d.lit line { stroke: var(--orange); }
+.sx .rc-d:not(.lit) path { fill: var(--ink); stroke: var(--ink); } .sx .rc-d:not(.lit) line { stroke: var(--ink); }
+.rect .rc-d:not(.lit) path { fill: #c9c3cf; stroke: #a8a1b0; } .rect .rc-d:not(.lit) line { stroke: #a8a1b0; }
+.sx .rc-dn { font: 600 26px var(--font-mono); fill: var(--ink-soft); } .sx .rc-dn.lit { fill: var(--orange); }
+.sx .rc-pol { font: 700 34px var(--font-mono); fill: var(--rose); }
+.sx .rc-pm { font: 700 32px var(--font-mono); fill: var(--rose); }
+.sx .rc-plate { stroke: var(--ink); stroke-width: 6; fill: none; }
+.sx .rc-flow { fill: none; stroke: var(--orange); stroke-width: 7; stroke-dasharray: 18 14; stroke-linejoin: round; animation: flow .9s linear infinite; opacity: .85; }
+.rect .axis { stroke: var(--ink); stroke-width: 3; }
+.rect .rc-vs { fill: none; stroke: #a8a1b0; stroke-width: 3; stroke-dasharray: 8 7; }
+.rect .rc-vo { fill: none; stroke: var(--blue); stroke-width: 6; stroke-linejoin: round; }
+.rect .rc-mk { stroke: var(--orange); stroke-width: 2; stroke-dasharray: 6 6; }
+.rect .rc-lg2 { fill: var(--blue); }
+
+.psu .ps-l-col { flex: 0 0 780px; width: 780px; }
+.psu .ps-l-col .ps-ctl { flex-direction: row; flex-wrap: wrap; column-gap: 26px; }
+.psu .ps-scope { width: 100%; max-width: 600px; }
+.psu .ps-r-col { flex: 1; min-width: 0; }
+.psu .ps-svg { width: 780px; }
+.psu .ps-ctl { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 8px; margin-top: 4px; }
+.psu .ps-g { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: flex-start; }
+.psu, .rect, .scoperead { font-family: var(--font-body); }
+.psu .ps-l { font: 500 24px var(--font-display); color: var(--ink-soft); }
+.psu .ps-g b.mono { font-size: 26px; min-width: 3.4em; text-align: center; }
+.psu .sx-ctl button { font-size: 23px; padding: 6px 14px; }
+.psu .ps-meters { display: flex; gap: 18px; margin-top: 10px; }
+.psu .ps-m { flex: 1; background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 8px 14px; font-size: 24px; }
+.psu .ps-m span { display: block; color: var(--ink-soft); margin-bottom: 4px; }
+.psu .lcd.sm { display: inline-block; font: 700 44px/1 var(--font-mono); color: #1f2a18; background: #c9d4b8; border: 3px solid #6b7560; border-radius: 10px; padding: 4px 14px; min-width: 4.2ch; text-align: right; }
+.psu .ps-note { font-size: 26px; color: var(--ink-soft); min-height: 1.4em; margin-top: 6px; }
+.psu .ps-probe circle { fill: none; stroke: #d6455d; stroke-width: 5; }
+.psu .ps-probe text { font: 600 22px var(--font-display); fill: #d6455d; }
+.sx .sc-bg { fill: #0f1a14; }
+.sx .sc-gr { stroke: #2e4a3a; stroke-width: 1.5; } .sx .sc-gr.mid { stroke: #4f7a62; stroke-width: 2; }
+.sx .sc-tk { stroke: #4f7a62; stroke-width: 1.5; }
+.sx .sc-tr { fill: none; stroke: #f7d23b; stroke-width: 3.5; stroke-linejoin: round; }
+.sx .sc-gnd { fill: #f7d23b; } .sx .sc-gt { font: 700 22px var(--font-mono); fill: var(--ink-soft); }
+.sx .sc-tx { font: 600 24px var(--font-mono); fill: var(--ink); }
+.sx .sc-mbg { fill: rgba(0, 0, 0, .55); }
+.sx .sc-m { font: 600 22px var(--font-mono); fill: #9ff0c0; }
+.scoperead .sr-svg { flex: 0 0 700px; width: 700px; }
+.scoperead .sr-r { font-size: 34px; line-height: 1.45; }
+.scoperead .sr-r { flex: 1; min-width: 0; }
+.scoperead .sr-q p, .scoperead .sr-a p { margin: 0 0 10px; }
+.scoperead .sr-n { font: 500 26px var(--font-display); color: var(--rose); }
+.scoperead .sr-a:not(:empty) { background: var(--sun-soft); border-radius: 16px; padding: 12px 18px; margin-top: 12px; }
+@media print {
+    .sx .sc-bg { fill: #fff; stroke: #000; stroke-width: 2; }
+    .sx .sc-gr, .sx .sc-tk { stroke: #bbb; } .sx .sc-gr.mid { stroke: #888; }
+    .sx .sc-tr { stroke: #000; }
+    .sx .sc-gnd { fill: #000; }
+    .sx .wire, .sx .rc-coil { stroke: #000; }
+    .sx .rc-box { fill: #fff; }
+}

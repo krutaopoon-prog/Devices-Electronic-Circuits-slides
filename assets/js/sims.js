@@ -6,6 +6,9 @@
    - <div data-picker="40"></div>                       สุ่มเลขที่นักเรียน
    - <div data-sim="dope|hole|pn|bias"></div>           ตัวจำลอง (สัปดาห์ที่ 1)
    - <div data-sim="iv|dmm|curve|ds"></div>             ตัวจำลอง (สัปดาห์ที่ 2) · dmm: data-reveal="1" = มีปุ่มครูเฉลยสภาพ
+   - <div data-sim="rect" data-modes="half,ct,bridge"></div>  หลักการวงจรเรียงกระแส (สัปดาห์ที่ 3)
+   - <div data-sim="psu" data-mode="half" data-lock="mode"></div>  แล็บเสมือนใบงาน 2.1: วงจร + ออสซิลโลสโคป + มัลติมิเตอร์
+   - <div data-sim="scoperead"></div>                   ฝึกอ่านจอออสซิลโลสโคป
    - <div data-video="YouTubeID" data-title="…" data-credit="…" data-len="1:25" data-start="0" data-end="0"></div>
    =========================================== */
 (function (g) {
@@ -605,7 +608,298 @@
         }).observe(slide, { attributes: true, attributeFilter: ['class'] });
     }
 
-    const SIMS = { dope, hole, pn, bias, iv, dmm, curve, ds };
+    /* ===================== สัปดาห์ที่ 3 วงจรเรียงกระแสและวงจรกรอง ===================== */
+    /* แบบวงจร (พื้นที่ 920×520): หม้อแปลงทางซ้าย · ราง + ที่ y=140 · ราง − ที่ y=400 · C ที่ x=700 · R_L ที่ x=800
+       ทิศไดโอดในบริดจ์ตามภาพที่ 2.3: D1 L→T, D2 T→R, D3 B→R, D4 L→B
+       ครึ่งบวก: D2 → โหลด → D4 · ครึ่งลบ: D3 → โหลด → D1 */
+    const RC = {
+        T: [400, 150], B: [400, 370], L: [290, 260], R: [510, 260],
+        paths: {
+            half: { p: [[150, 140], [800, 140], [800, 400], [150, 400], [150, 380]], n: null },
+            ct: { p: [[150, 140], [800, 140], [800, 400], [640, 400], [640, 260], [150, 260]],
+                  n: [[150, 380], [150, 470], [880, 470], [880, 140], [800, 140], [800, 400], [640, 400], [640, 260], [150, 260]] },
+            bridge: { p: [[150, 140], [150, 90], [400, 90], [400, 150], [510, 260], [640, 260], [640, 140], [800, 140], [800, 400], [640, 400], [640, 490], [250, 490], [250, 260], [290, 260], [400, 370], [400, 450], [150, 450], [150, 380]],
+                      n: [[150, 380], [150, 450], [400, 450], [400, 370], [510, 260], [640, 260], [640, 140], [800, 140], [800, 400], [640, 400], [640, 490], [250, 490], [250, 260], [290, 260], [400, 150], [400, 90], [150, 90], [150, 140]] }
+        },
+        on: { half: { p: ['D1'], n: [] }, ct: { p: ['D1'], n: ['D2'] }, bridge: { p: ['D2', 'D4'], n: ['D3', 'D1'] } }
+    };
+    /* ไดโอดจาก a (แอโนด) ไป b (แคโทด) วาดที่กึ่งกลางเส้น */
+    function rcDiode(a, b, name, lit, lx, ly) {
+        const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, ang = Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI;
+        return `<line class="wire" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"/>
+            <g class="rc-d${lit ? ' lit' : ''}" transform="translate(${mx},${my}) rotate(${ang})"><path d="M-22,-24 L22,0 L-22,24 Z"/><line x1="24" y1="-26" x2="24" y2="26"/></g>
+            <text class="lbl rc-dn${lit ? ' lit' : ''}" x="${mx + (lx || 0)}" y="${my + (ly || 0)}" text-anchor="middle">${name}</text>`;
+    }
+    function rcCircuit(mode, o) {
+        o = o || {};
+        const lit = n => o.on && o.on.includes(n);
+        const coil = (x, y0, n, dir) => { let d = `M${x},${y0}`; for (let k = 0; k < n; k++) d += ` a20,20 0 0,${dir} 0,40`; return `<path class="wire rc-coil" d="${d}"/>`; };
+        let s = `<rect class="rc-box" x="18" y="118" width="108" height="286" rx="12"/><text class="lbl small" x="72" y="110" text-anchor="middle">กล่องปิด</text>
+            ${coil(96, 140, 6, 0)}<text class="lbl small" x="72" y="432" text-anchor="middle">220 V~</text>
+            <line class="rc-core" x1="113" y1="136" x2="113" y2="384"/><line class="rc-core" x1="121" y1="136" x2="121" y2="384"/>
+            ${coil(150, 140, 6, 1)}
+            <path class="wire" d="M96,140 V128 M96,380 V392"/>`;
+        if (o.pol) s += `<text class="lbl rc-pol" x="196" y="${mode === 'ct' ? 196 : 186}">${o.pol > 0 ? '+' : '−'}</text><text class="lbl rc-pol" x="196" y="${mode === 'ct' ? 356 : 372}">${o.pol > 0 ? '−' : '+'}</text>`;
+        s += `<text class="lbl" x="${mode === 'ct' ? 182 : 186}" y="${mode === 'ct' ? 232 : 272}">${mode === 'ct' ? '12-0-12' : 'v<tspan baseline-shift="sub" font-size="18">s</tspan>'}</text>`;
+        /* ส่วนโหลด (เหมือนกันทุกแบบ) */
+        const zig = 'M800,140 V206 l18,8 l-36,16 l36,16 l-36,16 l36,16 l-36,16 l18,8 V400';
+        s += `<path class="wire" d="${zig}"/><text class="lbl" x="830" y="280">R<tspan baseline-shift="sub" font-size="18">L</tspan></text>
+            <text class="lbl small" x="830" y="310">${o.rl || ''}</text>
+            <path class="wire" d="M${mode === 'bridge' ? 640 : mode === 'ct' ? 150 : 150},140 H${mode === 'ct' ? 880 : 800} M${mode === 'half' ? 150 : 640},400 H800"/>
+            <circle class="rc-dot" cx="800" cy="140" r="7"/><circle class="rc-dot" cx="800" cy="400" r="7"/>
+            <text class="lbl rc-pm" x="846" y="132">+</text><text class="lbl rc-pm" x="846" y="430">−</text>`;
+        if (o.cap) s += `<path class="wire" d="M700,140 V256 M700,280 V400"/><line class="rc-plate" x1="672" y1="256" x2="728" y2="256"/>
+            <path class="rc-plate" d="M672,286 Q700,272 728,286"/><text class="lbl rc-pm" x="676" y="246" text-anchor="end">+</text>
+            <text class="lbl" x="616" y="300" text-anchor="end">C</text><text class="lbl small" x="616" y="330" text-anchor="end">${o.cap}</text>
+            <circle class="rc-dot" cx="700" cy="140" r="7"/><circle class="rc-dot" cx="700" cy="400" r="7"/>`;
+        if (mode === 'half') s += `<path class="wire" d="M150,380 V400"/>` + rcDiode([330, 140], [390, 140], 'D1', lit('D1'), 0, -40);
+        if (mode === 'ct') s += `<path class="wire" d="M150,260 H640 V400 M150,380 V470 H880 V140"/><circle class="rc-dot" cx="150" cy="260" r="7"/>
+            <text class="lbl small" x="170" y="290">แท็ปกลาง</text>`
+            + rcDiode([330, 140], [390, 140], 'D1', lit('D1'), 0, -40) + rcDiode([330, 470], [390, 470], 'D2', lit('D2'), 0, -40);
+        if (mode === 'bridge') {
+            s += `<path class="wire" d="M150,140 V90 H400 V150 M150,380 V450 H400 V370 M510,260 H640 V140 M640,400 V490 H250 V462 a12,12 0 0,0 0,-24 V260 H290"/>
+                <circle class="rc-dot" cx="400" cy="150" r="7"/><circle class="rc-dot" cx="400" cy="370" r="7"/><circle class="rc-dot" cx="290" cy="260" r="7"/><circle class="rc-dot" cx="510" cy="260" r="7"/>`;
+            s += rcDiode(RC.L, RC.T, 'D1', lit('D1'), -40, -30) + rcDiode(RC.T, RC.R, 'D2', lit('D2'), 40, -30)
+                + rcDiode(RC.B, RC.R, 'D3', lit('D3'), 40, 50) + rcDiode(RC.L, RC.B, 'D4', lit('D4'), -40, 50);
+        }
+        if (o.flow) s += `<polyline class="rc-flow" points="${o.flow.map(p => p.join(',')).join(' ')}"/>`;
+        return s;
+    }
+
+    /* ---------- หลักการทำงานของวงจรเรียงกระแส (ครึ่งคลื่น / แท็ปกลาง / บริดจ์) ---------- */
+    function rect(el) {
+        const modes = (el.dataset.modes || el.dataset.mode || 'half').split(',');
+        let mode = modes[0], ph = 0, play = false, raf = 0, last = 0, hide = el.dataset.hide === '1';   // hide = ทายก่อนเฉลย
+        const VM = 16.97, DROP = { half: 0.7, ct: 0.7, bridge: 1.4 }, NAME = { half: 'ครึ่งคลื่น', ct: 'เต็มคลื่นแบบแท็ปกลาง', bridge: 'บริดจ์' };
+        el.classList.add('sx', 'rect');
+        el.innerHTML = `<div class="rc-row"><svg viewBox="0 0 920 520" class="sx-svg rc-svg"></svg>
+              <div class="rc-r"><svg viewBox="0 0 560 470" class="sx-svg rc-plot"></svg><div class="rc-out"></div>
+            <div class="sx-ctl">${modes.length > 1 ? '<div class="rc-ms">' + modes.map(m => `<button type="button" data-m="${m}">${NAME[m]}</button>`).join('') + '</div>' : ''}
+              <button type="button" data-a="play">▶ เล่นช้า ๆ</button><button type="button" data-a="pos">ครึ่งคาบบวก</button><button type="button" data-a="neg">ครึ่งคาบลบ</button></div></div></div>`;
+        const svg = el.querySelector('.rc-svg'), plot = el.querySelector('.rc-plot'), out = el.querySelector('.rc-out');
+        const X0 = 50, W = 480, Y0 = 215, K = 170 / VM;                         // 2 คาบเต็มความกว้าง
+        const vout = (m, v) => Math.max(0, (m === 'half' ? v : Math.abs(v)) - DROP[m]);
+        const draw = () => {
+            const v = VM * Math.sin(ph), pos = v > DROP[mode] && Math.sin(ph) > 0, neg = -v > DROP[mode];
+            const half = pos ? 'p' : neg ? 'n' : null;
+            const on = half && !hide ? RC.on[mode][half] : [], flow = half && !hide && RC.paths[mode][half];
+            svg.innerHTML = rcCircuit(mode, { on, flow, pol: Math.sin(ph) >= 0 ? 1 : -1 });
+            let vs = '', vo = '';
+            const tEnd = ph % (4 * Math.PI);
+            for (let k = 0; k <= 240; k++) {
+                const t = k / 240 * 4 * Math.PI, x = X0 + k / 240 * W;
+                vs += `${x.toFixed(1)},${(Y0 - VM * Math.sin(t) * K).toFixed(1)} `;
+                if (t <= tEnd + 1e-9 && !hide) vo += `${x.toFixed(1)},${(Y0 - vout(mode, VM * Math.sin(t)) * K).toFixed(1)} `;
+            }
+            const mx = X0 + tEnd / (4 * Math.PI) * W;
+            plot.innerHTML = `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X0 + W + 14}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="20" x2="${X0}" y2="410"/>
+                <text class="lbl small" x="${X0 + W - 4}" y="${Y0 + 30}">t</text><text class="lbl small" x="${X0 + 8}" y="30">v</text>
+                <polyline class="rc-vs" points="${vs}"/><polyline class="rc-vo" points="${vo}"/>
+                <line class="rc-mk" x1="${mx}" y1="20" x2="${mx}" y2="410"/>
+                <text class="lbl small rc-lg1" x="${X0 + 250}" y="456">- - v<tspan baseline-shift="sub" font-size="14">s</tspan> (ก่อนเรียงกระแส)</text>
+                <text class="lbl small rc-lg2" x="${X0}" y="456">━ v<tspan baseline-shift="sub" font-size="14">out</tspan> ที่โหลด</text>`;
+            const off = { half: ['D1'], ct: ['D1', 'D2'], bridge: ['D1', 'D2', 'D3', 'D4'] }[mode].filter(d => !on.includes(d));
+            out.innerHTML = hide ? `<b>${NAME[mode]}</b> · v<sub>s</sub> = <span class="mono">${v.toFixed(1)} V</span><br><span class="c-rose">🤔 ทายก่อน: ไดโอดตัวไหนนำกระแส? แล้วกดปุ่มเพื่อเฉลย</span>` : `<b>${NAME[mode]}</b> · v<sub>s</sub> = <span class="mono">${v.toFixed(1)} V</span> · v<sub>out</sub> = <span class="mono">${vout(mode, v).toFixed(1)} V</span><br>`
+                + (on.length ? `<span class="c-orange">นำกระแส: <b>${on.join(', ')}</b></span>${off.length ? ` · ไบแอสกลับ: ${off.join(', ')}` : ''}`
+                    : `<span class="c-blue">${Math.abs(v) <= DROP[mode] ? 'แรงดันยังไม่ถึงแรงดันคัตอิน' : 'ไดโอดไบแอสกลับ'} → ไม่มีกระแสผ่านโหลด</span>`);
+            el.querySelectorAll('[data-m]').forEach(b => b.classList.toggle('on', b.dataset.m === mode));
+            el.querySelector('[data-a=play]').textContent = play ? '⏸ หยุด' : '▶ เล่นช้า ๆ';
+        };
+        const tick = ts => {
+            if (!play) return;
+            const slide = el.closest('.slide');
+            if (slide && !slide.classList.contains('active')) { play = false; draw(); return; }
+            if (last) ph = (ph + (ts - last) / 1000 * Math.PI / 2) % (4 * Math.PI);   // 1 คาบ = 4 วินาที
+            last = ts; draw(); raf = requestAnimationFrame(tick);
+        };
+        el.addEventListener('click', e => {
+            const b = e.target.closest('button'); if (!b) return;
+            hide = false;
+            if (b.dataset.m) { mode = b.dataset.m; }
+            else if (b.dataset.a === 'play') { play = !play; last = 0; cancelAnimationFrame(raf); if (play) raf = requestAnimationFrame(tick); }
+            else if (b.dataset.a === 'pos') { play = false; ph = Math.PI / 2; }
+            else if (b.dataset.a === 'neg') { play = false; ph = 3 * Math.PI / 2; }
+            draw(); blur(b);
+        });
+        ph = el.dataset.ph === 'neg' ? 3 * Math.PI / 2 : Math.PI / 2; draw();
+    }
+
+    /* ---------- แบบจำลองตามเวลา: หม้อแปลง 12 Vrms (ขดลวด 1 Ω) + ไดโอด 1N4007 + C + R_L ----------
+       จำลองทีละ 10 µs หลายคาบจนนิ่ง แล้วเก็บ 1 คาบสุดท้าย (20 ms) · ค่าที่ได้ต่างจากสูตรเล็กน้อยเหมือนวัดจริง */
+    const PSU = { f: 50, vm: 12 * Math.SQRT2, rw: 1, dt: 1e-5, cache: {} };
+    function psuRun(mode, C, RL) {
+        const key = mode + C + '|' + RL;
+        if (PSU.cache[key]) return PSU.cache[key];
+        const d = DIODE.si, nd = mode === 'bridge' ? 2 : 1, N = Math.round(1 / PSU.f / PSU.dt), cyc = C ? 12 : 1;
+        const vdOf = i => d.nVt * Math.log1p(i / d.Is);
+        const solve = (dv, Rs) => {                                            // nd·V_D(i) + i·Rs = dv
+            if (dv <= 0) return 0;
+            let lo = 0, hi = dv / Rs;
+            for (let k = 0; k < 44; k++) { const m = (lo + hi) / 2; if (nd * vdOf(m) + m * Rs > dv) hi = m; else lo = m; }
+            return (lo + hi) / 2;
+        };
+        let vo = C ? PSU.vm - 1.4 : 0;
+        const out = new Float32Array(N), sec = new Float32Array(N);
+        for (let s = 0; s < cyc * N; s++) {
+            const vs = PSU.vm * Math.sin(2 * Math.PI * PSU.f * s * PSU.dt);
+            const vin = mode === 'bridge' ? Math.abs(vs) : vs;
+            let i;
+            if (C) { i = solve(vin - vo, PSU.rw); vo += (i - vo / RL) * PSU.dt / C; }
+            else { i = solve(vin, PSU.rw + RL); vo = i * RL; }
+            if (s >= (cyc - 1) * N) { const k = s - (cyc - 1) * N; out[k] = vo; sec[k] = vs - Math.sign(vs) * i * PSU.rw; }
+        }
+        let mx = -1e9, mn = 1e9, sum = 0, sq = 0;
+        for (let k = 0; k < N; k++) { mx = Math.max(mx, out[k]); mn = Math.min(mn, out[k]); sum += out[k]; sq += sec[k] * sec[k]; }
+        return (PSU.cache[key] = { out, sec, N, vp: mx, vmin: mn, vdc: sum / N, vr: mx - mn, vsrms: Math.sqrt(sq / N), fo: mode === 'bridge' ? 100 : 50 });
+    }
+
+    /* ---------- จอออสซิลโลสโคป (10 × 8 ช่อง) ---------- */
+    const SC = { D: 52, X: 24, Y: 18, n: 0 };                                        // 1 ช่อง = 52 px
+    function scopeScreen(fn, o) {
+        const { D, X, Y } = SC, id = 'scClip' + (++SC.n), W = 10 * D, H = 8 * D, gy = Y + H / 2 + (o.gnd || 0) * D;
+        let g = `<rect class="sc-bg" x="${X}" y="${Y}" width="${W}" height="${H}" rx="6"/>`;
+        for (let k = 1; k < 10; k++) g += `<line class="sc-gr${k === 5 ? ' mid' : ''}" x1="${X + k * D}" y1="${Y}" x2="${X + k * D}" y2="${Y + H}"/>`;
+        for (let k = 1; k < 8; k++) g += `<line class="sc-gr${k === 4 ? ' mid' : ''}" x1="${X}" y1="${Y + k * D}" x2="${X + W}" y2="${Y + k * D}"/>`;
+        for (let k = 1; k < 50; k++) g += `<line class="sc-tk" x1="${X + k * D / 5}" y1="${Y + H / 2 - 5}" x2="${X + k * D / 5}" y2="${Y + H / 2 + 5}"/>`;
+        for (let k = 1; k < 40; k++) g += `<line class="sc-tk" x1="${X + W / 2 - 5}" y1="${Y + k * D / 5}" x2="${X + W / 2 + 5}" y2="${Y + k * D / 5}"/>`;
+        let pts = '';
+        for (let px = 0; px <= W; px += 2) {
+            const v = fn(px / D * o.tdiv / 1000);
+            const y = Math.max(Y - 2, Math.min(Y + H + 2, gy - v / o.vdiv * D));
+            pts += `${X + px},${y.toFixed(1)} `;
+        }
+        g += `<defs><clipPath id="${id}"><rect x="${X}" y="${Y}" width="${W}" height="${H}"/></clipPath></defs>
+            <polyline class="sc-tr" clip-path="url(#${id})" points="${pts}"/>
+            <path class="sc-gnd" d="M${X - 2},${gy} l-16,-10 v20 z"/><text class="sc-gt" x="${X - 22}" y="${gy + 34}">⏚</text>
+            <text class="sc-tx" x="${X + 8}" y="${Y + H + 34}">${o.ch || 'CH1'} ${fmtDiv(o.vdiv)}V/div ${o.ac ? 'AC' : 'DC'}</text>
+            <text class="sc-tx" x="${X + W - 8}" y="${Y + H + 34}" text-anchor="end">${o.tdiv} ms/div</text>`;
+        if (o.meas) g += `<rect class="sc-mbg" x="${X + W - 236}" y="${Y + 8}" width="228" height="${o.meas.length * 30 + 12}" rx="6"/>`
+            + o.meas.map((m, i) => `<text class="sc-m" x="${X + W - 224}" y="${Y + 36 + i * 30}">${m}</text>`).join('');
+        return g;
+    }
+    const fmtDiv = v => v < 1 ? (v * 1000) + 'm' : String(v);
+    /* รูปคลื่นสำหรับจอสโคป: sine | half | full | rip (แรงดันพลิ้วแบบ AC coupling: ชาร์จเร็ว คายช้า) · vp = ค่ายอด (rip = Vpp) */
+    function scopeWave(c) {
+        const T = 1 / c.f, w = 2 * Math.PI * c.f;
+        return t => {
+            const ph = ((t % T) + T) % T / T;
+            if (c.type === 'sine') return c.vp * Math.sin(w * t);
+            if (c.type === 'half') return Math.max(0, c.vp * Math.sin(w * t));
+            if (c.type === 'full') return Math.abs(c.vp * Math.sin(Math.PI * c.f * t));     // |sin| มีคาบ 1/f
+            return ph < 0.18 ? c.vp * (ph / 0.18 - 0.5) : c.vp * (0.5 - (ph - 0.18) / 0.82);
+        };
+    }
+    /* จอสโคปภาพนิ่ง: <svg viewBox="0 0 570 488" data-scope="type;vp;f;vdiv;tdiv"> (ใช้ในแบบฝึกหัด) */
+    function scopeStatic(el) {
+        const [type, vp, f, vdiv, tdiv] = el.dataset.scope.split(';');
+        const c = { type, vp: +vp, f: +f, vdiv: +vdiv, tdiv: +tdiv };
+        el.innerHTML = scopeScreen(scopeWave(c), { vdiv: c.vdiv, tdiv: c.tdiv, ac: type === 'rip', gnd: type === 'half' || type === 'full' ? 3 : 0 });
+    }
+
+    /* ---------- แล็บเสมือน ใบงานที่ 2.1: วงจร + ออสซิลโลสโคป + มัลติมิเตอร์ ---------- */
+    function psu(el) {
+        let mode = el.dataset.mode || 'half', C = +(el.dataset.c || 0), RL = +(el.dataset.rl || 1000), probe = 'out', ac = false, meas = false;
+        const VD = [0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10], TD = [1, 2, 5, 10];
+        let vdiv = 5, tdiv = 5;
+        const lock = (el.dataset.lock || '').split(',');
+        const capTxt = c => c ? c * 1e6 + ' µF' : '', rlTxt = r => r >= 1000 ? r / 1000 + ' kΩ' : r + ' Ω';
+        el.classList.add('sx', 'psu');
+        const grp = (lab, a, list, fmt) => `<div class="ps-g"><span class="ps-l">${lab}</span>${list.map(v => `<button type="button" data-${a}="${v}">${fmt(v)}</button>`).join('')}</div>`;
+        el.innerHTML = `<div class="ps-row">
+              <div class="ps-l-col"><svg viewBox="0 0 920 520" class="sx-svg ps-svg"></svg>
+                <div class="sx-ctl ps-ctl">
+                  ${lock.includes('mode') ? '' : grp('วงจร', 'm', ['half', 'bridge'], v => v === 'half' ? 'ครึ่งคลื่น' : 'บริดจ์')}
+                  ${grp('C', 'c', [0, 470e-6, 2200e-6], v => v ? capTxt(v) : 'ไม่ต่อ')}
+                  ${grp('R<sub>L</sub>', 'r', [1000, 220], rlTxt)}
+                </div>
+                <div class="ps-meters"></div></div>
+              <div class="ps-r-col"><svg viewBox="0 0 570 488" class="sx-svg ps-scope"></svg>
+                <div class="sx-ctl ps-ctl">
+                  <div class="ps-g"><span class="ps-l">โพรบวัด</span><button type="button" data-p="s">v<sub>s</sub> ขดทุติยภูมิ</button><button type="button" data-p="out">v<sub>out</sub> ที่โหลด</button></div>
+                  <div class="ps-g"><span class="ps-l">VOLTS/DIV</span><button type="button" data-a="v-">−</button><b class="ps-v mono"></b><button type="button" data-a="v+">+</button>
+                    <span class="ps-l">TIME/DIV</span><button type="button" data-a="t-">−</button><b class="ps-t mono"></b><button type="button" data-a="t+">+</button></div>
+                  <div class="ps-g"><button type="button" data-a="ac"></button><button type="button" data-a="ms">📏 Measure</button></div>
+                </div></div></div>
+            <div class="ps-note"></div>`;
+        const svg = el.querySelector('.ps-svg'), scope = el.querySelector('.ps-scope');
+        const draw = () => {
+            const r = psuRun(mode, C, RL), N = r.N, T = 1 / PSU.f;
+            svg.innerHTML = rcCircuit(mode, { cap: capTxt(C), rl: rlTxt(RL) })
+                + `<g class="ps-probe"><circle cx="${probe === 's' ? 150 : 800}" cy="${probe === 's' ? 140 : 140}" r="16"/><text x="${probe === 's' ? 186 : 772}" y="${probe === 's' ? 120 : 118}" text-anchor="${probe === 's' ? 'start' : 'end'}">โพรบ</text></g>`;
+            const arr = probe === 's' ? r.sec : r.out;
+            let mean = 0; if (ac) { for (let k = 0; k < N; k++) mean += arr[k]; mean /= N; }
+            const fn = t => arr[Math.floor(((t % T) + T) % T / PSU.dt) % N] - mean;
+            let mx = -1e9, mn = 1e9; for (let k = 0; k < N; k++) { mx = Math.max(mx, arr[k] - mean); mn = Math.min(mn, arr[k] - mean); }
+            const f = probe === 's' ? 50 : r.fo;
+            const m = meas ? [`Vpp  ${(mx - mn).toFixed(2)} V`, `Vmax ${mx.toFixed(2)} V`, ac ? `Vmin ${mn.toFixed(2)} V` : `Vavg ${(probe === 's' ? 0 : r.vdc).toFixed(2)} V`, `Freq ${f} Hz`] : null;
+            scope.innerHTML = scopeScreen(fn, { vdiv, tdiv, ac, gnd: probe === 'out' && !ac ? 3 : 0, meas: m, ch: probe === 's' ? 'CH1' : 'CH2' });
+            el.querySelector('.ps-meters').innerHTML = `<div class="ps-m"><span>มัลติมิเตอร์ ย่าน V~ ที่ขดทุติยภูมิ</span><b class="lcd sm">${r.vsrms.toFixed(2)}</b> V</div>
+                <div class="ps-m"><span>มัลติมิเตอร์ ย่าน V⎓ คร่อม R<sub>L</sub></span><b class="lcd sm">${r.vdc.toFixed(2)}</b> V</div>`;
+            const clip = mx / vdiv > (probe === 'out' && !ac ? 7 : 4) || mn / vdiv < (probe === 'out' && !ac ? -1 : -4);
+            el.querySelector('.ps-note').innerHTML = clip ? '⚠️ รูปคลื่นล้นจอ → เพิ่ม VOLTS/DIV' : (ac && probe === 'out' && C ? 'AC coupling: ตัดไฟตรงออก เห็นเฉพาะแรงดันพลิ้ว (V<sub>r(pp)</sub> = สูงสุด − ต่ำสุด)' : probe === 'out' && !C ? 'นับช่องจากเส้นกราวด์ (⏚) ถึงยอด × VOLTS/DIV = V<sub>p(out)</sub>' : '');
+            el.querySelectorAll('[data-m]').forEach(b => b.classList.toggle('on', b.dataset.m === mode));
+            el.querySelectorAll('[data-c]').forEach(b => b.classList.toggle('on', +b.dataset.c === C));
+            el.querySelectorAll('[data-r]').forEach(b => b.classList.toggle('on', +b.dataset.r === RL));
+            el.querySelectorAll('[data-p]').forEach(b => b.classList.toggle('on', b.dataset.p === probe));
+            el.querySelector('.ps-v').textContent = fmtDiv(vdiv) + 'V'; el.querySelector('.ps-t').textContent = tdiv + ' ms';
+            const acb = el.querySelector('[data-a=ac]'); acb.textContent = ac ? 'Coupling: AC' : 'Coupling: DC'; acb.classList.toggle('on', ac);
+            el.querySelector('[data-a=ms]').classList.toggle('on', meas);
+        };
+        el.addEventListener('click', e => {
+            const b = e.target.closest('button'); if (!b) return;
+            if (b.dataset.m) mode = b.dataset.m;
+            else if (b.dataset.c != null) C = +b.dataset.c;
+            else if (b.dataset.r) RL = +b.dataset.r;
+            else if (b.dataset.p) { probe = b.dataset.p; if (probe === 's') ac = false; }
+            else if (b.dataset.a === 'v-') vdiv = VD[Math.max(0, VD.indexOf(vdiv) - 1)];
+            else if (b.dataset.a === 'v+') vdiv = VD[Math.min(VD.length - 1, VD.indexOf(vdiv) + 1)];
+            else if (b.dataset.a === 't-') tdiv = TD[Math.max(0, TD.indexOf(tdiv) - 1)];
+            else if (b.dataset.a === 't+') tdiv = TD[Math.min(TD.length - 1, TD.indexOf(tdiv) + 1)];
+            else if (b.dataset.a === 'ac') ac = !ac;
+            else if (b.dataset.a === 'ms') meas = !meas;
+            draw(); blur(b);
+        });
+        draw();
+    }
+
+    /* ---------- ฝึกอ่านจอออสซิลโลสโคป: นับช่อง → แรงดัน · คาบ → ความถี่ ---------- */
+    function scoperead(el) {
+        /* type: sine | half | full | rip (AC coupling) · vp = ค่ายอด (rip = Vpp) · f Hz · vdiv V · tdiv ms */
+        const CASES = [
+            { type: 'sine', vp: 12, f: 50, vdiv: 5, tdiv: 5 }, { type: 'sine', vp: 6, f: 50, vdiv: 2, tdiv: 5 },
+            { type: 'sine', vp: 3, f: 1000, vdiv: 1, tdiv: 0.2 }, { type: 'half', vp: 15, f: 50, vdiv: 5, tdiv: 5 },
+            { type: 'full', vp: 15, f: 100, vdiv: 5, tdiv: 2 }, { type: 'full', vp: 8, f: 100, vdiv: 2, tdiv: 2 },
+            { type: 'rip', vp: 1, f: 100, vdiv: 0.2, tdiv: 2 }, { type: 'rip', vp: 0.4, f: 50, vdiv: 0.1, tdiv: 5 },
+            { type: 'half', vp: 8, f: 50, vdiv: 2, tdiv: 2 }, { type: 'sine', vp: 17, f: 50, vdiv: 5, tdiv: 2 }
+        ];
+        let i = +(el.dataset.start || 0), shown = false;
+        const NAME = { sine: 'ไซน์ (ไฟสลับ)', half: 'เรียงกระแสครึ่งคลื่น', full: 'เรียงกระแสเต็มคลื่น', rip: 'แรงดันพลิ้ว (AC coupling)' };
+        el.classList.add('sx', 'scoperead');
+        el.innerHTML = `<div class="sr-row"><svg viewBox="0 0 570 488" class="sx-svg sr-svg"></svg>
+            <div class="sr-r"><div class="sr-q"></div><div class="sx-ctl"><button type="button" data-a="ans">👀 เฉลย</button><button type="button" data-a="new">🎲 ข้อต่อไป</button></div><div class="sr-a"></div></div></div>`;
+        const draw = () => {
+            const c = CASES[i];
+            const gnd = c.type === 'half' || c.type === 'full' ? 3 : 0;
+            el.querySelector('.sr-svg').innerHTML = scopeScreen(scopeWave(c), { vdiv: c.vdiv, tdiv: c.tdiv, ac: c.type === 'rip', gnd });
+            el.querySelector('.sr-q').innerHTML = `<p class="sr-n">ข้อ ${i + 1} / ${CASES.length}</p>
+                <p>VOLTS/DIV = <b class="mono">${fmtDiv(c.vdiv)}V</b> · TIME/DIV = <b class="mono">${c.tdiv} ms</b></p>
+                <p>${c.type === 'rip' ? 'แรงดันพลิ้วยอดถึงยอด <b>V<sub>r(pp)</sub></b>' : '<b>ค่ายอด V<sub>p</sub></b>'} = ? &nbsp; <b>ความถี่ f</b> = ?</p>`;
+            const per = 1000 / c.f / c.tdiv, dv = c.type === 'rip' ? c.vp / c.vdiv : c.vp / c.vdiv;
+            el.querySelector('.sr-a').innerHTML = shown ? `<p>รูปคลื่น: <b>${NAME[c.type]}</b></p>
+                <p>${c.type === 'rip' ? 'ต่ำสุดถึงสูงสุด' : (gnd ? 'จากเส้นกราวด์ถึงยอด' : 'จากเส้นกลางถึงยอด')} <b class="mono">${+dv.toFixed(1)}</b> ช่อง × ${fmtDiv(c.vdiv)}V = <b class="mono c-orange">${+(c.vp).toFixed(2)} V</b></p>
+                <p>1 คาบ = <b class="mono">${+per.toFixed(1)}</b> ช่อง × ${c.tdiv} ms = ${+(per * c.tdiv).toFixed(2)} ms → f = 1 ÷ ${+(per * c.tdiv / 1000).toFixed(4)} s = <b class="mono c-orange">${c.f} Hz</b></p>` : '';
+            el.querySelector('[data-a=ans]').classList.toggle('on', shown);
+        };
+        el.addEventListener('click', e => {
+            const b = e.target.closest('button'); if (!b) return;
+            if (b.dataset.a === 'ans') shown = !shown;
+            else if (b.dataset.a === 'new') { i = (i + 1) % CASES.length; shown = false; }
+            draw(); blur(b);
+        });
+        draw();
+    }
+
+    const SIMS = { dope, hole, pn, bias, iv, dmm, curve, ds, rect, psu, scoperead };
     function init(root) {
         root = root || document;
         root.querySelectorAll('[data-timer]').forEach(el => { timer(el); guard(el); });
@@ -615,9 +909,11 @@
         root.querySelectorAll('[data-picker]').forEach(el => { picker(el); guard(el); });
         root.querySelectorAll('[data-sim]').forEach(el => { const f = SIMS[el.dataset.sim]; if (f) { f(el); guard(el); } });
         root.querySelectorAll('[data-video]').forEach(el => { video(el); guard(el); });
+        root.querySelectorAll('[data-circ]').forEach(el => { el.innerHTML = rcCircuit(el.dataset.circ, { cap: el.dataset.cap, rl: el.dataset.rl }); });
+        root.querySelectorAll('[data-scope]').forEach(scopeStatic);
     }
 
-    g.Sims = { init };
+    g.Sims = { init, circuit: rcCircuit };      // circuit(mode, {cap, rl, on, flow, pol}) = แบบวงจรแหล่งจ่าย (ใส่ใน <svg viewBox="0 0 920 520"> ภายใต้ .sx)
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => init(document));
     else init(document);
 })(window);
