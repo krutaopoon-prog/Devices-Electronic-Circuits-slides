@@ -79,7 +79,7 @@
     <nav class="topbar no-print">
         <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="quiz.html">แบบทดสอบ</a>
         <span class="spacer"></span>
-        <a href="answers.html">สำหรับครู 🔒</a>
+        <a href="answers.html">สำหรับครู</a>
     </nav>
 
     <!-- หัวกระดาษใบงาน (แสดงเฉพาะตอนพิมพ์) -->
@@ -99,8 +99,8 @@
             <label>เลขที่ <input class="name-field" type="text" id="no" inputmode="numeric"></label>
         </div>
         <div class="btn-row">
-            <button class="btn" type="button" data-print="all">🖨 พิมพ์ใบงานทั้งหมด</button>
-            <a class="btn ghost" href="answers.html">เฉลยสำหรับครู 🔒</a>
+            <button class="btn" type="button" data-print="all">พิมพ์ใบงานทั้งหมด</button>
+            <a class="btn ghost" href="answers.html">เฉลยสำหรับครู</a>
         </div>
     </header>
 
@@ -110,7 +110,7 @@
         <h2>ส่งคำตอบทั้งหมด</h2>
         <p class="muted" style="margin:0 0 6px">ระบบจะตรวจทุกชุด บันทึกคะแนนพร้อมเวลาส่ง และล็อกคำตอบ แล้วจึงพิมพ์ใบคะแนนได้</p>
         <div class="btn-row">
-            <button class="btn orange" type="button" id="submitAll">📨 ส่งคำตอบทั้งหมด</button>
+            <button class="btn orange" type="button" id="submitAll">ส่งคำตอบทั้งหมด</button>
             <button class="btn ghost" type="button" id="unlockAll" hidden>แก้คำตอบแล้วส่งใหม่</button>
         </div>
         <div id="result" aria-live="polite"></div>
@@ -201,8 +201,8 @@
             <div class="btn-row">
                 <button class="btn" type="button" data-act="check">ตรวจคำตอบ</button>
                 <button class="btn ghost" type="button" data-act="clear">ล้างคำตอบ</button>
-                ${set.random ? '<button class="btn orange" type="button" data-act="random">🎲 สุ่มโจทย์ใหม่ (ฝึกเพิ่ม)</button><button class="btn ghost" type="button" data-act="std">กลับไปโจทย์ชุดมาตรฐาน</button>' : ''}
-                <button class="btn ghost" type="button" data-print="${set.id}">🖨 พิมพ์เฉพาะชุดนี้</button>
+                ${set.random ? '<button class="btn orange" type="button" data-act="random">สุ่มโจทย์ใหม่ (ฝึกเพิ่ม)</button><button class="btn ghost" type="button" data-act="std">กลับไปโจทย์ชุดมาตรฐาน</button>' : ''}
+                <button class="btn ghost" type="button" data-print="${set.id}">พิมพ์เฉพาะชุดนี้</button>
             </div>`;
         sec.dataset.max = max;
         root.appendChild(sec);
@@ -357,7 +357,7 @@
         resBox.innerHTML = `<p class="ok" style="margin:10px 0 0">ส่งคำตอบเรียบร้อย · ${C.thaiDateTime(submittedAt)}</p>
             <div class="big">${score} / ${total} คะแนน (${Math.round(score / total * 100)}%)</div>
             <div class="score-actions" style="margin-top:10px">
-                <button class="btn orange" type="button" id="printScore">🖨 พิมพ์ใบคะแนน</button>
+                <button class="btn orange" type="button" id="printScore">พิมพ์ใบคะแนน</button>
                 <span class="hint">ในหน้าต่างพิมพ์ เลือกปลายทาง “บันทึกเป็น PDF” แล้วนำไฟล์ไปแนบส่งใน Google Classroom</span>
             </div>`;
         document.getElementById('printScore').addEventListener('click', () => ScoreSheet.print());

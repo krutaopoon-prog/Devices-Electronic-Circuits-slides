@@ -99,7 +99,7 @@
     function picker(el) {
         el.classList.add('picker');
         el.innerHTML = `<label>เลขที่ 1 ถึง <input type="number" min="2" max="60" value="${+el.dataset.picker || 40}"></label>
-            <button type="button">🎲 สุ่มเลขที่</button><div class="pk-num">?</div>`;
+            <button type="button">สุ่มเลขที่</button><div class="pk-num">?</div>`;
         const out = el.querySelector('.pk-num');
         el.querySelector('button').addEventListener('click', e => {
             const max = Math.max(2, +el.querySelector('input').value || 40);
@@ -259,7 +259,7 @@
         const draw = () => {
             let I = 0, VD = V, note = '';
             if (fwd && V > Vk) {
-                if (R === 0) { I = Infinity; note = '🔥 ไม่มี R จำกัดกระแส: กระแสสูงมากจนไดโอดร้อนและเสียหาย'; }
+                if (R === 0) { I = Infinity; note = 'ไม่มี R จำกัดกระแส: กระแสสูงมากจนไดโอดร้อนและเสียหาย'; }
                 else { I = (V - Vk) / R * 1000; VD = Vk; }
             }
             const on = I > 0.05;
@@ -395,9 +395,9 @@
         let cur = list[0] === 'mys' ? 'd4007' : list[0], mys = null, redAt = 'A', analog = false, shown = false;
         el.classList.add('sx', 'dmm');
         el.innerHTML = `<div class="sx-ctl dm-pick">${list.map(k => k === 'mys'
-                ? `<button type="button" data-d="mys">🎲 ไดโอดปริศนา</button>` : `<button type="button" data-d="${k}">${esc(DMM[k].name)}</button>`).join('')}</div>
+                ? `<button type="button" data-d="mys">ไดโอดปริศนา</button>` : `<button type="button" data-d="${k}">${esc(DMM[k].name)}</button>`).join('')}</div>
             <div class="dm-row"><svg viewBox="0 0 940 400" class="sx-svg dm-svg"></svg>
-            <div class="dm-ctl"><div class="sx-ctl"><button type="button" data-a="swap">🔄 สลับสาย</button></div>
+            <div class="dm-ctl"><div class="sx-ctl"><button type="button" data-a="swap">สลับสาย</button></div>
               <div class="sx-ctl"><button type="button" data-a="dig">ดิจิทัล (โหมด →|)</button><button type="button" data-a="ana">มิเตอร์เข็ม (R×10)</button></div>
               <div class="dm-out"></div>
               ${el.dataset.reveal ? '<div class="sx-ctl"><button type="button" data-a="st">ครูเฉลยสภาพ</button></div><div class="dm-st"></div>' : ''}
@@ -478,7 +478,7 @@
               <div class="sx-ctl cv-steps"><span>V<sub>S</sub> =</span>${STEPS.map(v => `<button type="button" data-v="${v}">${v}</button>`).join('')}</div>
               <label class="cv-sl">ปรับละเอียด 0–12 V <input type="range" min="0" max="12" step="0.1" value="0"></label>
               <div class="sx-ctl"><button type="button" data-p="1">ไบแอสตรง</button><button type="button" data-p="0">กลับขั้วไดโอด</button>
-                <button type="button" data-a="add">📍 ลงจุด</button><button type="button" data-a="clr">ล้างกราฟ</button>
+                <button type="button" data-a="add">ลงจุด</button><button type="button" data-a="clr">ล้างกราฟ</button>
                 <label class="cv-chk"><input type="checkbox"> แสดง I<sub>D</sub> (เฉลย)</label></div>
             </div>
             <div class="cv-r"><svg viewBox="0 0 620 456" class="sx-svg cv-plot"></svg><div class="cv-out"></div></div></div>`;
@@ -520,7 +520,7 @@
             const rows = row('ไบแอส', p => `<td>${p.fwd ? 'ตรง' : 'กลับ'}</td>`) + row('V<sub>S</sub> (V)', p => `<td>${p.vs.toFixed(1)}</td>`)
                 + row('V<sub>D</sub> (V)', p => `<td>${p.vd.toFixed(3)}</td>`) + row('I<sub>D</sub> (mA)', p => `<td>${showI ? p.id.toFixed(2) : '?'}</td>`);
             out.innerHTML = `<div class="cv-now-t">${fwd ? '<b class="c-orange">ไบแอสตรง</b>' : '<b class="c-blue">ไบแอสกลับ</b>'} · V<sub>S</sub> = ${vs.toFixed(1)} V · มิเตอร์อ่าน V<sub>D</sub> = <b class="mono">${vdr.toFixed(3)} V</b><br>${calc}</div>`
-                + (pts.length ? `<table class="cv-tab">${rows}</table>` : '<p class="small" style="margin:6px 0 0">กด “📍 ลงจุด” ทุกค่า V<sub>S</sub> ในตาราง แล้วดูรูปร่างกราฟ</p>');
+                + (pts.length ? `<table class="cv-tab">${rows}</table>` : '<p class="small" style="margin:6px 0 0">กด “ลงจุด” ทุกค่า V<sub>S</sub> ในตาราง แล้วดูรูปร่างกราฟ</p>');
             el.querySelectorAll('[data-v]').forEach(b => b.classList.toggle('on', +b.dataset.v === vs));
             el.querySelectorAll('[data-p]').forEach(b => b.classList.toggle('on', (b.dataset.p === '1') === fwd));
             el.querySelector('input[type=range]').value = vs;
@@ -548,7 +548,7 @@
         el.classList.add('sx', 'ds');
         el.innerHTML = `<div class="ds-cards">${VRRM.map((v, i) => `<button type="button" class="ds-c" data-i="${i}"><b>1N400${i + 1}</b><span>V<sub>RRM</sub></span><span class="mono">${v} V</span></button>`).join('')}</div>
             <p class="ds-same">ทุกเบอร์เหมือนกัน: I<sub>F(AV)</sub> 1.0 A · I<sub>FSM</sub> 30 A · V<sub>F</sub> 1.1 V (ที่ 1 A) · I<sub>R</sub> 5 µA (25 °C) · ตัวถัง DO-41</p>
-            <div class="ds-q-row"><div class="ds-q"></div><div class="sx-ctl"><button type="button" data-a="new">🎲 สุ่มโจทย์ใหม่</button></div></div><div class="ds-fb"></div>`;
+            <div class="ds-q-row"><div class="ds-q"></div><div class="sx-ctl"><button type="button" data-a="new">สุ่มโจทย์ใหม่</button></div></div><div class="ds-fb"></div>`;
         const fb = el.querySelector('.ds-fb');
         const draw = () => {
             const need = 2 * q, best = VRRM.findIndex(v => v >= need);
@@ -561,10 +561,10 @@
             if (pick < 0) { fb.innerHTML = ''; return; }
             const v = VRRM[pick], nm = `1N400${pick + 1}`;
             const rule = `ต้องการ V<sub>RRM</sub> ≥ 2 × ${q} = <b>${need} V</b>`;
-            if (best < 0) fb.innerHTML = `❌ ${rule} แต่ตระกูลนี้ทนได้สูงสุด 1000 V → <b>ไม่มีเบอร์ที่ผ่าน</b> ต้องหาไดโอดชนิดอื่นที่ทนแรงดันสูงกว่า`;
-            else if (pick === best) fb.innerHTML = `✅ <b>${nm} เหมาะที่สุด</b>: ${rule} · ${nm} ทนได้ ${v} V`;
-            else if (v >= need) fb.innerHTML = `👍 ${nm} ใช้ได้ (ทน ${v} V เผื่อมาก) · ${rule} เบอร์ที่พอดีที่สุดคือ <b>1N400${best + 1}</b>`;
-            else fb.innerHTML = `❌ ${nm} ทนได้ ${v} V ${v >= q ? '(ทนได้ แต่<b>เผื่อไม่ถึง 2 เท่า</b>)' : '(<b>น้อยกว่า</b>แรงดันในวงจร ไดโอดจะพัง)'} · ${rule}`;
+            if (best < 0) fb.innerHTML = `✗ ${rule} แต่ตระกูลนี้ทนได้สูงสุด 1000 V → <b>ไม่มีเบอร์ที่ผ่าน</b> ต้องหาไดโอดชนิดอื่นที่ทนแรงดันสูงกว่า`;
+            else if (pick === best) fb.innerHTML = `✓ <b>${nm} เหมาะที่สุด</b>: ${rule} · ${nm} ทนได้ ${v} V`;
+            else if (v >= need) fb.innerHTML = `✓ ${nm} ใช้ได้ (ทน ${v} V เผื่อมาก) · ${rule} เบอร์ที่พอดีที่สุดคือ <b>1N400${best + 1}</b>`;
+            else fb.innerHTML = `✗ ${nm} ทนได้ ${v} V ${v >= q ? '(ทนได้ แต่<b>เผื่อไม่ถึง 2 เท่า</b>)' : '(<b>น้อยกว่า</b>แรงดันในวงจร ไดโอดจะพัง)'} · ${rule}`;
         };
         el.addEventListener('click', e => {
             const b = e.target.closest('button'); if (!b) return;
@@ -589,7 +589,7 @@
         const poster = () => {
             frame.innerHTML = `<button type="button" class="vd-poster" aria-label="เล่นวิดีโอ: ${esc(title)}">
                 <img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy">
-                <span class="vd-play" aria-hidden="true">▶</span><span class="vd-t">🎬 ${esc(title)}</span></button>`;
+                <span class="vd-play" aria-hidden="true">▶</span><span class="vd-t">${esc(title)}</span></button>`;
         };
         poster();
         frame.addEventListener('click', ev => {
@@ -699,7 +699,7 @@
                 <text class="lbl small rc-lg1" x="${X0 + 250}" y="456">- - v<tspan baseline-shift="sub" font-size="14">s</tspan> (ก่อนเรียงกระแส)</text>
                 <text class="lbl small rc-lg2" x="${X0}" y="456">━ v<tspan baseline-shift="sub" font-size="14">out</tspan> ที่โหลด</text>`;
             const off = { half: ['D1'], ct: ['D1', 'D2'], bridge: ['D1', 'D2', 'D3', 'D4'] }[mode].filter(d => !on.includes(d));
-            out.innerHTML = hide ? `<b>${NAME[mode]}</b> · v<sub>s</sub> = <span class="mono">${v.toFixed(1)} V</span><br><span class="c-rose">🤔 ทายก่อน: ไดโอดตัวไหนนำกระแส? แล้วกดปุ่มเพื่อเฉลย</span>` : `<b>${NAME[mode]}</b> · v<sub>s</sub> = <span class="mono">${v.toFixed(1)} V</span> · v<sub>out</sub> = <span class="mono">${vout(mode, v).toFixed(1)} V</span><br>`
+            out.innerHTML = hide ? `<b>${NAME[mode]}</b> · v<sub>s</sub> = <span class="mono">${v.toFixed(1)} V</span><br><span class="c-rose">ทายก่อน: ไดโอดตัวไหนนำกระแส? แล้วกดปุ่มเพื่อเฉลย</span>` : `<b>${NAME[mode]}</b> · v<sub>s</sub> = <span class="mono">${v.toFixed(1)} V</span> · v<sub>out</sub> = <span class="mono">${vout(mode, v).toFixed(1)} V</span><br>`
                 + (on.length ? `<span class="c-orange">นำกระแส: <b>${on.join(', ')}</b></span>${off.length ? ` · ไบแอสกลับ: ${off.join(', ')}` : ''}`
                     : `<span class="c-blue">${Math.abs(v) <= DROP[mode] ? 'แรงดันยังไม่ถึงแรงดันคัตอิน' : 'ไดโอดไบแอสกลับ'} → ไม่มีกระแสผ่านโหลด</span>`);
             el.querySelectorAll('[data-m]').forEach(b => b.classList.toggle('on', b.dataset.m === mode));
@@ -818,7 +818,7 @@
                   <div class="ps-g"><span class="ps-l">โพรบวัด</span><button type="button" data-p="s">v<sub>s</sub> ขดทุติยภูมิ</button><button type="button" data-p="out">v<sub>out</sub> ที่โหลด</button></div>
                   <div class="ps-g"><span class="ps-l">VOLTS/DIV</span><button type="button" data-a="v-">−</button><b class="ps-v mono"></b><button type="button" data-a="v+">+</button>
                     <span class="ps-l">TIME/DIV</span><button type="button" data-a="t-">−</button><b class="ps-t mono"></b><button type="button" data-a="t+">+</button></div>
-                  <div class="ps-g"><button type="button" data-a="ac"></button><button type="button" data-a="ms">📏 Measure</button></div>
+                  <div class="ps-g"><button type="button" data-a="ac"></button><button type="button" data-a="ms">Measure</button></div>
                 </div></div></div>
             <div class="ps-note"></div>`;
         const svg = el.querySelector('.ps-svg'), scope = el.querySelector('.ps-scope');
@@ -836,7 +836,7 @@
             el.querySelector('.ps-meters').innerHTML = `<div class="ps-m"><span>มัลติมิเตอร์ ย่าน V~ ที่ขดทุติยภูมิ</span><b class="lcd sm">${r.vsrms.toFixed(2)}</b> V</div>
                 <div class="ps-m"><span>มัลติมิเตอร์ ย่าน V⎓ คร่อม R<sub>L</sub></span><b class="lcd sm">${r.vdc.toFixed(2)}</b> V</div>`;
             const clip = mx / vdiv > (probe === 'out' && !ac ? 7 : 4) || mn / vdiv < (probe === 'out' && !ac ? -1 : -4);
-            el.querySelector('.ps-note').innerHTML = clip ? '⚠️ รูปคลื่นล้นจอ → เพิ่ม VOLTS/DIV' : (ac && probe === 'out' && C ? 'AC coupling: ตัดไฟตรงออก เห็นเฉพาะแรงดันพลิ้ว (V<sub>r(pp)</sub> = สูงสุด − ต่ำสุด)' : probe === 'out' && !C ? 'นับช่องจากเส้นกราวด์ (⏚) ถึงยอด × VOLTS/DIV = V<sub>p(out)</sub>' : '');
+            el.querySelector('.ps-note').innerHTML = clip ? 'รูปคลื่นล้นจอ → เพิ่ม VOLTS/DIV' : (ac && probe === 'out' && C ? 'AC coupling: ตัดไฟตรงออก เห็นเฉพาะแรงดันพลิ้ว (V<sub>r(pp)</sub> = สูงสุด − ต่ำสุด)' : probe === 'out' && !C ? 'นับช่องจากเส้นกราวด์ (⏚) ถึงยอด × VOLTS/DIV = V<sub>p(out)</sub>' : '');
             el.querySelectorAll('[data-m]').forEach(b => b.classList.toggle('on', b.dataset.m === mode));
             el.querySelectorAll('[data-c]').forEach(b => b.classList.toggle('on', +b.dataset.c === C));
             el.querySelectorAll('[data-r]').forEach(b => b.classList.toggle('on', +b.dataset.r === RL));
@@ -876,7 +876,7 @@
         const NAME = { sine: 'ไซน์ (ไฟสลับ)', half: 'เรียงกระแสครึ่งคลื่น', full: 'เรียงกระแสเต็มคลื่น', rip: 'แรงดันพลิ้ว (AC coupling)' };
         el.classList.add('sx', 'scoperead');
         el.innerHTML = `<div class="sr-row"><svg viewBox="0 0 570 488" class="sx-svg sr-svg"></svg>
-            <div class="sr-r"><div class="sr-q"></div><div class="sx-ctl"><button type="button" data-a="ans">👀 เฉลย</button><button type="button" data-a="new">🎲 ข้อต่อไป</button></div><div class="sr-a"></div></div></div>`;
+            <div class="sr-r"><div class="sr-q"></div><div class="sx-ctl"><button type="button" data-a="ans">เฉลย</button><button type="button" data-a="new">ข้อต่อไป</button></div><div class="sr-a"></div></div></div>`;
         const draw = () => {
             const c = CASES[i];
             const gnd = c.type === 'half' || c.type === 'full' ? 3 : 0;

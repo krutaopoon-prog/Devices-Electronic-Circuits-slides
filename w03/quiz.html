@@ -57,7 +57,7 @@
     <nav class="topbar no-print">
         <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="exercises.html">แบบฝึกหัด</a>
         <span class="spacer"></span>
-        <a href="answers.html">สำหรับครู 🔒</a>
+        <a href="answers.html">สำหรับครู</a>
     </nav>
 
     <div class="sheet-head print-only">
@@ -82,7 +82,7 @@
             <label><input type="radio" name="mode" value="post">หลังเรียน</label>
         </div>
         <div class="btn-row">
-            <button class="btn ghost" type="button" id="printPaper">🖨 พิมพ์ข้อสอบ + กระดาษคำตอบ</button>
+            <button class="btn ghost" type="button" id="printPaper">พิมพ์ข้อสอบ + กระดาษคำตอบ</button>
         </div>
     </header>
 
@@ -99,7 +99,7 @@
     <section class="score-sheet" id="scoreSheet" hidden aria-label="ใบรายงานคะแนน"></section>
 
     <section class="card no-print">
-        <h3>สำหรับครู 🔒</h3>
+        <h3>สำหรับครู</h3>
         <p class="muted" style="margin:0 0 8px">ใส่รหัสครูเพื่อแสดงเฉลยและคำอธิบายในหน้านี้ (เช่น ตอนเฉลยบนโปรเจกเตอร์)</p>
         <div class="teacher">
             <input type="password" id="pw" placeholder="รหัสครู" autocomplete="off">
@@ -226,7 +226,7 @@
             <div class="big">${score} / ${Q.length} คะแนน (${pct}%)</div>
             <div class="muted" style="font-family:var(--font-body)">ข้อที่ผิดให้กลับไปทบทวนสไลด์หัวข้อนั้น · ครูจะเฉลยในชั้นเรียน</div>
             <div class="score-actions" style="margin-top:12px">
-                <button class="btn orange" type="button" id="printScore">🖨 พิมพ์ใบคะแนน</button>
+                <button class="btn orange" type="button" id="printScore">พิมพ์ใบคะแนน</button>
                 <span class="hint">ในหน้าต่างพิมพ์ เลือกปลายทาง “บันทึกเป็น PDF” แล้วนำไฟล์ไปแนบส่งใน Google Classroom</span>
             </div>`;
         document.getElementById('printScore').addEventListener('click', () => ScoreSheet.print());
@@ -235,7 +235,7 @@
             r.insertAdjacentHTML('beforeend', '<div class="muted" id="syncMsg" style="margin-top:8px">⏳ กำลังส่งคะแนนเข้าระบบห้องเรียน…</div>');
             ClassroomQuiz.submit({ course: 'dec', lesson: 'w03', mode: m, answers: picked, startedAt: start, clientScore: score }).then(x => {
                 const el = document.getElementById('syncMsg');
-                if (el) el.innerHTML = x.ok ? '✅ ส่งคะแนนเข้าระบบห้องเรียนแล้ว ครูเห็นคะแนนทันที' : '⚠️ ' + x.reason;
+                if (el) el.innerHTML = x.ok ? 'ส่งคะแนนเข้าระบบห้องเรียนแล้ว ครูเห็นคะแนนทันที' : x.reason;
             });
         }
         r.scrollIntoView({ behavior: 'smooth' });
